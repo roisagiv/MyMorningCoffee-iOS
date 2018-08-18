@@ -14,6 +14,7 @@ PODS:
   - GoogleUtilities/Environment (5.2.2)
   - GoogleUtilities/Logger (5.2.2):
     - GoogleUtilities/Environment
+  - Kingfisher (4.8.1)
   - leveldb-library (1.20)
   - MaterialComponents/AppBar (60.1.0):
     - MaterialComponents/FlexibleHeader
@@ -155,10 +156,12 @@ PODS:
   - SwiftFormat/CLI (0.35.2)
   - SwiftHEXColors (1.1.2)
   - SwiftLint (0.27.0)
+  - SwiftMoment (0.7)
 
 DEPENDENCIES:
   - Fakery (= 3.3.0)
   - Firebase/Database (= 5.6.0)
+  - Kingfisher (= 4.8.1)
   - MaterialComponents/AppBar (= 60.1.0)
   - "MaterialComponents/AppBar+ColorThemer (= 60.1.0)"
   - "MaterialComponents/AppBar+TypographyThemer (= 60.1.0)"
@@ -179,6 +182,7 @@ DEPENDENCIES:
   - SwiftFormat/CLI (= 0.35.2)
   - SwiftHEXColors (= 1.1.2)
   - SwiftLint (= 0.27.0)
+  - SwiftMoment (= 0.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -188,6 +192,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - GoogleUtilities
+    - Kingfisher
     - leveldb-library
     - MaterialComponents
     - MDFInternationalization
@@ -202,6 +207,7 @@ SPEC REPOS:
     - SwiftFormat
     - SwiftHEXColors
     - SwiftLint
+    - SwiftMoment
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -210,6 +216,7 @@ SPEC CHECKSUMS:
   FirebaseCore: cb9ee75e0894def766167c95a4d5a14b1c138269
   FirebaseDatabase: 27be5ac5bc75e0b17537b2bbfada8258addcc8cd
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MaterialComponents: bd1ebf279041919605fe6133a4173db4148ec1cd
   MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
@@ -224,7 +231,8 @@ SPEC CHECKSUMS:
   SwiftFormat: d26c78821785f8c1d029323658c93a977cdf31bf
   SwiftHEXColors: 7f9f7e6bdce888d821e11749279733e5ddff5f51
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+  SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
 
-PODFILE CHECKSUM: a231f7e7cddb98a79bdd7c6a485f1fbb698d8a98
+PODFILE CHECKSUM: 625f2efb2eee10d8e5d52d9f1185be73a125518a
 
 COCOAPODS: 1.5.3

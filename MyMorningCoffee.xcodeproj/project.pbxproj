@@ -15,6 +15,10 @@
 		5F49F1202126029F0071DB49 /* MyMorningCoffeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F49F11F2126029F0071DB49 /* MyMorningCoffeeTests.swift */; };
 		5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */; };
 		5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */; };
+		5FC574C32128B04100A49664 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC574C22128B04100A49664 /* CardImageView.swift */; };
+		5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */; };
+		5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */; };
+		5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC620021283583004B0B29 /* TopNewsCellView.swift */; };
 		5FE238C6212617D100F2AB9A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE238C5212617D100F2AB9A /* Theme.swift */; };
 		7FE4F11476946C7014902C8B /* Pods_MyMorningCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +47,10 @@
 		5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.ttf"; sourceTree = "<group>"; };
 		5FB2480121275CFF00BFE636 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.ttf"; sourceTree = "<group>"; };
+		5FC574C22128B04100A49664 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
+		5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModel.swift; sourceTree = "<group>"; };
+		5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopNewsCellView.xib; sourceTree = "<group>"; };
+		5FCC620021283583004B0B29 /* TopNewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellView.swift; sourceTree = "<group>"; };
 		5FE238C5212617D100F2AB9A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		639CB397A186331A7F542157 /* Pods-MyMorningCoffeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		973EDF13CBF7E5FB61A2E82E /* Pods-MyMorningCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffee.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +91,10 @@
 		5F0FCD5B21260AD2002A289F /* TopNews */ = {
 			isa = PBXGroup;
 			children = (
+				5FCC620021283583004B0B29 /* TopNewsCellView.swift */,
+				5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */,
 				5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */,
+				5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */,
 			);
 			path = TopNews;
 			sourceTree = "<group>";
@@ -148,9 +159,18 @@
 			path = Montserrat_Alternates;
 			sourceTree = "<group>";
 		};
+		5FC574C12128B02D00A49664 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5FC574C22128B04100A49664 /* CardImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5FE238C4212617C600F2AB9A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5FC574C12128B02D00A49664 /* Components */,
 				5FB247F421275CF400BFE636 /* Fonts */,
 				5FE238C5212617D100F2AB9A /* Theme.swift */,
 			);
@@ -254,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */,
+				5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */,
 				5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */,
 				5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */,
 				5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */,
@@ -280,6 +301,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
@@ -289,6 +311,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -296,6 +319,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
@@ -305,6 +329,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,7 +401,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE238C6212617D100F2AB9A /* Theme.swift in Sources */,
+				5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */,
+				5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */,
 				5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */,
+				5FC574C32128B04100A49664 /* CardImageView.swift in Sources */,
 				5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,7 @@ target "MyMorningCoffee" do
 
   # UI
   pod "Reusable", "4.0.2"
+  pod "Kingfisher", "4.8.1"
   pod "SwiftHEXColors", "1.1.2"
 
   # Firebase
@@ -38,6 +39,9 @@ target "MyMorningCoffee" do
 
   # Fake Data
   pod "Fakery", "3.3.0"
+
+  # Dates
+  pod "SwiftMoment", "0.7"
 
   target "MyMorningCoffeeTests" do
     inherit! :search_paths

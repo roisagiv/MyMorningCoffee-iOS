@@ -8,22 +8,44 @@
 
 import Fakery
 import MaterialComponents
+import RxSwift
 import UIKit
 
 class TopNewsViewController: MDCCollectionViewController {
   fileprivate let appBar = MDCAppBarViewController()
-  private let theme: Theme = Theme()
-  fileprivate let faker = Faker(locale: "en-US")
+  fileprivate var items: [TopNewsViewModel.Item] = []
+  private let disposeBag = DisposeBag()
+
+  fileprivate let viewModel: TopNewsViewModel = TopNewsViewModel()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    theme.apply(to: collectionView)
+    Theme.apply(to: collectionView)
     setupAppBar()
+    setupCollectionView()
+
+    navigationItem.title = "Top News"
+
+    let disposable = viewModel.items.subscribe { [weak self] event in
+      guard let items = event.element else {
+        return
+      }
+      self?.items = items
+      self?.collectionView?.reloadData()
+    }
+    disposeBag.insert(disposable)
+    viewModel.reload.onNext(())
+  }
+
+  private func setupCollectionView() {
     styler.cellLayoutType = .list
+    styler.cardBorderRadius = 4
     styler.cellStyle = .card
 
-    collectionView?.register(MDCCollectionViewTextCell.self, forCellWithReuseIdentifier: "cell")
-    navigationItem.title = "Top News"
+    collectionView?.register(cellType: TopNewsCellView.self)
+    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+      layout.minimumLineSpacing = 80
+    }
   }
 
   private func setupAppBar() {
@@ -31,7 +53,7 @@ class TopNewsViewController: MDCCollectionViewController {
     appBar.headerView.trackingScrollView = collectionView
     appBar.didMove(toParentViewController: self)
     appBar.navigationBar.title = "Top Bar"
-    theme.apply(to: appBar)
+    Theme.apply(to: appBar)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +64,7 @@ class TopNewsViewController: MDCCollectionViewController {
 
 extension TopNewsViewController {
   override func collectionView(_: UICollectionView, cellHeightAt _: IndexPath) -> CGFloat {
-    return MDCCellDefaultThreeLineHeight
+    return TopNewsCellView.height
   }
 
   override func numberOfSections(in _: UICollectionView) -> Int {
@@ -51,21 +73,16 @@ extension TopNewsViewController {
 
   override func collectionView(_: UICollectionView,
                                numberOfItemsInSection _: Int) -> Int {
-    return 20
+    return items.count
   }
 
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell: MDCCollectionViewTextCell =
-      collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MDCCollectionViewTextCell
-    else {
-      return MDCCollectionViewTextCell(frame: CGRect.zero)
-    }
+    let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
 
-    theme.apply(to: cell)
+    let item = items[indexPath.row]
+    cell.configure(item: item)
 
-    cell.textLabel?.text = faker.lorem.sentences(amount: 2)
-    cell.detailTextLabel?.text = faker.lorem.sentences(amount: 2)
     return cell
   }
 }

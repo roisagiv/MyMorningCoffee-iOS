@@ -1,2 +1,10 @@
 excluded:
   - Pods
+
+identifier_name:
+  excluded: # excluded via string array
+    - db
+    - URL
+    - vc
+    - id
+    - nc
