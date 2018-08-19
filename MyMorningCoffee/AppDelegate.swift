@@ -8,13 +8,17 @@
 
 import UIKit
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_: UIApplication,
                    didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     Theme.configure()
+    do {
+      try Injector.configure()
+    } catch {
+      return false
+    }
     let window = UIWindow(frame: UIScreen.main.bounds)
     let navigationController = UINavigationController(rootViewController: TopNewsViewController())
     window.rootViewController = navigationController

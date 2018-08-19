@@ -13,10 +13,10 @@ import UIKit
 
 class TopNewsViewController: MDCCollectionViewController {
   fileprivate let appBar = MDCAppBarViewController()
-  fileprivate var items: [TopNewsViewModel.Item] = []
+  fileprivate var items: [TopNewsItem] = []
   private let disposeBag = DisposeBag()
 
-  fileprivate let viewModel: TopNewsViewModel = TopNewsViewModel()
+  fileprivate let viewModel: TopNewsViewModelType = Injector.topNewsViewModel
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,15 +26,12 @@ class TopNewsViewController: MDCCollectionViewController {
 
     navigationItem.title = "Top News"
 
-    let disposable = viewModel.items.subscribe { [weak self] event in
-      guard let items = event.element else {
-        return
-      }
+    let disposable = viewModel.items.drive(onNext: { [weak self] items in
       self?.items = items
       self?.collectionView?.reloadData()
-    }
+    })
     disposeBag.insert(disposable)
-    viewModel.reload.onNext(())
+    viewModel.refresh.onNext(())
   }
 
   private func setupCollectionView() {
@@ -78,9 +75,11 @@ extension TopNewsViewController {
 
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let item = items[indexPath.row]
+    viewModel.loadItem.onNext(item.id)
+
     let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
 
-    let item = items[indexPath.row]
     cell.configure(item: item)
 
     return cell

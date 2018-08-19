@@ -19,7 +19,7 @@ class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
   static let height: CGFloat = 8 * 38
 
-  func configure(item: TopNewsViewModel.Item) {
+  func configure(item: TopNewsItem) {
     titleLabel.text = item.title
     sourceLabel.text = item.source
     if let cover = item.cover {
