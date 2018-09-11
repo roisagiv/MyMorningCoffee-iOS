@@ -9,14 +9,13 @@
 @testable import MyMorningCoffee
 import Nimble
 import Quick
-import RxNimble
 import RxBlocking
+import RxNimble
 
 class NewsItemsGRDBDatabaseSpec: QuickSpec {
   // swiftlint:disable:next function_body_length
   override func spec() {
     describe("Initial dataset") {
-
       it("does not override existing row") {
         let db = DatabaseFactory.create(log: true)
         do {
@@ -65,7 +64,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
 
           let length = 500
-          let records = Array(0...length).map {
+          let records = Array(0 ... length).map {
             NewsItemRecord(id: $0)
           }
 
@@ -85,7 +84,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
 
           let length = 500
-          let records = Array(0...length).map {
+          let records = Array(0 ... length).map {
             NewsItemRecord(id: $0)
           }
           _ = database.save(items: records)

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Roi Sagiv. All rights reserved.
 //
 
+import AlamofireNetworkActivityLogger
 import GRDB
 import Swinject
 
@@ -22,10 +23,19 @@ class Injector {
     return container.resolve(DatabaseWriter.self)!
   }
 
+  static var imageLoader: ImageLoader {
+    return container.resolve(ImageLoader.self)!
+  }
+
   /* testable */ static var container: Container = Container()
 
   class func configure() throws {
     let log = Environment.log
+
+    if log {
+      NetworkActivityLogger.shared.startLogging()
+      NetworkActivityLogger.shared.level = .debug
+    }
 
     container = Container { container in
       // HackerNewsService
@@ -38,7 +48,9 @@ class Injector {
 
       // ScraperService
       container.register(ScraperService.self) { _ in
-        return MercuryWebParserScraperService(provider: MoyaProviderFactory.create(log: log))
+        return MercuryWebParserScraperService(
+          provider: MoyaProviderFactory.create(log: false)
+        )
       }
 
       // NewsItemsDatabase
@@ -50,6 +62,9 @@ class Injector {
       container.register(DatabaseWriter.self) { _ in
         DatabaseFactory.create(log: log)
       }.inObjectScope(ObjectScope.container)
+
+      // ImageLoader
+      container.register(ImageLoader.self) { _ in KingfisherImageLoader() }
     }
   }
 }

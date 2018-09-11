@@ -16,7 +16,8 @@ class TopNewsViewController: MDCCollectionViewController {
   fileprivate var items: [TopNewsItem] = []
   private let disposeBag = DisposeBag()
 
-  fileprivate let viewModel: TopNewsViewModelType = Injector.topNewsViewModel
+  fileprivate var viewModel: TopNewsViewModelType?
+  fileprivate var imageLoader: ImageLoader?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,12 +27,14 @@ class TopNewsViewController: MDCCollectionViewController {
 
     navigationItem.title = "Top News"
 
-    let disposable = viewModel.items.drive(onNext: { [weak self] items in
+    let disposable = viewModel?.items.drive(onNext: { [weak self] items in
       self?.items = items
       self?.collectionView?.reloadData()
     })
-    disposeBag.insert(disposable)
-    viewModel.refresh.onNext(())
+    if let disposable = disposable {
+      disposeBag.insert(disposable)
+    }
+    viewModel?.refresh.onNext(())
   }
 
   private func setupCollectionView() {
@@ -76,11 +79,11 @@ extension TopNewsViewController {
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let item = items[indexPath.row]
-    viewModel.loadItem.onNext(item.id)
+    viewModel?.loadItem.onNext(item.id)
 
     let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
 
-    cell.configure(item: item)
+    cell.configure(item: item, imageLoader: imageLoader)
 
     return cell
   }
@@ -117,5 +120,14 @@ extension TopNewsViewController {
 
   override var childViewControllerForStatusBarStyle: UIViewController? {
     return appBar
+  }
+}
+
+extension TopNewsViewController {
+  class func create(viewModel: TopNewsViewModelType, imageLoader: ImageLoader) -> TopNewsViewController {
+    let vc = TopNewsViewController()
+    vc.viewModel = viewModel
+    vc.imageLoader = imageLoader
+    return vc
   }
 }

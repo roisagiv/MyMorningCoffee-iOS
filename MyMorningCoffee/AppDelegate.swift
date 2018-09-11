@@ -12,15 +12,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_: UIApplication,
-                   didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                   didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     Theme.configure()
     do {
       try Injector.configure()
+      try DatabaseMigrations.migrate(database: Injector.databaseWriter)
     } catch {
       return false
     }
     let window = UIWindow(frame: UIScreen.main.bounds)
-    let navigationController = UINavigationController(rootViewController: TopNewsViewController())
+    let topNews = TopNewsViewController.create(
+      viewModel: Injector.topNewsViewModel,
+      imageLoader: Injector.imageLoader
+    )
+    let navigationController = UINavigationController(rootViewController: topNews)
     window.rootViewController = navigationController
 
     window.makeKeyAndVisible()

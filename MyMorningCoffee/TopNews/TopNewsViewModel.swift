@@ -19,6 +19,7 @@ struct TopNewsItem {
   let description: String?
   let publishedAt: Date?
   let source: String?
+  let loading: Bool
 }
 
 extension TopNewsItem {
@@ -31,7 +32,8 @@ extension TopNewsItem {
       author: nil,
       description: nil,
       publishedAt: nil,
-      source: nil
+      source: nil,
+      loading: false
     )
   }
 }
@@ -59,19 +61,11 @@ class TopNewsViewModel: TopNewsViewModelType {
   // MARK: - Outputs
 
   private(set) lazy var items: Driver<[TopNewsItem]> = {
-    newsItemDatabase.all()
-      .map { items in
-        items.map { TopNewsItem(
-          id: $0.id,
-          title: $0.title ?? "",
-          cover: $0.imageUrl,
-          url: $0.url,
-          author: nil,
-          description: $0.subTitle,
-          publishedAt: nil,
-          source: $0.domain
-        ) }
-      }
+    newsItemDatabase
+      .all()
+      .map({ [unowned self] records in
+        records.map(self.map)
+      })
       .share()
       .asDriver(onErrorJustReturn: [])
   }()
@@ -112,15 +106,17 @@ class TopNewsViewModel: TopNewsViewModelType {
       .disposed(by: disposeBag)
 
     // Load Item
-    loadItemSubject.subscribe(onNext: { [unowned self] id in
-      self.newsItemDatabase
-        .record(by: id)
-        .flatMapFirst { [unowned self] record in
-          return self.expand(record: record)
-        }
-        .subscribe()
-        .disposed(by: self.disposeBag)
-    }).disposed(by: disposeBag)
+    loadItemSubject
+      .throttle(2, scheduler: MainScheduler.instance)
+      .subscribe(onNext: { [unowned self] id in
+        self.newsItemDatabase
+          .record(by: id)
+          .flatMapFirst { [unowned self] record in
+            return self.expand(record: record)
+          }
+          .subscribe()
+          .disposed(by: self.disposeBag)
+      }).disposed(by: disposeBag)
   }
 
   private func expand(record: NewsItemRecord?) -> Observable<NewsItemRecord> {
@@ -182,5 +178,22 @@ class TopNewsViewModel: TopNewsViewModelType {
           return Single.error(error)
         }
       }
+  }
+
+  private func map(record: NewsItemRecord) -> TopNewsItem {
+    return TopNewsItem(
+      id: record.id,
+      title: record.title ?? "",
+      cover: record.imageUrl,
+      url: record.url,
+      author: nil,
+      description: record.subTitle,
+      publishedAt: record.time,
+      source: record.domain,
+      loading: [
+        NewsItemRecord.Status.fetching,
+        NewsItemRecord.Status.scraping
+      ].contains(record.status)
+    )
   }
 }

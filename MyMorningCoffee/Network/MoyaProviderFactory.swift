@@ -12,7 +12,7 @@ class MoyaProviderFactory {
   class func create<T: TargetType>(log: Bool = Environment.log) -> MoyaProvider<T> {
     var plugins: [PluginType] = []
     if log {
-      plugins.append(NetworkLoggerPlugin(cURL: true))
+      plugins.append(NetworkLoggerPlugin(cURL: false))
     }
     return MoyaProvider<T>(plugins: plugins)
   }

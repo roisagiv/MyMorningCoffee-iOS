@@ -13,7 +13,7 @@ import RxNimble
 import RxSwift
 
 class TopNewsViewModelSpec: QuickSpec {
-// swiftlint:disable:next function_body_length
+  // swiftlint:disable:next function_body_length
   override func spec() {
     beforeEach {
       Fixtures.beforeEach()
@@ -48,7 +48,7 @@ class TopNewsViewModelSpec: QuickSpec {
         expect(items.skip(1)).first.to(haveCount(397))
       }
 
-      fit("should update after expanding an item") {
+      it("should update after expanding an item") {
         Fixtures.topStories()
         Fixtures.storyItem()
         Fixtures.mercuryWebParser()
@@ -57,7 +57,7 @@ class TopNewsViewModelSpec: QuickSpec {
         let items = viewModel.items.asObservable()
         expect(items).first.to(beEmpty())
 
-        let id = 17790031
+        let id = 17_790_031
         viewModel.refresh.onNext(())
         viewModel.loadItem.onNext(id)
         do {

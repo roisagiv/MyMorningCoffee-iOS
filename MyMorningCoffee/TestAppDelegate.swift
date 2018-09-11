@@ -12,7 +12,7 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_: UIApplication,
-                   didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+                   didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     Theme.configure()
     window = UIWindow(frame: UIScreen.main.bounds)
 

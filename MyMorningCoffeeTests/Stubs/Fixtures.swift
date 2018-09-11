@@ -51,9 +51,9 @@ class Fixtures {
           "by": "eplanit",
           "descendants": fakery.number.randomInt(),
           "id": Int(request.url?.pathComponents[2] ?? "1") ?? 1,
-          "kids": [17775025, 17775001, 17775142, 17775132, 17774997, 17778590],
+          "kids": [17_775_025, 17_775_001, 17_775_142, 17_775_132, 17_774_997, 17_778_590],
           "score": fakery.number.randomInt(min: 10, max: 100),
-          "time": 1534429495,
+          "time": 1_534_429_495,
           "title": fakery.lorem.sentence(),
           "type": "story",
           "url": fakery.internet.url()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4BA5E4C2F2521773F4EA36B6 /* Pods_MyMorningCoffeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B8D99F3067C4EF9EF3048 /* Pods_MyMorningCoffeeTests.framework */; };
 		5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */; };
+		5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B31932148610600A18D03 /* StubImageLoader.swift */; };
 		5F23C182212B55D00030199A /* ScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C181212B55D00030199A /* ScraperService.swift */; };
 		5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */; };
 		5F23C186212B64630030199A /* MercuryWebParserScraperServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */; };
@@ -19,6 +20,10 @@
 		5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */; };
 		5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43F8D2212935C700BD62CC /* TestAppDelegate.swift */; };
 		5F43F8D52129360100BD62CC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43F8D42129360100BD62CC /* main.swift */; };
+		5F457C6821484B3300409DF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6721484B3300409DF6 /* Device.swift */; };
+		5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */; };
+		5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6B21485DCC00409DF6 /* ImageLoader.swift */; };
+		5F457C6E21485DF400409DF6 /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */; };
 		5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F49F10A2126029D0071DB49 /* AppDelegate.swift */; };
 		5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1112126029F0071DB49 /* Assets.xcassets */; };
 		5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1132126029F0071DB49 /* LaunchScreen.storyboard */; };
@@ -27,6 +32,7 @@
 		5F6ABF85212CABB200060690 /* DatabaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF84212CABB200060690 /* DatabaseFactory.swift */; };
 		5F6ABF87212CAC4100060690 /* DatabaseMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF86212CAC4100060690 /* DatabaseMigrations.swift */; };
 		5F6ABF8A212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF89212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift */; };
+		5F77A2FA2144612600197926 /* TopNewsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */; };
 		5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */; };
 		5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9F212EC36A00E49054 /* Injector.swift */; };
 		5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5AA1212EC96A00E49054 /* Fixtures.swift */; };
@@ -40,6 +46,8 @@
 		5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */; };
 		5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC620021283583004B0B29 /* TopNewsCellView.swift */; };
 		5FE238C6212617D100F2AB9A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE238C5212617D100F2AB9A /* Theme.swift */; };
+		5FE6FD4F214D864600E596C3 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD4E214D864600E596C3 /* Dates.swift */; };
+		5FE6FD51214D99A800E596C3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD50214D99A800E596C3 /* Images.swift */; };
 		7FE4F11476946C7014902C8B /* Pods_MyMorningCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +64,7 @@
 /* Begin PBXFileReference section */
 		187AD5BEB80992E922F99624 /* Pods-MyMorningCoffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewController.swift; sourceTree = "<group>"; };
+		5F1B31932148610600A18D03 /* StubImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubImageLoader.swift; sourceTree = "<group>"; };
 		5F23C181212B55D00030199A /* ScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScraperService.swift; sourceTree = "<group>"; };
 		5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperService.swift; sourceTree = "<group>"; };
 		5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperServiceSpec.swift; sourceTree = "<group>"; };
@@ -66,6 +75,10 @@
 		5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsHTTPService.swift; sourceTree = "<group>"; };
 		5F43F8D2212935C700BD62CC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		5F43F8D42129360100BD62CC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5F457C6721484B3300409DF6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellViewSpec.swift; sourceTree = "<group>"; };
+		5F457C6B21485DCC00409DF6 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
 		5F49F1072126029D0071DB49 /* MyMorningCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMorningCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F49F10A2126029D0071DB49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F49F1112126029F0071DB49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +91,7 @@
 		5F6ABF84212CABB200060690 /* DatabaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFactory.swift; sourceTree = "<group>"; };
 		5F6ABF86212CAC4100060690 /* DatabaseMigrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrations.swift; sourceTree = "<group>"; };
 		5F6ABF89212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemsGRDBDatabaseSpec.swift; sourceTree = "<group>"; };
+		5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewControllerSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModelSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9F212EC36A00E49054 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		5F7A5AA1212EC96A00E49054 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
@@ -92,6 +106,8 @@
 		5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopNewsCellView.xib; sourceTree = "<group>"; };
 		5FCC620021283583004B0B29 /* TopNewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellView.swift; sourceTree = "<group>"; };
 		5FE238C5212617D100F2AB9A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5FE6FD4E214D864600E596C3 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		5FE6FD50214D99A800E596C3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		639CB397A186331A7F542157 /* Pods-MyMorningCoffeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		973EDF13CBF7E5FB61A2E82E /* Pods-MyMorningCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffee.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee.release.xcconfig"; sourceTree = "<group>"; };
 		9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMorningCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +158,9 @@
 		5F43F8C521292F9A00BD62CC /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				5FE6FD4E214D864600E596C3 /* Dates.swift */,
 				5F7A5AA1212EC96A00E49054 /* Fixtures.swift */,
+				5F1B31932148610600A18D03 /* StubImageLoader.swift */,
 				5F92004E212C31B000E824E7 /* mercury-response.json */,
 				5F43F8C8212930F300BD62CC /* story.json */,
 				5F43F8C621292FB500BD62CC /* top-stories.json */,
@@ -155,6 +173,8 @@
 			children = (
 				5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */,
 				5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */,
+				5F457C6B21485DCC00409DF6 /* ImageLoader.swift */,
+				5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */,
 				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
 				5F23C181212B55D00030199A /* ScraperService.swift */,
 			);
@@ -216,6 +236,7 @@
 				5F43F8CD2129342C00BD62CC /* Services */,
 				5F43F8C521292F9A00BD62CC /* Stubs */,
 				5F7A5A9C212EC05B00E49054 /* TopNews */,
+				5F457C6721484B3300409DF6 /* Device.swift */,
 				5F49F1212126029F0071DB49 /* Info.plist */,
 			);
 			path = MyMorningCoffeeTests;
@@ -252,6 +273,8 @@
 		5F7A5A9C212EC05B00E49054 /* TopNews */ = {
 			isa = PBXGroup;
 			children = (
+				5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */,
+				5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */,
 				5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */,
 			);
 			path = TopNews;
@@ -296,6 +319,7 @@
 			children = (
 				5FC574C12128B02D00A49664 /* Components */,
 				5FB247F421275CF400BFE636 /* Fonts */,
+				5FE6FD50214D99A800E596C3 /* Images.swift */,
 				5FE238C5212617D100F2AB9A /* Theme.swift */,
 			);
 			path = UI;
@@ -320,6 +344,8 @@
 			buildConfigurationList = 5F49F1242126029F0071DB49 /* Build configuration list for PBXNativeTarget "MyMorningCoffee" */;
 			buildPhases = (
 				C7114E465B85441117B50DAE /* [CP] Check Pods Manifest.lock */,
+				E8EB66B031366AEA522F1006 /* [CP-User] SwiftFormat */,
+				B188C440D26CA615FCEEF027 /* [CP-User] SwiftLint */,
 				5F49F1032126029D0071DB49 /* Sources */,
 				5F49F1042126029D0071DB49 /* Frameworks */,
 				5F49F1052126029D0071DB49 /* Resources */,
@@ -366,9 +392,11 @@
 				TargetAttributes = {
 					5F49F1062126029D0071DB49 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					5F49F11A2126029F0071DB49 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = 5F49F1062126029D0071DB49;
 					};
 				};
@@ -426,6 +454,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -448,6 +477,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -480,20 +510,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxNimble/RxNimble.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EarlGrey.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxNimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -518,6 +554,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B188C440D26CA615FCEEF027 /* [CP-User] SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			showEnvVarsInLog = 0;
+		};
 		C7114E465B85441117B50DAE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -536,6 +591,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E8EB66B031366AEA522F1006 /* [CP-User] SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] SwiftFormat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/MyMorningCoffee\" \"${SRCROOT}/MyMorningCoffeeTests\" \"--config\" \".swiftformat\"";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -545,6 +619,9 @@
 			files = (
 				5FE238C6212617D100F2AB9A /* Theme.swift in Sources */,
 				5F43F8CC2129311C00BD62CC /* HackerNewsService.swift in Sources */,
+				5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */,
+				5FE6FD51214D99A800E596C3 /* Images.swift in Sources */,
+				5F457C6E21485DF400409DF6 /* KingfisherImageLoader.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
 				5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */,
@@ -570,9 +647,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F6ABF8A212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift in Sources */,
+				5FE6FD4F214D864600E596C3 /* Dates.swift in Sources */,
 				5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */,
+				5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */,
+				5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */,
 				5F23C186212B64630030199A /* MercuryWebParserScraperServiceSpec.swift in Sources */,
 				5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */,
+				5F77A2FA2144612600197926 /* TopNewsViewControllerSpec.swift in Sources */,
+				5F457C6821484B3300409DF6 /* Device.swift in Sources */,
 				5F43F8CF2129344200BD62CC /* HackerNewsHTTPServiceSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +812,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.roisagiv.MyMorningCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

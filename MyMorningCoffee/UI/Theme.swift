@@ -20,16 +20,35 @@ struct Theme {
     case subtitle2
   }
 
+  private enum Color: Int {
+    case primary = 0xF5F5F6
+    case primaryLight = 0xFFFFFF
+    case primaryDark = 0xC2C2C3
+    case secondary = 0x81D3F9
+    case secondaryLight = 0xB5FFFF
+    case secondaryDark = 0x4BA2C6
+    case black = 0x000000
+
+    func asUIColor() -> UIColor {
+      return UIColor(hex: rawValue)!
+    }
+  }
+
   private static let colorScheme = MDCSemanticColorScheme(defaults: .material201804)
   private static let typographyScheme = MDCTypographyScheme(defaults: .material201804)
 
   static func configure() {
-    colorScheme.primaryColor = UIColor(hex: 0xFFFFFF)!
-    colorScheme.onPrimaryColor = UIColor(hex: 0x000000)!
-    colorScheme.secondaryColor = UIColor(hex: 0x81D3F9)!
-    colorScheme.onSecondaryColor = UIColor(hex: 0x000000)!
+    colorScheme.primaryColor = Color.primary.asUIColor()
+    colorScheme.primaryColorVariant = Color.primaryDark.asUIColor()
+    colorScheme.secondaryColor = Color.secondary.asUIColor()
+    colorScheme.surfaceColor = Color.primaryLight.asUIColor()
+    colorScheme.backgroundColor = Color.primary.asUIColor()
+    colorScheme.onPrimaryColor = Color.black.asUIColor()
+    colorScheme.onSecondaryColor = Color.black.asUIColor()
+    colorScheme.onBackgroundColor = Color.black.asUIColor()
+    colorScheme.onSurfaceColor = Color.black.asUIColor()
 
-    let defaultTypography = MDCTypographyScheme()
+    let defaultTypography: MDCTypographyScheme = MDCTypographyScheme()
     let fontName = "MontserratAlternates"
     typographyScheme.body1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body1.pointSize)!
     typographyScheme.body2 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body2.pointSize)!
@@ -45,6 +64,8 @@ struct Theme {
     typographyScheme.subtitle1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.subtitle1.pointSize)!
     typographyScheme.subtitle2 = UIFont(name: "\(fontName)-Medium", size: defaultTypography.subtitle2.pointSize)!
   }
+
+  static var placeholderColor: UIColor = Color.primary.asUIColor()
 
   static func apply(to appBar: MDCAppBarViewController) {
     MDCAppBarColorThemer.applyColorScheme(colorScheme, to: appBar)
@@ -70,7 +91,12 @@ struct Theme {
     cell.inkView.inkColor = .clear
   }
 
-  static func apply(_ typography: Typography, to label: UILabel) {
+  static func apply(to label: UILabel, disabled: Bool = false) {
+    let alpha: CGFloat = disabled ? 0.43 : 1.0
+    label.textColor = Color.black.asUIColor().withAlphaComponent(alpha)
+  }
+
+  static func apply(_ typography: Typography, to label: UILabel, alpha: CGFloat = 1) {
     var font: UIFont = label.font
     switch typography {
     case .body1:
@@ -89,5 +115,6 @@ struct Theme {
       font = typographyScheme.subtitle2
     }
     label.font = font
+    label.textColor = Color.black.asUIColor().withAlphaComponent(alpha)
   }
 }
