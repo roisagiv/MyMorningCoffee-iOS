@@ -79,4 +79,23 @@ class Fixtures {
       }
     )
   }
+
+  class func algoliaHackerNews() {
+    OHHTTPStubs.stubRequests(
+      passingTest: {
+        $0.url?.relativePath == "/api/v1/search_by_date"
+      },
+      withStubResponse: { request in
+        expect(request.httpMethod).to(equal("GET"))
+        expect(request.url?.query).to(contain("tags="))
+        expect(request.url?.query).to(contain("hitsPerPage="))
+
+        return OHHTTPStubsResponse(
+          fileAtPath: OHPathForFile("hn.algolia.search_by_date.success.json", Fixtures.self)!,
+          statusCode: 200,
+          headers: nil
+        )
+      }
+    )
+  }
 }

@@ -16,7 +16,7 @@ protocol NewsItemsDatabase {
   func save(item: NewsItemRecord) -> Result<Void, AnyError>
   func save(items: [NewsItemRecord]) -> Result<Void, AnyError>
   func all() -> Observable<[NewsItemRecord]>
-  func record(by id: Int) -> Observable<NewsItemRecord?>
+  func record(by id: Int) -> Single<NewsItemRecord?>
 }
 
 class NewsItemsGRDBDatabase: NewsItemsDatabase {
@@ -51,14 +51,14 @@ class NewsItemsGRDBDatabase: NewsItemsDatabase {
   }
 
   func all() -> Observable<[NewsItemRecord]> {
-    return NewsItemRecord.all()
+    return NewsItemRecord.order(NewsItemRecord.Columns.id.desc)
       .rx
       .fetchAll(in: databaseWriter)
   }
 
-  func record(by id: Int) -> Observable<NewsItemRecord?> {
-    return NewsItemRecord.filter(key: id)
-      .rx
-      .fetchOne(in: databaseWriter)
+  func record(by id: Int) -> Single<NewsItemRecord?> {
+    return NewsItemRecord.filter(key: id).rx.fetchOne(in: databaseWriter)
+      .take(1)
+      .asSingle()
   }
 }

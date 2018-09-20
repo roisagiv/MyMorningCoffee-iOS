@@ -12,6 +12,7 @@ import Nimble_Snapshots
 import Quick
 
 class TopNewsCellViewSpec: QuickSpec {
+  // swiftlint:disable:next function_body_length
   override func spec() {
     describe("render") {
       var cell: TopNewsCellView!

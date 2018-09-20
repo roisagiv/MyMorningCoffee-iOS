@@ -10,13 +10,22 @@ import RxSwift
 
 struct HackerNewsStory: Decodable {
   let id: Int
-  let time: Int
+  let time: Double
   let title: String
   let url: String?
   let type: String
+
+  init(id: Int, time: Double, title: String, url: String?, type: String) {
+    self.id = id
+    self.time = time
+    self.title = title
+    self.url = url
+    self.type = type
+  }
 }
 
 protocol HackerNewsService {
   func topNews(size: Int) -> Single<[Int]>
   func story(by id: Int) -> Single<HackerNewsStory>
+  func topStories(size: Int) -> Single<[HackerNewsStory]>
 }

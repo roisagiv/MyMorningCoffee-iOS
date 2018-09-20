@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 @testable import MyMorningCoffee
 import Nimble
 import OHHTTPStubs
@@ -34,6 +35,20 @@ class HackerNewsServiceHTTPSpecs: QuickSpec {
         expect {
           try service
             .topNews(size: 397)
+            .toBlocking()
+            .first()
+        }.to(haveCount(397))
+      }
+    }
+
+    describe("topStories") {
+      it("returns list of stories") {
+        let service = HackerNewsHTTPService()
+        Fixtures.topStories()
+        Fixtures.storyItem()
+        expect {
+          try service
+            .topStories(size: 397)
             .toBlocking()
             .first()
         }.to(haveCount(397))

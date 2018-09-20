@@ -1,7 +1,7 @@
 platform :ios, "11"
 
 pod "SwiftLint", "0.27.0"
-pod "SwiftFormat/CLI", "0.35.5"
+pod "SwiftFormat/CLI", "0.35.7"
 
 plugin 'cocoapods-keys', {
   :project => "MyMorningCoffee",
@@ -14,9 +14,10 @@ target "MyMorningCoffee" do
   use_frameworks!
 
   # Rx
-  $Rx = "4.3.0"
+  $Rx = "4.4.0"
   pod "RxSwift", $Rx
   pod "RxCocoa", $Rx
+  pod "RxDataSources", "3.1.0"
   
   # DI
   pod "Swinject", "2.5.0"
@@ -26,19 +27,19 @@ target "MyMorningCoffee" do
   pod "AlamofireNetworkActivityLogger", "2.3.0"
   
   # DB
-  pod "RxGRDB", "0.12.0"
+  pod "RxGRDB", "0.13.0"
 
   # UI
-  pod "Reusable", "4.0.3"
+  pod "Reusable", "4.0.4"
   pod "Kingfisher", "4.9.0"
   pod "SwiftHEXColors", "1.1.2"
 
   # Firebase
-  $Firebase = "5.8.0"
+  $Firebase = "5.12.0"
   pod "Firebase/Database", $Firebase
 
   # Material.io
-  $MaterialComponents = "63.0.0"
+  $MaterialComponents = "68.2.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -57,6 +58,10 @@ target "MyMorningCoffee" do
   # Dates
   pod "SwiftMoment", "0.7"
 
+  # Debug
+  pod "netfox", "1.13.0", :configurations => ['Debug']
+  pod "WatchdogInspector", "1.3.0", :configurations => ['Debug']
+
   script_phase :name => 'SwiftFormat',
                :script => '"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}/MyMorningCoffee" "${SRCROOT}/MyMorningCoffeeTests" "--config" ".swiftformat"',
                :execution_position => :before_compile
@@ -68,13 +73,13 @@ target "MyMorningCoffee" do
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
 
-    pod "Quick", "1.3.1"
-    pod "Nimble", "7.3.0"
-    pod "RxNimble", "4.2.0"
+    pod "Quick", "1.3.2"
+    pod "Nimble", "7.3.1"
+    pod "RxNimble", "4.4.0"
     pod "OHHTTPStubs/Swift", "6.1.0"
     pod "RxBlocking", $Rx
     pod "EarlGrey", "1.15.0"
-    pod "Nimble-Snapshots", "6.8.1"
+    pod "Nimble-Snapshots", "6.9.0"
   end
 end
 
@@ -82,6 +87,15 @@ post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '4.1'
+        end
+
+        if target.name == 'RxSwift'
+          target.build_configurations.each do |config|
+            if config.name == 'Debug'
+              puts "RxSwift - OTHER_SWIFT_FLAGS"
+              config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['-D', 'TRACE_RESOURCES']
+            end
+          end
         end
     end
 end

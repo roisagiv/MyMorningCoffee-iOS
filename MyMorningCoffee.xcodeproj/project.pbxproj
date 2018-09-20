@@ -32,12 +32,15 @@
 		5F6ABF85212CABB200060690 /* DatabaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF84212CABB200060690 /* DatabaseFactory.swift */; };
 		5F6ABF87212CAC4100060690 /* DatabaseMigrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF86212CAC4100060690 /* DatabaseMigrations.swift */; };
 		5F6ABF8A212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6ABF89212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift */; };
+		5F7600E821597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */; };
+		5F7600EA21597CD90038E998 /* hn.algolia.search_by_date.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */; };
 		5F77A2FA2144612600197926 /* TopNewsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */; };
 		5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */; };
 		5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9F212EC36A00E49054 /* Injector.swift */; };
 		5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5AA1212EC96A00E49054 /* Fixtures.swift */; };
 		5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */; };
 		5F92004F212C31B000E824E7 /* mercury-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F92004E212C31B000E824E7 /* mercury-response.json */; };
+		5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */; };
 		5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */; };
 		5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */; };
 		5FC38028212D3E82003E1F4B /* NewsItemsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC38027212D3E82003E1F4B /* NewsItemsDatabase.swift */; };
@@ -91,12 +94,15 @@
 		5F6ABF84212CABB200060690 /* DatabaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFactory.swift; sourceTree = "<group>"; };
 		5F6ABF86212CAC4100060690 /* DatabaseMigrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrations.swift; sourceTree = "<group>"; };
 		5F6ABF89212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemsGRDBDatabaseSpec.swift; sourceTree = "<group>"; };
+		5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsAlgoliaServiceSpec.swift; sourceTree = "<group>"; };
+		5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hn.algolia.search_by_date.success.json; sourceTree = "<group>"; };
 		5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewControllerSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModelSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9F212EC36A00E49054 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		5F7A5AA1212EC96A00E49054 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderFactory.swift; sourceTree = "<group>"; };
 		5F92004E212C31B000E824E7 /* mercury-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "mercury-response.json"; sourceTree = "<group>"; };
+		5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsAlgoliaService.swift; sourceTree = "<group>"; };
 		5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.ttf"; sourceTree = "<group>"; };
 		5FB2480121275CFF00BFE636 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.ttf"; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				5FE6FD4E214D864600E596C3 /* Dates.swift */,
 				5F7A5AA1212EC96A00E49054 /* Fixtures.swift */,
 				5F1B31932148610600A18D03 /* StubImageLoader.swift */,
+				5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */,
 				5F92004E212C31B000E824E7 /* mercury-response.json */,
 				5F43F8C8212930F300BD62CC /* story.json */,
 				5F43F8C621292FB500BD62CC /* top-stories.json */,
@@ -171,6 +178,7 @@
 		5F43F8CA2129310600BD62CC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */,
 				5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */,
 				5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */,
 				5F457C6B21485DCC00409DF6 /* ImageLoader.swift */,
@@ -184,6 +192,7 @@
 		5F43F8CD2129342C00BD62CC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */,
 				5F43F8CE2129344200BD62CC /* HackerNewsHTTPServiceSpecs.swift */,
 				5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */,
 			);
@@ -438,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F43F8C721292FB500BD62CC /* top-stories.json in Resources */,
+				5F7600EA21597CD90038E998 /* hn.algolia.search_by_date.success.json in Resources */,
 				5F43F8C9212930F300BD62CC /* story.json in Resources */,
 				5F92004F212C31B000E824E7 /* mercury-response.json in Resources */,
 			);
@@ -455,6 +465,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
 				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -466,18 +477,23 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGRDB/RxGRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/WatchdogInspector/WatchdogInspector.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/netfox/netfox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -489,13 +505,17 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WatchdogInspector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/netfox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -509,6 +529,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
@@ -521,6 +542,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EarlGrey.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
@@ -621,6 +643,7 @@
 				5F43F8CC2129311C00BD62CC /* HackerNewsService.swift in Sources */,
 				5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */,
 				5FE6FD51214D99A800E596C3 /* Images.swift in Sources */,
+				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
 				5F457C6E21485DF400409DF6 /* KingfisherImageLoader.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
@@ -655,6 +678,7 @@
 				5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */,
 				5F77A2FA2144612600197926 /* TopNewsViewControllerSpec.swift in Sources */,
 				5F457C6821484B3300409DF6 /* Device.swift in Sources */,
+				5F7600E821597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift in Sources */,
 				5F43F8CF2129344200BD62CC /* HackerNewsHTTPServiceSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

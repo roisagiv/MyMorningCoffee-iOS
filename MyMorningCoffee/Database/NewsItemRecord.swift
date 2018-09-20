@@ -10,13 +10,13 @@ import GRDB
 
 struct NewsItemRecord: Codable {
   let id: Int
-  let time: Date
-  let title: String?
-  let subTitle: String?
-  let url: String?
-  let imageUrl: String?
-  let domain: String?
-  let status: Status
+  var time: Date
+  var title: String?
+  var url: String?
+  var subTitle: String?
+  var imageUrl: String?
+  var domain: String?
+  var status: Status
 
   enum Status: String, Codable {
     case empty
@@ -34,8 +34,8 @@ extension NewsItemRecord {
       id: id,
       time: Date(),
       title: nil,
-      subTitle: nil,
       url: nil,
+      subTitle: nil,
       imageUrl: nil,
       domain: nil,
       status: .empty

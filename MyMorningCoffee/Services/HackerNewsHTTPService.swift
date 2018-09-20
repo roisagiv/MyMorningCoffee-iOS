@@ -33,6 +33,19 @@ class HackerNewsHTTPService: HackerNewsService {
       .map(HackerNewsStory.self)
   }
 
+  func topStories(size _: Int) -> Single<[HackerNewsStory]> {
+    return provider.rx
+      .request(.topNews)
+      .filterSuccessfulStatusAndRedirectCodes()
+      .map([Int].self)
+      .map { [unowned self] ids in
+        ids.map { self.story(by: $0) }
+      }
+      .flatMap { requests in
+        Single.zip(requests)
+      }
+  }
+
   enum HackerNewsAPI {
     case topNews
     case item(id: Int)

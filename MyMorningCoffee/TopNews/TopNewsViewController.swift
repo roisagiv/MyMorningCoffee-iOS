@@ -8,10 +8,13 @@
 
 import Fakery
 import MaterialComponents
+import RxDataSources
 import RxSwift
 import UIKit
 
 class TopNewsViewController: MDCCollectionViewController {
+  typealias TopNewsItemModel = SectionModel<String, TopNewsItem>
+
   fileprivate let appBar = MDCAppBarViewController()
   fileprivate var items: [TopNewsItem] = []
   private let disposeBag = DisposeBag()
@@ -34,7 +37,26 @@ class TopNewsViewController: MDCCollectionViewController {
     if let disposable = disposable {
       disposeBag.insert(disposable)
     }
+
     viewModel?.refresh.onNext(())
+
+    let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
+      configureCell: { [unowned self] _, collectionView, indexPath, item in
+        self.viewModel?.loadItem.onNext(item.id)
+
+        let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
+
+        cell.configure(item: item, imageLoader: self.imageLoader)
+
+        return cell
+      }
+    )
+    if let collectionView = collectionView {
+      collectionView.dataSource = nil
+      viewModel?.items
+        .map { [TopNewsItemModel(model: "", items: $0)] }
+        .drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
   }
 
   private func setupCollectionView() {
@@ -73,6 +95,7 @@ extension TopNewsViewController {
 
   override func collectionView(_: UICollectionView,
                                numberOfItemsInSection _: Int) -> Int {
+    print("numberOfItemsInSection")
     return items.count
   }
 

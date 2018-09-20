@@ -7,6 +7,7 @@
 //
 
 import RxCocoa
+import RxDataSources
 import RxSwift
 import SwiftMoment
 
@@ -38,6 +39,14 @@ extension TopNewsItem {
   }
 }
 
+extension TopNewsItem: IdentifiableType {
+  var identity: Int {
+    return id
+  }
+
+  typealias Identity = Int
+}
+
 protocol TopNewsViewModelType {
   var refresh: AnyObserver<Void> { get }
   var loadItem: AnyObserver<Int> { get }
@@ -57,6 +66,7 @@ class TopNewsViewModel: TopNewsViewModelType {
 
   private let refreshSubject: PublishSubject<Void>
   private let loadItemSubject: PublishSubject<Int>
+  private let scrapeItemSubject: PublishSubject<NewsItemRecord>
 
   // MARK: - Outputs
 
@@ -90,94 +100,94 @@ class TopNewsViewModel: TopNewsViewModelType {
 
     refreshSubject = PublishSubject<Void>()
     loadItemSubject = PublishSubject<Int>()
+    scrapeItemSubject = PublishSubject<NewsItemRecord>()
 
     // Refresh
 
     refreshSubject
-      .subscribe { [unowned self] _ in
-        self.hackerNewsService.topNews(size: 50)
-          .map { $0.map { NewsItemRecord(id: $0) } }
-          .map { [unowned self] records in
-            return self.newsItemDatabase.save(items: records)
-          }
-          .subscribe()
-          .disposed(by: self.disposeBag)
+      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .observeOn(MainScheduler.asyncInstance)
+      .flatMap { [unowned self] _ in
+        self.hackerNewsService.topStories(size: 500)
       }
-      .disposed(by: disposeBag)
-
-    // Load Item
-    loadItemSubject
-      .throttle(2, scheduler: MainScheduler.instance)
-      .subscribe(onNext: { [unowned self] id in
-        self.newsItemDatabase
-          .record(by: id)
-          .flatMapFirst { [unowned self] record in
-            return self.expand(record: record)
-          }
-          .subscribe()
-          .disposed(by: self.disposeBag)
-      }).disposed(by: disposeBag)
-  }
-
-  private func expand(record: NewsItemRecord?) -> Observable<NewsItemRecord> {
-    guard let record = record else {
-      return Observable.empty()
-    }
-    switch record.status {
-    case .empty:
-      return hackerNewsService
-        .story(by: record.id)
-        .flatMap { [unowned self] story in
-          let newRecord = NewsItemRecord(
-            id: record.id,
-            time: record.time,
-            title: story.title,
+      .map {
+        $0.map {
+          NewsItemRecord(
+            id: $0.id,
+            time: Date(timeIntervalSince1970: $0.time),
+            title: $0.title,
+            url: $0.url,
             subTitle: nil,
-            url: story.url,
             imageUrl: nil,
             domain: nil,
-            status: .fetched
+            status: NewsItemRecord.Status.fetched
           )
-          switch self.newsItemDatabase.save(item: newRecord) {
-          case .success:
-            return self.scarpe(record: newRecord)
-          case let .failure(error):
-            return Single.error(error)
-          }
-        }
-        .asObservable()
-    default:
-      return Observable.just(record)
-    }
-  }
-
-  private func scarpe(record: NewsItemRecord) -> Single<NewsItemRecord> {
-    guard let url = record.url else {
-      return Single.just(record)
-    }
-
-    return scraperService.scrape(url: url)
-      .flatMap { [unowned self] item in
-        let published = moment(item.datePublished ?? "")
-
-        let newRecord = NewsItemRecord(
-          id: record.id,
-          time: published?.date ?? Date(),
-          title: item.title,
-          subTitle: item.description,
-          url: item.url,
-          imageUrl: item.coverImageUrl,
-          domain: item.source,
-          status: .scraped
-        )
-
-        switch self.newsItemDatabase.save(item: newRecord) {
-        case .success:
-          return Single.just(newRecord)
-        case let .failure(error):
-          return Single.error(error)
         }
       }
+      .map { [unowned self] records in
+        self.newsItemDatabase.save(items: records)
+      }
+      .subscribe()
+      .disposed(by: disposeBag)
+
+    loadItemSubject
+      .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .flatMap { [unowned self] (id: Int) -> Single<NewsItemRecord?> in
+        self.newsItemDatabase.record(by: id)
+      }
+      .subscribe(onNext: { [unowned self] record in
+        guard var record = record else {
+          return
+        }
+        guard record.url != nil else {
+          return
+        }
+        switch record.status {
+        case .fetched:
+          record.status = .scraping
+          _ = self.newsItemDatabase.save(item: record)
+          self.scrapeItemSubject.onNext(record)
+
+        default:
+          return
+        }
+      })
+      .disposed(by: disposeBag)
+
+    scrapeItemSubject
+      .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .flatMap { [unowned self] (record: NewsItemRecord) -> Single<(NewsItemRecord, ScrapedItem)> in
+        guard let url = record.url else {
+          return Single.error(TopNewsViewModelError.recordMissingUrl)
+        }
+        var scraped = record
+        scraped.status = .scraping
+        _ = self.newsItemDatabase.save(item: scraped)
+        return self.scraperService.scrape(url: url)
+          .catchErrorJustReturn(ScrapedItem.empty())
+          .map { (scraped, $0) }
+      }
+      .materialize()
+      .subscribe(onNext: { [unowned self] event in
+        switch event {
+        case let .next(results):
+          var record = results.0
+          let scraped = results.1
+          let published = moment(scraped.datePublished ?? "")
+
+          record.imageUrl = scraped.coverImageUrl
+          record.subTitle = scraped.description
+          record.time = published?.date ?? Date()
+          record.url = scraped.url
+          record.status = .scraped
+          _ = self.newsItemDatabase.save(item: record)
+        default:
+          return
+        }
+      })
+      .disposed(by: disposeBag)
   }
 
   private func map(record: NewsItemRecord) -> TopNewsItem {
@@ -195,5 +205,11 @@ class TopNewsViewModel: TopNewsViewModelType {
         NewsItemRecord.Status.scraping
       ].contains(record.status)
     )
+  }
+
+  private enum TopNewsViewModelError: Error {
+    case recordNotFound
+    case recordMissingUrl
+    case recordAlreadyScraping
   }
 }

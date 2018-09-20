@@ -6,6 +6,10 @@
 //  Copyright © 2018 Roi Sagiv. All rights reserved.
 //
 
+#if DEBUG
+  import netfox
+#endif
+import RxSwift
 import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_: UIApplication,
                    didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    #if DEBUG
+      NFX.sharedInstance().start()
+    #endif
     Theme.configure()
     do {
       try Injector.configure()
@@ -30,6 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     window.makeKeyAndVisible()
     self.window = window
+
+    #if TRACE_RESOURCES
+      _ = Observable<Int>
+        .interval(1, scheduler: MainScheduler.instance)
+        .subscribe(onNext: { _ in
+          print("Resource count \(RxSwift.Resources.total)")
+        })
+    #endif
     return true
   }
 }

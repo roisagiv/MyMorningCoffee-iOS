@@ -40,7 +40,7 @@ class Injector {
     container = Container { container in
       // HackerNewsService
       container.register(HackerNewsService.self) { _ in
-        return HackerNewsHTTPService(
+        return HackerNewsAlgoliaService(
           provider: MoyaProviderFactory.create(log: log),
           maxConcurrentOperationCount: 5
         )
@@ -49,7 +49,7 @@ class Injector {
       // ScraperService
       container.register(ScraperService.self) { _ in
         return MercuryWebParserScraperService(
-          provider: MoyaProviderFactory.create(log: false)
+          provider: MoyaProviderFactory.create(log: log)
         )
       }
 

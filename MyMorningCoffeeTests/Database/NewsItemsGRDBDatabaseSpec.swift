@@ -9,8 +9,10 @@
 @testable import MyMorningCoffee
 import Nimble
 import Quick
+import Result
 import RxBlocking
 import RxNimble
+import RxSwift
 
 class NewsItemsGRDBDatabaseSpec: QuickSpec {
   // swiftlint:disable:next function_body_length
@@ -34,8 +36,8 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
               id: id,
               time: Date(),
               title: "title title",
-              subTitle: "subTitle subTitle",
               url: nil,
+              subTitle: "subTitle subTitle",
               imageUrl: nil,
               domain: nil,
               status: .fetched
@@ -49,7 +51,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           expect(result?[0].subTitle).to(equal("subTitle subTitle"))
 
           // Test by Id
-          expect(database.record(by: id)).first.notTo(beNil())
+          expect(database.record(by: id)).notTo(beNil())
         } catch {
           fail(error.localizedDescription)
         }
@@ -89,8 +91,26 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           }
           _ = database.save(items: records)
 
-          let result = database.record(by: 5)
-          expect(result).first.toNot(beNil())
+          let result = try database.record(by: 5).toBlocking().first()!
+          expect(result?.id).to(equal(5))
+        } catch {
+          fail(error.localizedDescription)
+        }
+      }
+
+      it("returns record if exists rx") {
+        do {
+          let db = DatabaseFactory.create()
+          try DatabaseMigrations.migrate(database: db)
+          let database = NewsItemsGRDBDatabase(databaseWriter: db)
+
+          let length = 500
+          let records = Array(0 ... length).map {
+            NewsItemRecord(id: $0)
+          }
+          _ = database.save(items: records)
+          let record = try database.record(by: 0).toBlocking().first()!
+          expect(record).toNot(beNil())
         } catch {
           fail(error.localizedDescription)
         }
