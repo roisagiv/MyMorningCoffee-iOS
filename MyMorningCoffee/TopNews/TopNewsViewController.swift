@@ -24,6 +24,7 @@ class TopNewsViewController: MDCCollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     Theme.apply(to: collectionView)
     setupAppBar()
     setupCollectionView()
@@ -51,11 +52,20 @@ class TopNewsViewController: MDCCollectionViewController {
         return cell
       }
     )
-    if let collectionView = collectionView {
+    if let collectionView = collectionView, let viewModel = viewModel {
       collectionView.dataSource = nil
-      viewModel?.items
+      viewModel.items
         .map { [TopNewsItemModel(model: "", items: $0)] }
-        .drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        .drive(collectionView.rx.items(dataSource: dataSource))
+        .disposed(by: disposeBag)
+
+      collectionView.rx.prefetchItems.distinctUntilChanged().subscribe(onNext: { [unowned self] indexPaths in
+        indexPaths
+          .map { self.items[$0.row].id }
+          .forEach {
+            self.viewModel?.loadItem.onNext($0)
+          }
+      }).disposed(by: disposeBag)
     }
   }
 

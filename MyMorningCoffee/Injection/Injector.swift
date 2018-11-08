@@ -64,7 +64,7 @@ class Injector {
       }.inObjectScope(ObjectScope.container)
 
       // ImageLoader
-      container.register(ImageLoader.self) { _ in KingfisherImageLoader() }
+      container.register(ImageLoader.self) { _ in NukeImageLoader() }
     }
   }
 }

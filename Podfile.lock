@@ -25,7 +25,6 @@ PODS:
   - iOSSnapshotTestCase/SwiftSupport (4.0.0):
     - iOSSnapshotTestCase/Core
   - Keys (1.0.1)
-  - Kingfisher (4.9.0)
   - leveldb-library (1.20)
   - MaterialComponents/AppBar (68.2.0):
     - MaterialComponents/FlexibleHeader
@@ -161,6 +160,7 @@ PODS:
   - Nimble-Snapshots/Core (6.9.0):
     - iOSSnapshotTestCase (~> 4.0)
     - Nimble (~> 7.0)
+  - Nuke (7.5.1)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -212,7 +212,6 @@ PODS:
   - SwiftLint (0.27.0)
   - SwiftMoment (0.7)
   - Swinject (2.5.0)
-  - WatchdogInspector (1.3.0)
 
 DEPENDENCIES:
   - AlamofireNetworkActivityLogger (= 2.3.0)
@@ -220,7 +219,6 @@ DEPENDENCIES:
   - Fakery (= 3.4.0)
   - Firebase/Database (= 5.12.0)
   - Keys (from `Pods/CocoaPodsKeys`)
-  - Kingfisher (= 4.9.0)
   - MaterialComponents/AppBar (= 68.2.0)
   - "MaterialComponents/AppBar+ColorThemer (= 68.2.0)"
   - "MaterialComponents/AppBar+TypographyThemer (= 68.2.0)"
@@ -236,6 +234,7 @@ DEPENDENCIES:
   - netfox (= 1.13.0)
   - Nimble (= 7.3.1)
   - Nimble-Snapshots (= 6.9.0)
+  - Nuke (= 7.5.1)
   - OHHTTPStubs/Swift (= 6.1.0)
   - Quick (= 1.3.2)
   - Reusable (= 4.0.4)
@@ -250,7 +249,6 @@ DEPENDENCIES:
   - SwiftLint (= 0.27.0)
   - SwiftMoment (= 0.7)
   - Swinject (= 2.5.0)
-  - WatchdogInspector (= 1.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -265,7 +263,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GRDB.swift
     - iOSSnapshotTestCase
-    - Kingfisher
     - leveldb-library
     - MaterialComponents
     - MDFInternationalization
@@ -274,6 +271,7 @@ SPEC REPOS:
     - netfox
     - Nimble
     - Nimble-Snapshots
+    - Nuke
     - OHHTTPStubs
     - Quick
     - Result
@@ -290,7 +288,6 @@ SPEC REPOS:
     - SwiftLint
     - SwiftMoment
     - Swinject
-    - WatchdogInspector
 
 EXTERNAL SOURCES:
   Keys:
@@ -309,7 +306,6 @@ SPEC CHECKSUMS:
   GRDB.swift: 225cf9c1354753e92e20c2a1fa2912b924c9da6e
   iOSSnapshotTestCase: 711379b19f69a22c131527df862352c877c2773c
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MaterialComponents: 0a6202cdfab416518d065eaea869efea2126b605
   MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
@@ -318,6 +314,7 @@ SPEC CHECKSUMS:
   netfox: 44e626a4fe8bd1cde774346b03edb84a593077de
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Nimble-Snapshots: 79394f8d0aea3df54bd5ff78ee9dff05a523a09c
+  Nuke: 3814db501e55f17951451839c726ffd91641e9a5
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
@@ -334,8 +331,7 @@ SPEC CHECKSUMS:
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
-  WatchdogInspector: 439a73b047028a6048a59e56b70fcf11045a6e13
 
-PODFILE CHECKSUM: 2ff2e8ebf78d396419b204c97ea19be5cde768e4
+PODFILE CHECKSUM: 1a004f63fbc741ce1863a10bba554f1ea21f86ef
 
 COCOAPODS: 1.5.3

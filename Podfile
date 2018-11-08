@@ -31,7 +31,7 @@ target "MyMorningCoffee" do
 
   # UI
   pod "Reusable", "4.0.4"
-  pod "Kingfisher", "4.9.0"
+  pod "Nuke", "7.5.1"
   pod "SwiftHEXColors", "1.1.2"
 
   # Firebase
@@ -60,7 +60,6 @@ target "MyMorningCoffee" do
 
   # Debug
   pod "netfox", "1.13.0", :configurations => ['Debug']
-  pod "WatchdogInspector", "1.3.0", :configurations => ['Debug']
 
   script_phase :name => 'SwiftFormat',
                :script => '"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}/MyMorningCoffee" "${SRCROOT}/MyMorningCoffeeTests" "--config" ".swiftformat"',
@@ -83,16 +82,23 @@ target "MyMorningCoffee" do
   end
 end
 
+DEFAULT_SWIFT_VERSION = '4.1'
+
+POD_SWIFT_VERSION_MAP = {
+}
+
 post_install do |installer|
     installer.pods_project.targets.each do |target|
+        swift_version = POD_SWIFT_VERSION_MAP[target.name] || DEFAULT_SWIFT_VERSION
+        puts "Setting #{target.name} Swift version to #{swift_version}"
         target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '4.1'
+            config.build_settings['SWIFT_VERSION'] = swift_version
         end
 
         if target.name == 'RxSwift'
           target.build_configurations.each do |config|
             if config.name == 'Debug'
-              puts "RxSwift - OTHER_SWIFT_FLAGS"
+              puts "#{target.name} - OTHER_SWIFT_FLAGS"
               config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['-D', 'TRACE_RESOURCES']
             end
           end

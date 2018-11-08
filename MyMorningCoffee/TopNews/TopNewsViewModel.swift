@@ -167,7 +167,7 @@ class TopNewsViewModel: TopNewsViewModelType {
         _ = self.newsItemDatabase.save(item: scraped)
         return self.scraperService.scrape(url: url)
           .catchErrorJustReturn(ScrapedItem.empty())
-          .map { (scraped, $0) }
+          .map { [scraped] scrapedItem in (scraped, scrapedItem) }
       }
       .materialize()
       .subscribe(onNext: { [unowned self] event in

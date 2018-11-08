@@ -28,7 +28,7 @@ class NewsItemsGRDBDatabase: NewsItemsDatabase {
 
   func save(item: NewsItemRecord) -> Result<Void, AnyError> {
     do {
-      try databaseWriter.write { database in
+      try databaseWriter.write { [item] database in
         try item.save(database)
       }
       return .success(())
@@ -39,7 +39,7 @@ class NewsItemsGRDBDatabase: NewsItemsDatabase {
 
   func save(items: [NewsItemRecord]) -> Result<Void, AnyError> {
     do {
-      try databaseWriter.write { database in
+      try databaseWriter.write { [items] database in
         try items.forEach {
           try $0.save(database)
         }

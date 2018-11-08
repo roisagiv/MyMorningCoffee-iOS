@@ -10,6 +10,7 @@
 		4BA5E4C2F2521773F4EA36B6 /* Pods_MyMorningCoffeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B8D99F3067C4EF9EF3048 /* Pods_MyMorningCoffeeTests.framework */; };
 		5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */; };
 		5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B31932148610600A18D03 /* StubImageLoader.swift */; };
+		5F1EEBEE21964FF300FB34B4 /* NukeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */; };
 		5F23C182212B55D00030199A /* ScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C181212B55D00030199A /* ScraperService.swift */; };
 		5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */; };
 		5F23C186212B64630030199A /* MercuryWebParserScraperServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */; };
@@ -23,7 +24,6 @@
 		5F457C6821484B3300409DF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6721484B3300409DF6 /* Device.swift */; };
 		5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */; };
 		5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6B21485DCC00409DF6 /* ImageLoader.swift */; };
-		5F457C6E21485DF400409DF6 /* KingfisherImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */; };
 		5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F49F10A2126029D0071DB49 /* AppDelegate.swift */; };
 		5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1112126029F0071DB49 /* Assets.xcassets */; };
 		5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1132126029F0071DB49 /* LaunchScreen.storyboard */; };
@@ -68,6 +68,7 @@
 		187AD5BEB80992E922F99624 /* Pods-MyMorningCoffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewController.swift; sourceTree = "<group>"; };
 		5F1B31932148610600A18D03 /* StubImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubImageLoader.swift; sourceTree = "<group>"; };
+		5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeImageLoader.swift; sourceTree = "<group>"; };
 		5F23C181212B55D00030199A /* ScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScraperService.swift; sourceTree = "<group>"; };
 		5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperService.swift; sourceTree = "<group>"; };
 		5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperServiceSpec.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		5F457C6721484B3300409DF6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellViewSpec.swift; sourceTree = "<group>"; };
 		5F457C6B21485DCC00409DF6 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherImageLoader.swift; sourceTree = "<group>"; };
 		5F49F1072126029D0071DB49 /* MyMorningCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMorningCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F49F10A2126029D0071DB49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F49F1112126029F0071DB49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 				5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */,
 				5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */,
 				5F457C6B21485DCC00409DF6 /* ImageLoader.swift */,
-				5F457C6D21485DF400409DF6 /* KingfisherImageLoader.swift */,
 				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
+				5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */,
 				5F23C181212B55D00030199A /* ScraperService.swift */,
 			);
 			path = Services;
@@ -470,11 +470,11 @@
 				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -485,7 +485,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/WatchdogInspector/WatchdogInspector.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/netfox/netfox.framework",
 			);
@@ -498,11 +497,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -513,7 +512,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WatchdogInspector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/netfox.framework",
 			);
@@ -644,7 +642,7 @@
 				5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */,
 				5FE6FD51214D99A800E596C3 /* Images.swift in Sources */,
 				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
-				5F457C6E21485DF400409DF6 /* KingfisherImageLoader.swift in Sources */,
+				5F1EEBEE21964FF300FB34B4 /* NukeImageLoader.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
 				5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */,
