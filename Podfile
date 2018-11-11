@@ -18,6 +18,7 @@ target "MyMorningCoffee" do
   pod "RxSwift", $Rx
   pod "RxCocoa", $Rx
   pod "RxDataSources", "3.1.0"
+  pod "RxWebKit", "0.3.7"
   
   # DI
   pod "Swinject", "2.5.0"
@@ -49,6 +50,10 @@ target "MyMorningCoffee" do
   pod "MaterialComponents/Collections", $MaterialComponents
   pod "MaterialComponents/Cards", $MaterialComponents
   pod "MaterialComponents/Cards+ColorThemer", $MaterialComponents
+  pod "MaterialComponents/ProgressView", $MaterialComponents
+  pod "MaterialComponents/ProgressView+ColorThemer", $MaterialComponents
+  pod 'MaterialComponents/ActivityIndicator', $MaterialComponents
+  pod 'MaterialComponents/ActivityIndicator+ColorThemer', $MaterialComponents
   pod "MaterialComponents/schemes/Color", $MaterialComponents
   pod "MaterialComponents/schemes/Typography", $MaterialComponents
 

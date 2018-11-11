@@ -27,15 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } catch {
       return false
     }
+    let router = Injector.router
     let window = UIWindow(frame: UIScreen.main.bounds)
-    let topNews = TopNewsViewController.create(
-      viewModel: Injector.topNewsViewModel,
-      imageLoader: Injector.imageLoader
-    )
-    let navigationController = UINavigationController(rootViewController: topNews)
-    window.rootViewController = navigationController
-
+    router.root(route: .topNews, window: window)
     window.makeKeyAndVisible()
+
     self.window = window
 
     #if TRACE_RESOURCES

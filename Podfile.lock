@@ -26,6 +26,14 @@ PODS:
     - iOSSnapshotTestCase/Core
   - Keys (1.0.1)
   - leveldb-library (1.20)
+  - MaterialComponents/ActivityIndicator (68.2.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
+  - "MaterialComponents/ActivityIndicator+ColorThemer (68.2.0)":
+    - MaterialComponents/ActivityIndicator
+    - MaterialComponents/schemes/Color
   - MaterialComponents/AppBar (68.2.0):
     - MaterialComponents/FlexibleHeader
     - MaterialComponents/HeaderStackView
@@ -134,6 +142,14 @@ PODS:
     - MaterialComponents/ShadowLayer
   - MaterialComponents/private/UIMetrics (68.2.0):
     - MaterialComponents/private/Application
+  - MaterialComponents/ProgressView (68.2.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Math
+    - MDFInternationalization
+    - MotionAnimator (~> 2.1)
+  - "MaterialComponents/ProgressView+ColorThemer (68.2.0)":
+    - MaterialComponents/ProgressView
+    - MaterialComponents/Themes
   - MaterialComponents/schemes/Color (68.2.0)
   - MaterialComponents/schemes/Typography (68.2.0)
   - MaterialComponents/ShadowElevations (68.2.0)
@@ -147,6 +163,9 @@ PODS:
     - MaterialComponents/private/Math
   - MDFInternationalization (1.1.0)
   - MDFTextAccessibility (1.2.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -207,6 +226,9 @@ PODS:
     - RxNimble/Core
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
+  - RxWebKit (0.3.7):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - SwiftFormat/CLI (0.35.7)
   - SwiftHEXColors (1.1.2)
   - SwiftLint (0.27.0)
@@ -219,6 +241,8 @@ DEPENDENCIES:
   - Fakery (= 3.4.0)
   - Firebase/Database (= 5.12.0)
   - Keys (from `Pods/CocoaPodsKeys`)
+  - MaterialComponents/ActivityIndicator (= 68.2.0)
+  - "MaterialComponents/ActivityIndicator+ColorThemer (= 68.2.0)"
   - MaterialComponents/AppBar (= 68.2.0)
   - "MaterialComponents/AppBar+ColorThemer (= 68.2.0)"
   - "MaterialComponents/AppBar+TypographyThemer (= 68.2.0)"
@@ -228,6 +252,8 @@ DEPENDENCIES:
   - MaterialComponents/NavigationBar (= 68.2.0)
   - "MaterialComponents/NavigationBar+ColorThemer (= 68.2.0)"
   - "MaterialComponents/NavigationBar+TypographyThemer (= 68.2.0)"
+  - MaterialComponents/ProgressView (= 68.2.0)
+  - "MaterialComponents/ProgressView+ColorThemer (= 68.2.0)"
   - MaterialComponents/schemes/Color (= 68.2.0)
   - MaterialComponents/schemes/Typography (= 68.2.0)
   - Moya/RxSwift (= 11.0.2)
@@ -244,6 +270,7 @@ DEPENDENCIES:
   - RxGRDB (= 0.13.0)
   - RxNimble (= 4.4.0)
   - RxSwift (= 4.4.0)
+  - RxWebKit (= 0.3.7)
   - SwiftFormat/CLI (= 0.35.7)
   - SwiftHEXColors (= 1.1.2)
   - SwiftLint (= 0.27.0)
@@ -267,6 +294,8 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - MotionAnimator
+    - MotionInterchange
     - Moya
     - netfox
     - Nimble
@@ -283,6 +312,7 @@ SPEC REPOS:
     - RxGRDB
     - RxNimble
     - RxSwift
+    - RxWebKit
     - SwiftFormat
     - SwiftHEXColors
     - SwiftLint
@@ -310,6 +340,8 @@ SPEC CHECKSUMS:
   MaterialComponents: 0a6202cdfab416518d065eaea869efea2126b605
   MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   netfox: 44e626a4fe8bd1cde774346b03edb84a593077de
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
@@ -326,12 +358,13 @@ SPEC CHECKSUMS:
   RxGRDB: 4e2686821ae8f8507c6d6d00d3083ae2df84fea3
   RxNimble: ba6caf0195c37fd50dd4b967624b66ff580d781a
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxWebKit: e39e220919e5e24546c837f5f60689036a1e5920
   SwiftFormat: d97eadc55d4e02d04cf1f03b8a2d6ff5b6cdb2fd
   SwiftHEXColors: 7f9f7e6bdce888d821e11749279733e5ddff5f51
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
 
-PODFILE CHECKSUM: 1a004f63fbc741ce1863a10bba554f1ea21f86ef
+PODFILE CHECKSUM: a929b7d32b11478be9eaff8bcc90b758010a489a
 
 COCOAPODS: 1.5.3

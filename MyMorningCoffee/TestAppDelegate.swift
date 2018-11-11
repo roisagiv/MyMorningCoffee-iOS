@@ -28,4 +28,9 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = viewController
     window?.makeKeyAndVisible()
   }
+
+  static var window: UIWindow? {
+    let appDelegate = UIApplication.shared.delegate as? TestAppDelegate
+    return appDelegate?.window
+  }
 }

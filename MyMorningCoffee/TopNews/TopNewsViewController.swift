@@ -6,10 +6,10 @@
 //  Copyright © 2018 Roi Sagiv. All rights reserved.
 //
 
-import Fakery
 import MaterialComponents
 import RxDataSources
 import RxSwift
+import SafariServices
 import UIKit
 
 class TopNewsViewController: MDCCollectionViewController {
@@ -21,6 +21,7 @@ class TopNewsViewController: MDCCollectionViewController {
 
   fileprivate var viewModel: TopNewsViewModelType?
   fileprivate var imageLoader: ImageLoader?
+  fileprivate var router: Router?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,6 +67,15 @@ class TopNewsViewController: MDCCollectionViewController {
             self.viewModel?.loadItem.onNext($0)
           }
       }).disposed(by: disposeBag)
+
+      collectionView.rx.itemSelected
+        .subscribe(onNext: { [unowned self] indexPath in
+          let item = self.items[indexPath.row]
+          if let urlAsString = item.url, let url = URL(string: urlAsString) {
+            self.router?.navigate(to: .item(url: url, title: item.title), from: self.navigationController)
+          }
+        })
+        .disposed(by: disposeBag)
     }
   }
 
@@ -85,6 +95,7 @@ class TopNewsViewController: MDCCollectionViewController {
     appBar.headerView.trackingScrollView = collectionView
     appBar.didMove(toParentViewController: self)
     appBar.navigationBar.title = "Top Bar"
+
     Theme.apply(to: appBar)
   }
 
@@ -154,13 +165,22 @@ extension TopNewsViewController {
   override var childViewControllerForStatusBarStyle: UIViewController? {
     return appBar
   }
+
+  override var childViewControllerForStatusBarHidden: UIViewController? {
+    return appBar
+  }
 }
 
 extension TopNewsViewController {
-  class func create(viewModel: TopNewsViewModelType, imageLoader: ImageLoader) -> TopNewsViewController {
+  class func create(
+    viewModel: TopNewsViewModelType,
+    imageLoader: ImageLoader,
+    router: Router
+  ) -> TopNewsViewController {
     let vc = TopNewsViewController()
     vc.viewModel = viewModel
     vc.imageLoader = imageLoader
+    vc.router = router
     return vc
   }
 }

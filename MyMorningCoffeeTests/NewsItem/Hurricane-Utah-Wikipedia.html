@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+      <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+      <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+      <title>CodePen - The Landing</title>
+
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+
+        <style>
+        *,
+        *:after,
+        *:before {
+        box-sizing: inherit;
+        }
+
+        html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        }
+
+        body {
+        margin: 0;
+        background: #eee;
+        color: #111;
+        font-family: 'Josefin Sans', 'Helvetica', 'Arial', sans-serif;
+        font-size: 1.6rem;
+        font-weight: normal;
+        line-height: 1.6;
+        }
+
+        header,
+        footer,
+        section {
+        margin: 0 auto;
+        text-align: center;
+        }
+
+        header,
+        footer {
+        padding: 2rem 0;
+        }
+
+        section {
+        padding: 8rem 2rem;
+        }
+
+        footer i {
+        font-size: 2.4rem;
+        }
+
+        p {
+        font-size: 2rem;
+        }
+
+        h1 {
+        font-size: 7rem;
+        }
+
+        h2 {
+        font-size: 4rem;
+        }
+
+        h3 {
+        font-size: 2.4rem;
+        }
+
+        a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #f04;
+        border-bottom: 0.2rem solid transparent;
+        transition: all 0.3s ease;
+        }
+
+        a:hover {
+        border-bottom: 0.2rem solid #f04;
+        }
+
+        button {
+        padding: 1rem 4rem;
+        font: inherit;
+        font-weight: bold;
+        background: transparent;
+        border: 0.2rem solid #111;
+        color: #111;
+        transition: all 0.2s ease;
+        border-radius: 0.2rem;
+        outline: 0;
+        cursor: pointer;
+        }
+
+        button.sm {
+        padding: 0.5rem 2rem;
+        }
+
+        button:hover {
+        background: #f04;
+        color: #eee;
+        border: 0.2rem solid #f04;
+        }
+
+        form label {
+        display: block;
+        width: 100%;
+        margin: 2rem auto;
+        }
+
+        form input {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font: inherit;
+        background: transparent;
+        color: #111;
+        outline: none;
+        border: 0.2rem solid #111;
+        }
+
+        form input:focus {
+        border: 0.2rem solid #f04;
+        }
+
+        form button {
+        width: 100%;
+        }
+
+        ul.nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        list-style: none;
+        }
+
+        ul.nav li {
+        padding: 0.5rem 2rem;
+        }
+
+        ul.nav a {
+        color: #111;
+        }
+
+        .box {
+        max-width: 96rem;
+        margin: 0 auto;
+        }
+
+        .grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: stretch;
+        }
+
+        .grid > * {
+        flex: 1;
+        }
+
+        .bg-shd {
+        background: rgba(17, 17, 17, 0.025);
+        }
+
+        .bg-prm {
+        background: #f04;
+        }
+
+        .icon a,
+        .icon a:hover {
+        border: 0;
+        }
+
+        .icon a:hover {
+        color: #f04;
+        }
+
+        #logo {
+        font-size: 2.8rem;
+        padding: 0 2rem;
+        }
+
+        #logo a,
+        #logo a:hover {
+        border: 0;
+        }
+
+        #banner {
+        padding: 16rem 2rem;
+        background: #f04;
+        color: #eee;
+        }
+
+        #banner h1 {
+        margin: 0 1rem;
+        line-height: 1;
+        }
+
+        #banner p {
+        margin: 2rem 0 4rem 0;
+        }
+
+        #banner button {
+        display: block;
+        margin: 2rem auto;
+        color: inherit;
+        border-color: #eee;
+        }
+
+        #banner button:hover {
+        background: #eee;
+        color: #f04;
+        }
+
+        #feat {
+        margin: 1.6rem;
+        padding: 4rem 2.4rem;
+        text-align: center;
+        }
+
+        #feat i {
+        font-size: 3.2rem;
+        }
+
+        #feat p {
+        margin: 0 0 2rem 0;
+        }
+
+        @media only screen and (max-width: 48rem) {
+        section {
+        padding: 2rem;
+        }
+        #logo {
+        width: 100%;
+        }
+        #banner {
+        padding: 10rem 2rem;
+        }
+        #feat {
+        margin: 1rem 0;
+        }
+        .grid {
+        flex-direction: column;
+        }
+        .grid > * {
+        width: 100%;
+        margin: 0 0 2rem 0;
+        }
+        }
+        </style>
+
+        <script>
+        window.console = window.console || function(t) {};
+        </script>
+
+        <script>
+        if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+        }
+        </script>
+
+        </head>
+
+        <body translate="no">
+
+        <header>
+        <ul class="nav"><span id="logo"><a href="#"><i class="fa fa-ellipsis-h"></i></a></span>
+        <li> <a href="#">Get Started</a></li>
+        <li><a href="#">Discover</a></li>
+        <li><a href="#">Manual</a></li>
+        <li><a href="#">Help</a></li>
+        </ul>
+        </header>
+        <section id="banner">
+        <div class="box">
+        <h1>The Landing</h1>
+        <p>Fantastic inspirational text about some cool product</p>
+        <button>Get started</button>
+        </div>
+        </section>
+        <section id="features">
+        <div class="box">
+        <h2>Features</h2>
+        <div class="grid">
+        <div class="bg-shd" id="feat"><i class="far fa-comment-alt"></i>
+        <h3>Feature</h3>
+        <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+        <div class="bg-shd" id="feat"><i class="far fa-laugh"></i>
+        <h3>Another feature</h3>
+        <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+        <div class="bg-shd" id="feat"><i class="far fa-star"></i>
+        <h3>One more feature</h3>
+        <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+        </div>
+        </div>
+        </section>
+        <section class="bg-shd" id="contacts">
+        <div class="box">
+        <h2>Subscribe</h2>
+        <form>
+        <label for="user">
+        <input id="user" type="text" placeholder="Name" />
+        </label>
+        <label for="email">
+        <input id="email" type="email" placeholder="Email" />
+        </label>
+        <button class="sm" type="submit">Submit</button>
+        </form>
+        </div>
+        </section>
+        <footer>
+        <div class="box">
+        <ul class="nav">
+        <li class="icon"><a href="#"><i class="fa fa-envelope"></i></a></li>
+        <li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li class="icon"><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <li class="icon"><a href="#"><i class="fab fa-facebook"></i></a></li>
+        </ul>
+        </div>
+        </footer>
+
+        </body>
+
+        </html>

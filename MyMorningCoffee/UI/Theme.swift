@@ -21,9 +21,9 @@ struct Theme {
   }
 
   private enum Color: Int {
-    case primary = 0xF5F5F6
-    case primaryLight = 0xFFFFFF
-    case primaryDark = 0xC2C2C3
+    case primary = 0xFFFFFF
+//    case primaryLight = 0xFFFFFF
+    case primaryDark = 0xCCCCCC
     case secondary = 0x81D3F9
     case secondaryLight = 0xB5FFFF
     case secondaryDark = 0x4BA2C6
@@ -41,7 +41,7 @@ struct Theme {
     colorScheme.primaryColor = Color.primary.asUIColor()
     colorScheme.primaryColorVariant = Color.primaryDark.asUIColor()
     colorScheme.secondaryColor = Color.secondary.asUIColor()
-    colorScheme.surfaceColor = Color.primaryLight.asUIColor()
+    colorScheme.surfaceColor = Color.primary.asUIColor()
     colorScheme.backgroundColor = Color.primary.asUIColor()
     colorScheme.onPrimaryColor = Color.black.asUIColor()
     colorScheme.onSecondaryColor = Color.black.asUIColor()
@@ -49,10 +49,10 @@ struct Theme {
     colorScheme.onSurfaceColor = Color.black.asUIColor()
 
     let defaultTypography: MDCTypographyScheme = MDCTypographyScheme()
-    let fontName = "MontserratAlternates"
+    let fontName = "Nunito"
     typographyScheme.body1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body1.pointSize)!
     typographyScheme.body2 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body2.pointSize)!
-    typographyScheme.button = UIFont(name: "\(fontName)-Medium", size: defaultTypography.button.pointSize)!
+    typographyScheme.button = UIFont(name: "\(fontName)-SemiBold", size: defaultTypography.button.pointSize)!
     typographyScheme.caption = UIFont(name: "\(fontName)-Regular", size: defaultTypography.caption.pointSize)!
     typographyScheme.headline1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.headline1.pointSize)!
     typographyScheme.headline2 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.headline2.pointSize)!
@@ -60,9 +60,10 @@ struct Theme {
     typographyScheme.headline4 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.headline4.pointSize)!
     typographyScheme.headline5 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.headline5.pointSize)!
     typographyScheme.headline6 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.headline6.pointSize)!
-    typographyScheme.overline = UIFont(name: "\(fontName)-Medium", size: defaultTypography.overline.pointSize)!
+    typographyScheme.overline = UIFont(name: "\(fontName)-SemiBold", size: defaultTypography.overline.pointSize)!
     typographyScheme.subtitle1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.subtitle1.pointSize)!
-    typographyScheme.subtitle2 = UIFont(name: "\(fontName)-Medium", size: defaultTypography.subtitle2.pointSize)!
+    typographyScheme.subtitle2 = UIFont(name: "\(fontName)-SemiBold", size: defaultTypography.subtitle2.pointSize)!
+    MDCIcons.ic_arrow_backUseNewStyle(true)
   }
 
   static var placeholderColor: UIColor = Color.primary.asUIColor()
@@ -73,6 +74,9 @@ struct Theme {
 
     MDCNavigationBarColorThemer.applySemanticColorScheme(colorScheme, to: appBar.navigationBar)
     MDCNavigationBarTypographyThemer.applyTypographyScheme(typographyScheme, to: appBar.navigationBar)
+
+    appBar.headerView.minMaxHeightIncludesSafeArea = false
+    appBar.isTopLayoutGuideAdjustmentEnabled = true
   }
 
   static func apply(to collectionView: UICollectionView?) {
@@ -89,6 +93,16 @@ struct Theme {
     cell.setShadowElevation(ShadowElevation(rawValue: 0), for: .highlighted)
     cell.setShadowElevation(ShadowElevation(rawValue: 0), for: .selected)
     cell.inkView.inkColor = .clear
+  }
+
+  static func apply(to progressView: MDCProgressView) {
+    progressView.trackTintColor = colorScheme.primaryColor
+    progressView.progressTintColor = colorScheme.secondaryColor
+  }
+
+  static func apply(to activityIndicator: MDCActivityIndicator) {
+    MDCActivityIndicatorColorThemer.applySemanticColorScheme(colorScheme, to: activityIndicator)
+    activityIndicator.cycleColors = [colorScheme.secondaryColor]
   }
 
   static func apply(to label: UILabel, disabled: Bool = false) {

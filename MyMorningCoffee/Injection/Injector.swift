@@ -27,6 +27,10 @@ class Injector {
     return container.resolve(ImageLoader.self)!
   }
 
+  static var router: Router {
+    return container.resolve(Router.self)!
+  }
+
   /* testable */ static var container: Container = Container()
 
   class func configure() throws {
@@ -65,6 +69,9 @@ class Injector {
 
       // ImageLoader
       container.register(ImageLoader.self) { _ in NukeImageLoader() }
+
+      // Router
+      container.register(Router.self) { _ in Router() }
     }
   }
 }

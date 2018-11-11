@@ -14,6 +14,9 @@ import OHHTTPStubs
 class Fixtures {
   class func beforeEach() {
     OHHTTPStubs.onStubMissing {
+      if $0.url?.scheme == "file" {
+        return
+      }
       fail("\($0.url?.absoluteString ?? "") was not stubbed")
     }
   }
