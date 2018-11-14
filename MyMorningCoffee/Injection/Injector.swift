@@ -27,6 +27,10 @@ class Injector {
     return container.resolve(ImageLoader.self)!
   }
 
+  static var formatter: Formatter {
+    return container.resolve(Formatter.self)!
+  }
+
   static var router: Router {
     return container.resolve(Router.self)!
   }
@@ -69,6 +73,9 @@ class Injector {
 
       // ImageLoader
       container.register(ImageLoader.self) { _ in NukeImageLoader() }
+
+      // Formatter
+      container.register(Formatter.self) { _ in DefaultFormatter() }
 
       // Router
       container.register(Router.self) { _ in Router() }

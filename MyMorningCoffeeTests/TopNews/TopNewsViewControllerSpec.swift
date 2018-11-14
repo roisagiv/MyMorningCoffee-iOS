@@ -17,7 +17,12 @@ class TopNewsViewControllerSpec: QuickSpec {
     describe("smoke") {
       it("should not fail") {
         let viewModel = StubViewModel()
-        let vc = TopNewsViewController.create(viewModel: viewModel, imageLoader: StubImageLoader())
+        let vc = TopNewsViewController.create(
+          viewModel: viewModel,
+          imageLoader: StubImageLoader(),
+          formatter: StubFormatter(),
+          router: Router()
+        )
         TestAppDelegate.displayAsRoot(viewController: vc)
         expect(vc).toNot(beNil())
       }
@@ -26,6 +31,8 @@ class TopNewsViewControllerSpec: QuickSpec {
 
   class StubViewModel: TopNewsViewModelType {
     var refresh: AnyObserver<Void> = PublishSubject<Void>().asObserver()
+
+    var loading: Driver<Bool> = PublishSubject<Bool>().asDriver(onErrorJustReturn: false)
 
     var loadItem: AnyObserver<Int> = PublishSubject<Int>().asObserver()
 

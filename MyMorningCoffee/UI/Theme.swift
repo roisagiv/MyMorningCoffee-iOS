@@ -18,6 +18,8 @@ struct Theme {
     case overline
     case subtitle1
     case subtitle2
+    case headline5
+    case headline6
   }
 
   private enum Color: Int {
@@ -127,6 +129,10 @@ struct Theme {
       font = typographyScheme.subtitle1
     case .subtitle2:
       font = typographyScheme.subtitle2
+    case .headline5:
+      font = typographyScheme.headline5
+    case .headline6:
+      font = typographyScheme.headline6
     }
     label.font = font
     label.textColor = Color.black.asUIColor().withAlphaComponent(alpha)

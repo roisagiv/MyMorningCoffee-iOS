@@ -12,13 +12,15 @@ import SwiftMoment
 
 final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
   @IBOutlet private var coverImageView: UIImageView!
+  @IBOutlet private var faviconImageView: UIImageView!
+  @IBOutlet private var sourceLabel: UILabel!
   @IBOutlet private var titleLabel: UILabel!
   @IBOutlet private var captionLabel: UILabel!
   @IBOutlet private var descriptionLabel: UILabel!
 
-  static let height: CGFloat = 8 * 44
+  static let height: CGFloat = 8 * 50
 
-  func configure(item: TopNewsItem, imageLoader: ImageLoader?) {
+  func configure(item: TopNewsItem, imageLoader: ImageLoader?, formatter: Formatter?) {
     titleLabel.text = item.title
     Theme.apply(to: titleLabel, disabled: item.loading)
 
@@ -27,20 +29,15 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
     loadImage(loading: item.loading, url: item.cover, imageLoader: imageLoader)
 
-    var captions: [String] = []
     if let source = item.source, source.isEmpty == false {
-      captions.append(source)
+      sourceLabel.text = source
+      imageLoader?.load(url: item.sourceFavicon, imageView: faviconImageView)
     }
 
-    if let published = item.publishedAt {
-      let date = moment(published)
-      captions.append(date.fromNow())
-    }
-    if let author = item.author, author.isEmpty == false {
-      captions.append(author)
+    if let published = item.publishedAt, let formatter = formatter {
+      captionLabel.text = formatter.relativeFromNow(date: published)
     }
 
-    captionLabel.text = captions.joined(separator: " · ")
     Theme.apply(to: captionLabel, disabled: item.loading)
   }
 
@@ -57,14 +54,17 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
     titleLabel.text = nil
     captionLabel.text = nil
     descriptionLabel.text = nil
+    sourceLabel.text = nil
     coverImageView.image = nil
+    faviconImageView.image = nil
   }
 
   override func awakeFromNib() {
     super.awakeFromNib()
     Theme.apply(to: self)
-    Theme.apply(.subtitle1, to: titleLabel)
+    Theme.apply(.headline6, to: titleLabel)
     Theme.apply(.body2, to: descriptionLabel)
     Theme.apply(.caption, to: captionLabel)
+    Theme.apply(.caption, to: sourceLabel)
   }
 }

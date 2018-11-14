@@ -9,6 +9,7 @@
 import RxCocoa
 import RxDataSources
 import RxSwift
+import RxSwiftUtilities
 import SwiftMoment
 
 struct TopNewsItem {
@@ -20,6 +21,7 @@ struct TopNewsItem {
   let description: String?
   let publishedAt: Date?
   let source: String?
+  let sourceFavicon: String?
   let loading: Bool
 }
 
@@ -34,6 +36,7 @@ extension TopNewsItem {
       description: nil,
       publishedAt: nil,
       source: nil,
+      sourceFavicon: nil,
       loading: false
     )
   }
@@ -51,6 +54,7 @@ protocol TopNewsViewModelType {
   var refresh: AnyObserver<Void> { get }
   var loadItem: AnyObserver<Int> { get }
   var items: Driver<[TopNewsItem]> { get }
+  var loading: Driver<Bool> { get }
 }
 
 class TopNewsViewModel: TopNewsViewModelType {
@@ -62,6 +66,10 @@ class TopNewsViewModel: TopNewsViewModelType {
 
   private(set) lazy var loadItem: AnyObserver<Int> = {
     self.loadItemSubject.asObserver()
+  }()
+
+  private(set) lazy var loading: Driver<Bool> = {
+    self.activityIndicator.asDriver()
   }()
 
   private let refreshSubject: PublishSubject<Void>
@@ -85,6 +93,7 @@ class TopNewsViewModel: TopNewsViewModelType {
   private let hackerNewsService: HackerNewsService
   private let scraperService: ScraperService
   private let newsItemDatabase: NewsItemsDatabase
+  private let activityIndicator = ActivityIndicator()
   private let disposeBag: DisposeBag
 
   init(
@@ -105,9 +114,10 @@ class TopNewsViewModel: TopNewsViewModelType {
     // Refresh
 
     refreshSubject
+      .trackActivity(activityIndicator)
       .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
       .observeOn(MainScheduler.asyncInstance)
-      .flatMap { [unowned self] _ in
+      .flatMap { [unowned self] _ -> Single<[HackerNewsStory]> in
         self.hackerNewsService.topStories(size: 500)
       }
       .map {
@@ -182,6 +192,7 @@ class TopNewsViewModel: TopNewsViewModelType {
           record.time = published?.date ?? Date()
           record.url = scraped.url
           record.status = .scraped
+          record.domain = scraped.source
           _ = self.newsItemDatabase.save(item: record)
         default:
           return
@@ -191,6 +202,11 @@ class TopNewsViewModel: TopNewsViewModelType {
   }
 
   private func map(record: NewsItemRecord) -> TopNewsItem {
+    var favicon: String?
+    if let domain = record.domain {
+      favicon = "https://api.faviconkit.com/\(domain)/64"
+    }
+
     return TopNewsItem(
       id: record.id,
       title: record.title ?? "",
@@ -200,6 +216,7 @@ class TopNewsViewModel: TopNewsViewModelType {
       description: record.subTitle,
       publishedAt: record.time,
       source: record.domain,
+      sourceFavicon: favicon,
       loading: [
         NewsItemRecord.Status.fetching,
         NewsItemRecord.Status.scraping

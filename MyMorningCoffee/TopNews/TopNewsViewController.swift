@@ -16,12 +16,14 @@ class TopNewsViewController: MDCCollectionViewController {
   typealias TopNewsItemModel = SectionModel<String, TopNewsItem>
 
   fileprivate let appBar = MDCAppBarViewController()
+  private let activityIndicator = MDCActivityIndicator()
+
   fileprivate var items: [TopNewsItem] = []
   private let disposeBag = DisposeBag()
-
   fileprivate var viewModel: TopNewsViewModelType?
   fileprivate var imageLoader: ImageLoader?
   fileprivate var router: Router?
+  fileprivate var formatter: Formatter?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,12 +37,20 @@ class TopNewsViewController: MDCCollectionViewController {
     let disposable = viewModel?.items.drive(onNext: { [weak self] items in
       self?.items = items
       self?.collectionView?.reloadData()
+      self?.activityIndicator.stopAnimating()
     })
     if let disposable = disposable {
       disposeBag.insert(disposable)
     }
 
     viewModel?.refresh.onNext(())
+    viewModel?.loading.drive(onNext: { [weak self] loading in
+      if loading {
+        self?.activityIndicator.startAnimating()
+      } else {
+        self?.activityIndicator.stopAnimating()
+      }
+    }).disposed(by: disposeBag)
 
     let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
       configureCell: { [unowned self] _, collectionView, indexPath, item in
@@ -48,7 +58,7 @@ class TopNewsViewController: MDCCollectionViewController {
 
         let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
 
-        cell.configure(item: item, imageLoader: self.imageLoader)
+        cell.configure(item: item, imageLoader: self.imageLoader, formatter: self.formatter)
 
         return cell
       }
@@ -96,6 +106,17 @@ class TopNewsViewController: MDCCollectionViewController {
     appBar.didMove(toParentViewController: self)
     appBar.navigationBar.title = "Top Bar"
 
+    Theme.apply(to: activityIndicator)
+    activityIndicator.sizeToFit()
+    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(activityIndicator)
+    activityIndicator.centerXAnchor.constraint(
+      equalTo: view.centerXAnchor
+    ).isActive = true
+    activityIndicator.centerYAnchor.constraint(
+      equalTo: view.centerYAnchor
+    ).isActive = true
+
     Theme.apply(to: appBar)
   }
 
@@ -108,28 +129,6 @@ class TopNewsViewController: MDCCollectionViewController {
 extension TopNewsViewController {
   override func collectionView(_: UICollectionView, cellHeightAt _: IndexPath) -> CGFloat {
     return TopNewsCellView.height
-  }
-
-  override func numberOfSections(in _: UICollectionView) -> Int {
-    return 1
-  }
-
-  override func collectionView(_: UICollectionView,
-                               numberOfItemsInSection _: Int) -> Int {
-    print("numberOfItemsInSection")
-    return items.count
-  }
-
-  override func collectionView(_ collectionView: UICollectionView,
-                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let item = items[indexPath.row]
-    viewModel?.loadItem.onNext(item.id)
-
-    let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
-
-    cell.configure(item: item, imageLoader: imageLoader)
-
-    return cell
   }
 }
 
@@ -175,11 +174,13 @@ extension TopNewsViewController {
   class func create(
     viewModel: TopNewsViewModelType,
     imageLoader: ImageLoader,
+    formatter: Formatter,
     router: Router
   ) -> TopNewsViewController {
     let vc = TopNewsViewController()
     vc.viewModel = viewModel
     vc.imageLoader = imageLoader
+    vc.formatter = formatter
     vc.router = router
     return vc
   }

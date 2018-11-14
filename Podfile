@@ -1,6 +1,6 @@
 platform :ios, "11"
 
-pod "SwiftLint", "0.27.0"
+pod "SwiftLint", "0.28.0"
 pod "SwiftFormat/CLI", "0.35.7"
 
 plugin 'cocoapods-keys', {
@@ -19,6 +19,7 @@ target "MyMorningCoffee" do
   pod "RxCocoa", $Rx
   pod "RxDataSources", "3.1.0"
   pod "RxWebKit", "0.3.7"
+  pod "RxSwiftUtilities", "2.1.0"
   
   # DI
   pod "Swinject", "2.5.0"

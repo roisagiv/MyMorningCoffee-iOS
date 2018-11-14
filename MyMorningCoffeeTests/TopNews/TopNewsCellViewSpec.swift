@@ -17,6 +17,7 @@ class TopNewsCellViewSpec: QuickSpec {
     describe("render") {
       var cell: TopNewsCellView!
       let imageLoader = StubImageLoader()
+      let formatter = StubFormatter()
       let sizes = Device.sizes.mapValues { CGSize(width: $0.width, height: TopNewsCellView.height) }
 
       beforeEach {
@@ -41,9 +42,10 @@ class TopNewsCellViewSpec: QuickSpec {
           description: nil,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
           source: "",
+          sourceFavicon: nil,
           loading: true
         )
-        cell.configure(item: item, imageLoader: imageLoader)
+        cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
 
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
@@ -59,9 +61,10 @@ class TopNewsCellViewSpec: QuickSpec {
           description: nil,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
           source: "",
+          sourceFavicon: nil,
           loading: false
         )
-        cell.configure(item: item, imageLoader: imageLoader)
+        cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
 
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
@@ -81,9 +84,10 @@ class TopNewsCellViewSpec: QuickSpec {
           """,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
           source: "wired.com",
+          sourceFavicon: nil,
           loading: false
         )
-        cell.configure(item: item, imageLoader: imageLoader)
+        cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
 
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
