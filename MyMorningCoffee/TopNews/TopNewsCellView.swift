@@ -17,10 +17,11 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
   @IBOutlet private var titleLabel: UILabel!
   @IBOutlet private var captionLabel: UILabel!
   @IBOutlet private var descriptionLabel: UILabel!
+  @IBOutlet private var headerView: UIView!
 
   static let height: CGFloat = 8 * 50
 
-  func configure(item: TopNewsItem, imageLoader: ImageLoader?, formatter: Formatter?) {
+  func configure(item: TopNewsItem, imageLoader: ImageLoader?, formatter _: Formatter?) {
     titleLabel.text = item.title
     Theme.apply(to: titleLabel, disabled: item.loading)
 
@@ -30,12 +31,15 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
     loadImage(loading: item.loading, url: item.cover, imageLoader: imageLoader)
 
     if let source = item.source, source.isEmpty == false {
+      headerView.alpha = 1
       sourceLabel.text = source
       imageLoader?.load(url: item.sourceFavicon, imageView: faviconImageView)
+    } else {
+      headerView.alpha = 0
     }
 
-    if let published = item.publishedAt, let formatter = formatter {
-      captionLabel.text = formatter.relativeFromNow(date: published)
+    if let published = item.publishedAtRelative {
+      captionLabel.text = published
     }
 
     Theme.apply(to: captionLabel, disabled: item.loading)
@@ -43,7 +47,7 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
   private func loadImage(loading: Bool, url: String?, imageLoader: ImageLoader?) {
     guard loading == false, let url = url, let imageUrl = URL(string: url) else {
-      coverImageView.image = Images.imageWithColor(color: Theme.placeholderColor)
+      coverImageView.image = Theme.placeHolderImage
       return
     }
     imageLoader?.load(url: imageUrl, imageView: coverImageView)
@@ -61,6 +65,7 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+
     Theme.apply(to: self)
     Theme.apply(.headline6, to: titleLabel)
     Theme.apply(.body2, to: descriptionLabel)

@@ -18,8 +18,12 @@ class NukeImageLoader: ImageLoader {
   }
 
   func load(url: URL, imageView: UIImageView) {
-    imageView.image = nil
-    Nuke.loadImage(with: url, into: imageView)
+    cancel(imageView: imageView)
+    Nuke.loadImage(
+      with: url,
+      options: ImageLoadingOptions(placeholder: Theme.placeHolderImage),
+      into: imageView
+    )
   }
 
   func cancel(imageView: UIImageView) {

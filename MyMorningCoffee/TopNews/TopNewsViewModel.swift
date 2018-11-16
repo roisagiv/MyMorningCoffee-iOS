@@ -20,6 +20,7 @@ struct TopNewsItem {
   let author: String?
   let description: String?
   let publishedAt: Date?
+  let publishedAtRelative: String?
   let source: String?
   let sourceFavicon: String?
   let loading: Bool
@@ -35,6 +36,7 @@ extension TopNewsItem {
       author: nil,
       description: nil,
       publishedAt: nil,
+      publishedAtRelative: nil,
       source: nil,
       sourceFavicon: nil,
       loading: false
@@ -93,17 +95,20 @@ class TopNewsViewModel: TopNewsViewModelType {
   private let hackerNewsService: HackerNewsService
   private let scraperService: ScraperService
   private let newsItemDatabase: NewsItemsDatabase
+  private let formatter: Formatter
   private let activityIndicator = ActivityIndicator()
   private let disposeBag: DisposeBag
 
   init(
     hackerNewsService: HackerNewsService,
     scraperService: ScraperService,
-    newsItemDatabase: NewsItemsDatabase
+    newsItemDatabase: NewsItemsDatabase,
+    formatter: Formatter
   ) {
     self.hackerNewsService = hackerNewsService
     self.scraperService = scraperService
     self.newsItemDatabase = newsItemDatabase
+    self.formatter = formatter
 
     disposeBag = DisposeBag()
 
@@ -111,12 +116,14 @@ class TopNewsViewModel: TopNewsViewModelType {
     loadItemSubject = PublishSubject<Int>()
     scrapeItemSubject = PublishSubject<NewsItemRecord>()
 
+    let scheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .userInitiated)
+
     // Refresh
 
     refreshSubject
       .trackActivity(activityIndicator)
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-      .observeOn(MainScheduler.asyncInstance)
+      .subscribeOn(scheduler)
+      .observeOn(scheduler)
       .flatMap { [unowned self] _ -> Single<[HackerNewsStory]> in
         self.hackerNewsService.topStories(size: 500)
       }
@@ -125,6 +132,7 @@ class TopNewsViewModel: TopNewsViewModelType {
           NewsItemRecord(
             id: $0.id,
             time: Date(timeIntervalSince1970: $0.time),
+            timeRelative: formatter.relativeFromNow(date: Date(timeIntervalSince1970: $0.time)),
             title: $0.title,
             url: $0.url,
             subTitle: nil,
@@ -141,8 +149,8 @@ class TopNewsViewModel: TopNewsViewModelType {
       .disposed(by: disposeBag)
 
     loadItemSubject
-      .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .observeOn(scheduler)
+      .subscribeOn(scheduler)
       .flatMap { [unowned self] (id: Int) -> Single<NewsItemRecord?> in
         self.newsItemDatabase.record(by: id)
       }
@@ -166,8 +174,8 @@ class TopNewsViewModel: TopNewsViewModelType {
       .disposed(by: disposeBag)
 
     scrapeItemSubject
-      .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
-      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+      .observeOn(scheduler)
+      .subscribeOn(scheduler)
       .flatMap { [unowned self] (record: NewsItemRecord) -> Single<(NewsItemRecord, ScrapedItem)> in
         guard let url = record.url else {
           return Single.error(TopNewsViewModelError.recordMissingUrl)
@@ -215,6 +223,7 @@ class TopNewsViewModel: TopNewsViewModelType {
       author: nil,
       description: record.subTitle,
       publishedAt: record.time,
+      publishedAtRelative: record.timeRelative,
       source: record.domain,
       sourceFavicon: favicon,
       loading: [

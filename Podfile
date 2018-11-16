@@ -1,6 +1,6 @@
-platform :ios, "11"
+platform :ios, "11.4"
 
-pod "SwiftLint", "0.28.0"
+pod "SwiftLint", "0.28.1"
 pod "SwiftFormat/CLI", "0.35.7"
 
 plugin "cocoapods-keys", {
@@ -25,7 +25,7 @@ target "MyMorningCoffee" do
   pod "Swinject", "2.5.0"
 
   # Network
-  pod "Moya/RxSwift", "11.0.2"
+  pod "Moya/RxSwift", "12.0.1"
   pod "AlamofireNetworkActivityLogger", "2.3.0"
 
   # DB
@@ -37,11 +37,11 @@ target "MyMorningCoffee" do
   pod "SwiftHEXColors", "1.1.2"
 
   # Firebase
-  $Firebase = "5.12.0"
+  $Firebase = "5.13.0"
   pod "Firebase/Database", $Firebase
 
   # Material.io
-  $MaterialComponents = "68.2.0"
+  $MaterialComponents = "70.0.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -64,6 +64,7 @@ target "MyMorningCoffee" do
 
   # Dates
   pod "SwiftMoment", "0.7"
+  pod "SwiftDate", "5.0.13"
 
   # Acknowledgements
   pod "AcknowList", "1.7"

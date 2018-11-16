@@ -7,18 +7,17 @@
 //
 
 import MaterialComponents
+import RxCocoa
 import RxDataSources
 import RxSwift
-import SafariServices
 import UIKit
 
-class TopNewsViewController: MDCCollectionViewController {
+class TopNewsViewController: UICollectionViewController {
   typealias TopNewsItemModel = SectionModel<String, TopNewsItem>
 
   fileprivate let appBar = MDCAppBarViewController()
   private let activityIndicator = MDCActivityIndicator()
 
-  fileprivate var items: [TopNewsItem] = []
   private let disposeBag = DisposeBag()
   fileprivate var viewModel: TopNewsViewModelType?
   fileprivate var imageLoader: ImageLoader?
@@ -34,24 +33,6 @@ class TopNewsViewController: MDCCollectionViewController {
 
     navigationItem.title = "Top News"
 
-    let disposable = viewModel?.items.drive(onNext: { [weak self] items in
-      self?.items = items
-      self?.collectionView?.reloadData()
-      self?.activityIndicator.stopAnimating()
-    })
-    if let disposable = disposable {
-      disposeBag.insert(disposable)
-    }
-
-    viewModel?.refresh.onNext(())
-    viewModel?.loading.drive(onNext: { [weak self] loading in
-      if loading {
-        self?.activityIndicator.startAnimating()
-      } else {
-        self?.activityIndicator.stopAnimating()
-      }
-    }).disposed(by: disposeBag)
-
     let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
       configureCell: { [unowned self] _, collectionView, indexPath, item in
         self.viewModel?.loadItem.onNext(item.id)
@@ -66,37 +47,48 @@ class TopNewsViewController: MDCCollectionViewController {
     if let collectionView = collectionView, let viewModel = viewModel {
       collectionView.dataSource = nil
       viewModel.items
+        .throttle(0.3)
+        .do(onNext: { [unowned self] items in
+          if items.isEmpty {
+            self.activityIndicator.startAnimating()
+          } else {
+            self.activityIndicator.stopAnimating()
+          }
+        })
         .map { [TopNewsItemModel(model: "", items: $0)] }
         .drive(collectionView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
 
-      collectionView.rx.prefetchItems.distinctUntilChanged().subscribe(onNext: { [unowned self] indexPaths in
-        indexPaths
-          .map { self.items[$0.row].id }
-          .forEach {
-            self.viewModel?.loadItem.onNext($0)
+      collectionView.rx.prefetchItems.distinctUntilChanged().withLatestFrom(viewModel.items) { ($0, $1) }
+        .subscribe(onNext: { [unowned self] indexPaths, items in
+          guard items.isEmpty == false else {
+            return
           }
-      }).disposed(by: disposeBag)
+          indexPaths
+            .map { items[$0.row].id }
+            .forEach {
+              self.viewModel?.loadItem.onNext($0)
+            }
+        }).disposed(by: disposeBag)
 
-      collectionView.rx.itemSelected
-        .subscribe(onNext: { [unowned self] indexPath in
-          let item = self.items[indexPath.row]
+      collectionView.rx.modelSelected(TopNewsItem.self)
+        .subscribe(onNext: { [unowned self] item in
           if let urlAsString = item.url, let url = URL(string: urlAsString) {
             self.router?.navigate(to: .item(url: url, title: item.title), from: self.navigationController)
           }
         })
         .disposed(by: disposeBag)
     }
+
+    viewModel?.refresh.onNext(())
   }
 
   private func setupCollectionView() {
-    styler.cellLayoutType = .list
-    styler.cardBorderRadius = 4
-    styler.cellStyle = .card
-
     collectionView?.register(cellType: TopNewsCellView.self)
     if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+      let size = CGSize(width: collectionView?.bounds.width ?? 0, height: TopNewsCellView.height)
       layout.minimumLineSpacing = 80
+      layout.itemSize = size
     }
   }
 
@@ -137,11 +129,7 @@ class TopNewsViewController: MDCCollectionViewController {
   }
 }
 
-extension TopNewsViewController {
-  override func collectionView(_: UICollectionView, cellHeightAt _: IndexPath) -> CGFloat {
-    return TopNewsCellView.height
-  }
-}
+extension TopNewsViewController {}
 
 extension TopNewsViewController {
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -188,7 +176,7 @@ extension TopNewsViewController {
     formatter: Formatter,
     router: Router
   ) -> TopNewsViewController {
-    let vc = TopNewsViewController()
+    let vc = TopNewsViewController(collectionViewLayout: UICollectionViewFlowLayout())
     vc.viewModel = viewModel
     vc.imageLoader = imageLoader
     vc.formatter = formatter

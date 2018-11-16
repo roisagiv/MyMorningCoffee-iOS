@@ -15,7 +15,8 @@ class Injector {
     return TopNewsViewModel(
       hackerNewsService: container.resolve(HackerNewsService.self)!,
       scraperService: container.resolve(ScraperService.self)!,
-      newsItemDatabase: container.resolve(NewsItemsDatabase.self)!
+      newsItemDatabase: container.resolve(NewsItemsDatabase.self)!,
+      formatter: container.resolve(Formatter.self)!
     )
   }
 
@@ -68,14 +69,21 @@ class Injector {
 
       // DatabaseWriter
       container.register(DatabaseWriter.self) { _ in
-        DatabaseFactory.create(log: log)
+        /*
+         do {
+         return try DatabaseFactory.create(log: log)
+         } catch {
+         return DatabaseFactory.createInMemory(log: log)
+         }
+         */
+        return DatabaseFactory.createInMemory(log: log)
       }.inObjectScope(ObjectScope.container)
 
       // ImageLoader
       container.register(ImageLoader.self) { _ in NukeImageLoader() }
 
       // Formatter
-      container.register(Formatter.self) { _ in DefaultFormatter() }
+      container.register(Formatter.self) { _ in SwiftDateFormatter() }
 
       // Router
       container.register(Router.self) { _ in Router() }

@@ -41,6 +41,7 @@ class TopNewsCellViewSpec: QuickSpec {
           author: "dhouston",
           description: nil,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
+          publishedAtRelative: "",
           source: "",
           sourceFavicon: nil,
           loading: true
@@ -60,7 +61,8 @@ class TopNewsCellViewSpec: QuickSpec {
           author: nil,
           description: nil,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
-          source: "",
+          publishedAtRelative: "",
+          source: nil,
           sourceFavicon: nil,
           loading: false
         )
@@ -83,6 +85,7 @@ class TopNewsCellViewSpec: QuickSpec {
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
           """,
           publishedAt: Dates.dateFromISO8601(iso8601: "2018-07-01T21:14:33Z"),
+          publishedAtRelative: "22 minutes ago",
           source: "wired.com",
           sourceFavicon: nil,
           loading: false

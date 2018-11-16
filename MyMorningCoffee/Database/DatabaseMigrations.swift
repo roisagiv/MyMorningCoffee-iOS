@@ -24,6 +24,7 @@ class DatabaseMigrations {
         table.column(NewsItemRecord.Columns.status.name, .text).notNull()
         table.column(NewsItemRecord.Columns.subTitle.name, .text)
         table.column(NewsItemRecord.Columns.time.name, .datetime).notNull()
+        table.column(NewsItemRecord.Columns.timeRelative.name, .text)
         table.column(NewsItemRecord.Columns.title.name, .text)
         table.column(NewsItemRecord.Columns.url.name, .text)
       }

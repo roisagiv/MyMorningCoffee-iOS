@@ -28,29 +28,20 @@
                                         <constraint firstAttribute="width" constant="24" id="4Pq-Er-QOW"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRb-vZ-k8Z">
-                                    <rect key="frame" x="28" y="0.0" width="42" height="24"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="sqC-eI-cVu"/>
-                                    </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRb-vZ-k8Z">
+                                    <rect key="frame" x="28" y="0.0" width="54" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfs-da-av2">
-                                    <rect key="frame" x="74" y="0.0" width="5" height="24"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="h84-fl-HmK"/>
-                                    </constraints>
+                                    <rect key="frame" x="86" y="0.0" width="5" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAy-xB-g0P">
-                                    <rect key="frame" x="83" y="0.0" width="306" height="24"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="nBp-kA-1S0"/>
-                                    </constraints>
+                                    <rect key="frame" x="95" y="0.0" width="294" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -58,6 +49,9 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="83Q-SC-jGz"/>
+                                <constraint firstItem="eAy-xB-g0P" firstAttribute="height" secondItem="9ij-9z-jgl" secondAttribute="height" id="9Vk-KH-2G7"/>
+                                <constraint firstItem="DRb-vZ-k8Z" firstAttribute="height" secondItem="9ij-9z-jgl" secondAttribute="height" id="Bvz-qX-moi"/>
+                                <constraint firstItem="lfs-da-av2" firstAttribute="height" secondItem="9ij-9z-jgl" secondAttribute="height" id="boy-QA-wZi"/>
                             </constraints>
                         </stackView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ist-Ru-FMc" customClass="CardImageView" customModule="MyMorningCoffee" customModuleProvider="target">
@@ -98,6 +92,7 @@
                 <outlet property="coverImageView" destination="ist-Ru-FMc" id="1IM-ap-AKg"/>
                 <outlet property="descriptionLabel" destination="Cnn-OU-q4I" id="FJK-f1-Utf"/>
                 <outlet property="faviconImageView" destination="PAA-SD-YGP" id="ud3-PE-qcd"/>
+                <outlet property="headerView" destination="9ij-9z-jgl" id="1Bc-Id-adZ"/>
                 <outlet property="sourceLabel" destination="DRb-vZ-k8Z" id="dPt-5v-jQ4"/>
                 <outlet property="titleLabel" destination="vAU-um-ptE" id="6z8-I4-Oid"/>
             </connections>

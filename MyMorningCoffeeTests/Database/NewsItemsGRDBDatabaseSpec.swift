@@ -19,7 +19,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
   override func spec() {
     describe("Initial dataset") {
       it("does not override existing row") {
-        let db = DatabaseFactory.create(log: true)
+        let db = DatabaseFactory.createInMemory(log: true)
         do {
           try DatabaseMigrations.migrate(database: db)
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
@@ -35,6 +35,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
             item: NewsItemRecord(
               id: id,
               time: Date(),
+              timeRelative: "5 minutes ago",
               title: "title title",
               url: nil,
               subTitle: "subTitle subTitle",
@@ -61,7 +62,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
     describe("save items") {
       it("should save the entire array") {
         do {
-          let db = DatabaseFactory.create()
+          let db = DatabaseFactory.createInMemory()
           try DatabaseMigrations.migrate(database: db)
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
 
@@ -81,7 +82,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
     describe("record by id") {
       it("returns record if exists") {
         do {
-          let db = DatabaseFactory.create()
+          let db = DatabaseFactory.createInMemory()
           try DatabaseMigrations.migrate(database: db)
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
 
@@ -100,7 +101,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
 
       it("returns record if exists rx") {
         do {
-          let db = DatabaseFactory.create()
+          let db = DatabaseFactory.createInMemory()
           try DatabaseMigrations.migrate(database: db)
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
 

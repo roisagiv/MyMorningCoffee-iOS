@@ -32,7 +32,7 @@ class TopNewsViewModelSpec: QuickSpec {
 
     describe("items") {
       it("should be empty at first") {
-        let viewModel = Injector.topNewsViewModel
+        let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
         expect(items).first.to(beEmpty())
       }
@@ -40,7 +40,7 @@ class TopNewsViewModelSpec: QuickSpec {
       it("should not be empty after reload") {
         Fixtures.algoliaHackerNews()
 
-        let viewModel = Injector.topNewsViewModel
+        let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
         expect(items).first.to(beEmpty())
 
@@ -53,7 +53,7 @@ class TopNewsViewModelSpec: QuickSpec {
         Fixtures.storyItem()
         Fixtures.mercuryWebParser()
 
-        let viewModel = Injector.topNewsViewModel
+        let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
         expect(items).first.to(beEmpty())
 
@@ -76,5 +76,23 @@ class TopNewsViewModelSpec: QuickSpec {
         }
       }
     }
+  }
+
+  private func createViewModel() -> TopNewsViewModelType {
+    let sqlite = DatabaseFactory.createInMemory()
+    do {
+      try DatabaseMigrations.migrate(database: sqlite)
+    } catch {}
+    return TopNewsViewModel(
+      hackerNewsService: HackerNewsAlgoliaService(
+        provider: MoyaProviderFactory.create(log: false),
+        maxConcurrentOperationCount: 5
+      ),
+      scraperService: MercuryWebParserScraperService(
+        provider: MoyaProviderFactory.create(log: false)
+      ),
+      newsItemDatabase: NewsItemsGRDBDatabase(databaseWriter: sqlite),
+      formatter: StubFormatter()
+    )
   }
 }

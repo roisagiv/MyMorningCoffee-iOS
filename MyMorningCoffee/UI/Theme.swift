@@ -30,6 +30,7 @@ struct Theme {
     case secondaryLight = 0xB5FFFF
     case secondaryDark = 0x4BA2C6
     case black = 0x000000
+    case placeHolder = 0xF2F2F2
 
     func asUIColor() -> UIColor {
       return UIColor(hex: rawValue)!
@@ -68,9 +69,9 @@ struct Theme {
     MDCIcons.ic_arrow_backUseNewStyle(true)
   }
 
-  static var placeholderColor: UIColor = Color.primary.asUIColor()
-
   static var tintTextColor: UIColor = Color.secondary.asUIColor()
+
+  static var placeHolderImage: UIImage = Images.imageWithColor(color: Color.placeHolder.asUIColor())
 
   static func apply(to appBar: MDCAppBarViewController) {
     MDCAppBarColorThemer.applyColorScheme(colorScheme, to: appBar)
