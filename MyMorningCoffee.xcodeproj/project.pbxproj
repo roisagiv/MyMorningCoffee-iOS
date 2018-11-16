@@ -26,6 +26,9 @@
 		5F457C6821484B3300409DF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6721484B3300409DF6 /* Device.swift */; };
 		5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */; };
 		5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6B21485DCC00409DF6 /* ImageLoader.swift */; };
+		5F461124219E13070007AEC2 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */; };
+		5F461126219EEBD50007AEC2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F461125219EEBD50007AEC2 /* Icons.swift */; };
+		5F461129219EEEF40007AEC2 /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F461128219EEEF40007AEC2 /* OpenSourceViewController.swift */; };
 		5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F49F10A2126029D0071DB49 /* AppDelegate.swift */; };
 		5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1112126029F0071DB49 /* Assets.xcassets */; };
 		5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F49F1132126029F0071DB49 /* LaunchScreen.storyboard */; };
@@ -92,6 +95,9 @@
 		5F457C6721484B3300409DF6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellViewSpec.swift; sourceTree = "<group>"; };
 		5F457C6B21485DCC00409DF6 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		5F461125219EEBD50007AEC2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		5F461128219EEEF40007AEC2 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
 		5F49F1072126029D0071DB49 /* MyMorningCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMorningCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F49F10A2126029D0071DB49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F49F1112126029F0071DB49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,6 +232,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		5F461127219EEEE30007AEC2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5F461128219EEEF40007AEC2 /* OpenSourceViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		5F49F0FE2126029D0071DB49 = {
 			isa = PBXGroup;
 			children = (
@@ -255,12 +269,14 @@
 				5F84856F2197FC80001B94D2 /* NewsItem */,
 				5F84856C219755A3001B94D2 /* Router */,
 				5F43F8CA2129310600BD62CC /* Services */,
+				5F461127219EEEE30007AEC2 /* Settings */,
 				5F0FCD5B21260AD2002A289F /* TopNews */,
 				5FE238C4212617C600F2AB9A /* UI */,
 				5F49F10A2126029D0071DB49 /* AppDelegate.swift */,
 				5F49F1112126029F0071DB49 /* Assets.xcassets */,
 				5F49F1162126029F0071DB49 /* Info.plist */,
 				5F49F1132126029F0071DB49 /* LaunchScreen.storyboard */,
+				5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */,
 				5F43F8D2212935C700BD62CC /* TestAppDelegate.swift */,
 				5F43F8D42129360100BD62CC /* main.swift */,
 			);
@@ -384,6 +400,7 @@
 			children = (
 				5FC574C12128B02D00A49664 /* Components */,
 				5FB247F421275CF400BFE636 /* Fonts */,
+				5F461125219EEBD50007AEC2 /* Icons.swift */,
 				5FE6FD50214D99A800E596C3 /* Images.swift */,
 				5FE238C5212617D100F2AB9A /* Theme.swift */,
 			);
@@ -493,6 +510,7 @@
 				5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */,
 				5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */,
 				5F655E3A219B6818003E0B27 /* Nunito-SemiBold.ttf in Resources */,
+				5F461124219E13070007AEC2 /* Pods-acknowledgements.plist in Resources */,
 				5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */,
 				5F655E3B219B681B003E0B27 /* Nunito-Regular.ttf in Resources */,
 				5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */,
@@ -522,6 +540,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
@@ -532,6 +551,7 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialDesignSymbol/MaterialDesignSymbol.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -553,6 +573,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcknowList.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
@@ -563,6 +584,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialDesignSymbol.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -711,6 +733,7 @@
 				5F655E3D219BF3D2003E0B27 /* Formatter.swift in Sources */,
 				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
 				5F1EEBEE21964FF300FB34B4 /* NukeImageLoader.swift in Sources */,
+				5F461129219EEEF40007AEC2 /* OpenSourceViewController.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
 				5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */,
@@ -718,6 +741,7 @@
 				5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */,
 				5F6ABF85212CABB200060690 /* DatabaseFactory.swift in Sources */,
 				5F43F8D52129360100BD62CC /* main.swift in Sources */,
+				5F461126219EEBD50007AEC2 /* Icons.swift in Sources */,
 				5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */,
 				5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */,
 				5F6ABF87212CAC4100060690 /* DatabaseMigrations.swift in Sources */,

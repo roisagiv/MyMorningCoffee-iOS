@@ -117,12 +117,23 @@ class TopNewsViewController: MDCCollectionViewController {
       equalTo: view.centerYAnchor
     ).isActive = true
 
+    let settingsButton = UIBarButtonItem(
+      image: Icons.settings(size: CGSize(width: 24, height: 24)),
+      style: .plain,
+      target: self,
+      action: #selector(settingsButtonClicked)
+    )
+    appBar.navigationBar.rightBarButtonItem = settingsButton
     Theme.apply(to: appBar)
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(true, animated: false)
+  }
+
+  @objc private func settingsButtonClicked() {
+    router?.navigate(to: .settings, from: navigationController)
   }
 }
 

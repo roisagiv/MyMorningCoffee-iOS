@@ -3,11 +3,11 @@ platform :ios, "11"
 pod "SwiftLint", "0.28.0"
 pod "SwiftFormat/CLI", "0.35.7"
 
-plugin 'cocoapods-keys', {
+plugin "cocoapods-keys", {
   :project => "MyMorningCoffee",
   :keys => [
-    "MercuryWebParserKey"
-  ]
+    "MercuryWebParserKey",
+  ],
 }
 
 target "MyMorningCoffee" do
@@ -20,14 +20,14 @@ target "MyMorningCoffee" do
   pod "RxDataSources", "3.1.0"
   pod "RxWebKit", "0.3.7"
   pod "RxSwiftUtilities", "2.1.0"
-  
+
   # DI
   pod "Swinject", "2.5.0"
 
   # Network
   pod "Moya/RxSwift", "11.0.2"
   pod "AlamofireNetworkActivityLogger", "2.3.0"
-  
+
   # DB
   pod "RxGRDB", "0.13.0"
 
@@ -53,10 +53,11 @@ target "MyMorningCoffee" do
   pod "MaterialComponents/Cards+ColorThemer", $MaterialComponents
   pod "MaterialComponents/ProgressView", $MaterialComponents
   pod "MaterialComponents/ProgressView+ColorThemer", $MaterialComponents
-  pod 'MaterialComponents/ActivityIndicator', $MaterialComponents
-  pod 'MaterialComponents/ActivityIndicator+ColorThemer', $MaterialComponents
+  pod "MaterialComponents/ActivityIndicator", $MaterialComponents
+  pod "MaterialComponents/ActivityIndicator+ColorThemer", $MaterialComponents
   pod "MaterialComponents/schemes/Color", $MaterialComponents
   pod "MaterialComponents/schemes/Typography", $MaterialComponents
+  pod "MaterialDesignSymbol", "2.3.0"
 
   # Fake Data
   pod "Fakery", "3.4.0"
@@ -64,14 +65,17 @@ target "MyMorningCoffee" do
   # Dates
   pod "SwiftMoment", "0.7"
 
-  # Debug
-  pod "netfox", "1.13.0", :configurations => ['Debug']
+  # Acknowledgements
+  pod "AcknowList", "1.7"
 
-  script_phase :name => 'SwiftFormat',
+  # Debug
+  pod "netfox", "1.13.0", :configurations => ["Debug"]
+
+  script_phase :name => "SwiftFormat",
                :script => '"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}/MyMorningCoffee" "${SRCROOT}/MyMorningCoffeeTests" "--config" ".swiftformat"',
                :execution_position => :before_compile
 
-  script_phase :name => 'SwiftLint',
+  script_phase :name => "SwiftLint",
                :script => '"${PODS_ROOT}/SwiftLint/swiftlint"',
                :execution_position => :before_compile
 
@@ -88,26 +92,32 @@ target "MyMorningCoffee" do
   end
 end
 
-DEFAULT_SWIFT_VERSION = '4.1'
+DEFAULT_SWIFT_VERSION = "4.1"
 
-POD_SWIFT_VERSION_MAP = {
-}
+POD_SWIFT_VERSION_MAP = {"AcknowList" => "4.2"}
 
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        swift_version = POD_SWIFT_VERSION_MAP[target.name] || DEFAULT_SWIFT_VERSION
-        puts "Setting #{target.name} Swift version to #{swift_version}"
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = swift_version
-        end
-
-        if target.name == 'RxSwift'
-          target.build_configurations.each do |config|
-            if config.name == 'Debug'
-              puts "#{target.name} - OTHER_SWIFT_FLAGS"
-              config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['-D', 'TRACE_RESOURCES']
-            end
-          end
-        end
+  installer.pods_project.targets.each do |target|
+    swift_version = POD_SWIFT_VERSION_MAP[target.name] || DEFAULT_SWIFT_VERSION
+    puts "Setting #{target.name} Swift version to #{swift_version}"
+    target.build_configurations.each do |config|
+      config.build_settings["SWIFT_VERSION"] = swift_version
     end
+
+    if target.name == "RxSwift"
+      target.build_configurations.each do |config|
+        if config.name == "Debug"
+          puts "#{target.name} - OTHER_SWIFT_FLAGS"
+          config.build_settings["OTHER_SWIFT_FLAGS"] ||= ["-D", "TRACE_RESOURCES"]
+        end
+      end
+    end
+  end
+
+  require "fileutils" # for acknowledgements
+  FileUtils.cp_r(
+    "Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-acknowledgements.plist",
+    "MyMorningCoffee/Pods-acknowledgements.plist",
+    :remove_destination => true,
+  )
 end

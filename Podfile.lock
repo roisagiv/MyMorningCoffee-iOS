@@ -1,4 +1,5 @@
 PODS:
+  - AcknowList (1.7)
   - Alamofire (4.7.3)
   - AlamofireNetworkActivityLogger (2.3.0):
     - Alamofire (~> 4.6)
@@ -161,6 +162,7 @@ PODS:
   - MaterialComponents/Typography (68.2.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
+  - MaterialDesignSymbol (2.3.0)
   - MDFInternationalization (1.1.0)
   - MDFTextAccessibility (1.2.0)
   - MotionAnimator (2.8.1):
@@ -239,6 +241,7 @@ PODS:
   - Swinject (2.5.0)
 
 DEPENDENCIES:
+  - AcknowList (= 1.7)
   - AlamofireNetworkActivityLogger (= 2.3.0)
   - EarlGrey (= 1.15.0)
   - Fakery (= 3.4.0)
@@ -259,6 +262,7 @@ DEPENDENCIES:
   - "MaterialComponents/ProgressView+ColorThemer (= 68.2.0)"
   - MaterialComponents/schemes/Color (= 68.2.0)
   - MaterialComponents/schemes/Typography (= 68.2.0)
+  - MaterialDesignSymbol (= 2.3.0)
   - Moya/RxSwift (= 11.0.2)
   - netfox (= 1.13.0)
   - Nimble (= 7.3.1)
@@ -283,6 +287,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AcknowList
     - Alamofire
     - AlamofireNetworkActivityLogger
     - Differentiator
@@ -296,6 +301,7 @@ SPEC REPOS:
     - iOSSnapshotTestCase
     - leveldb-library
     - MaterialComponents
+    - MaterialDesignSymbol
     - MDFInternationalization
     - MDFTextAccessibility
     - MotionAnimator
@@ -329,6 +335,7 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  AcknowList: 286185b24c2c2df63a2bb4137f853e4384b4358b
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireNetworkActivityLogger: 6f3076652ab7fa6c819b59be08ea038d339e36d8
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
@@ -343,6 +350,7 @@ SPEC CHECKSUMS:
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MaterialComponents: 0a6202cdfab416518d065eaea869efea2126b605
+  MaterialDesignSymbol: 0997399dbeecd5721f917f959edf296d5343f4f4
   MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
@@ -371,6 +379,6 @@ SPEC CHECKSUMS:
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
 
-PODFILE CHECKSUM: 203de56552aacc2fa39e80bbe015810871d4de4e
+PODFILE CHECKSUM: eb1abc79c8911d5c382d3c6065874231611d8058
 
 COCOAPODS: 1.5.3

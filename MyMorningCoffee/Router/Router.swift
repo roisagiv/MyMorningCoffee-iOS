@@ -6,12 +6,14 @@
 //  Copyright © 2018 Roi Sagiv. All rights reserved.
 //
 
+import AcknowList
 import UIKit
 
 class Router {
   enum Route {
     case topNews
     case item(url: URL, title: String)
+    case settings
 
     func viewController() -> UIViewController {
       switch self {
@@ -24,6 +26,9 @@ class Router {
         )
       case let .item(url, title):
         return NewsItemViewController.create(url: url, title: title)
+
+      case .settings:
+        return OpenSourceViewController()
       }
     }
   }

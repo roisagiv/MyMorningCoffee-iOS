@@ -70,6 +70,8 @@ struct Theme {
 
   static var placeholderColor: UIColor = Color.primary.asUIColor()
 
+  static var tintTextColor: UIColor = Color.secondary.asUIColor()
+
   static func apply(to appBar: MDCAppBarViewController) {
     MDCAppBarColorThemer.applyColorScheme(colorScheme, to: appBar)
     MDCAppBarTypographyThemer.applyTypographyScheme(typographyScheme, to: appBar)
