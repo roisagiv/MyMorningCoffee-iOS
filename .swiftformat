@@ -1,2 +1,3 @@
 --indent 2
 --disable trailingCommas
+--header \nMy Morning Coffee\n\nCopyright © {year} Roi Sagiv. All rights reserved.\nThis work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.\nTo view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/\n
