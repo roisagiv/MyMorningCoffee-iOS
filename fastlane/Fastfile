@@ -16,9 +16,21 @@
 default_platform(:ios)
 
 platform :ios do
+  before_all do
+    ensure_xcode_version(version: "10.1")
+    setup_circle_ci
+  end
+
   desc "Description of what the lane does"
   lane :format do
     sh "cd ..; ./Pods/SwiftLint/switflint autocorrect"
     sh "cd ..; ./Pods/SwiftLint/switflint lint"
+  end
+
+  desc "run all tests"
+  lane :test do
+    scan(
+      devices: ["iPhone X", "iPhone SE"],
+    )
   end
 end
