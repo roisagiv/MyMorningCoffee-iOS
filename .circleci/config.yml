@@ -1,0 +1,56 @@
+# iOS CircleCI 2.0 configuration file
+
+xcode_version: &xcode_version 10.1
+iphone_name: &iphone_name iPhone X
+
+version: 2
+jobs:
+  build-and-test:
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+      MercuryWebParserKey: "-"
+    shell: /bin/bash --login -o pipefail
+    # Specify the Xcode version to use
+    macos:
+      xcode: "10.1"
+
+    steps:
+      - checkout
+
+      - run:
+          name: Set Ruby version
+          command: echo "ruby-2.4" > ~/.ruby-version
+
+      # Try to restore installed Gems
+      - restore_cache:
+          keys:
+            - v1-gems-{{ checksum "Gemfile.lock" }}
+            - v1-gems-
+      - run: bundle check || bundle install --path=vendor/bundle --jobs 4 --retry 3
+      - save_cache:
+          key: v1-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Try to restore CocoaPods dependencies
+      - restore_cache:
+          keys:
+            - v2-pods-{{ checksum "Podfile.lock" }}
+            - v2-pods-
+      - run: bundle exec pod check || curl -sS https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run: bundle exec pod check || bundle exec pod install --verbose
+      - save_cache:
+          key: v2-pods-{{ checksum "Podfile.lock" }}
+          paths:
+            - Pods
+
+      - run:
+          name: Build and run tests
+          command: bundle exec fastlane $FASTLANE_LANE
+
+      - store_artifacts:
+          path: output
+
+      - store_test_results:
+          path: output/scan
