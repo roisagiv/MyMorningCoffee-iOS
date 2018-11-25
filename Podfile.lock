@@ -16,6 +16,7 @@ PODS:
   - FirebaseDatabase (5.0.3):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
+  - Freedom (2.2.0)
   - GoogleUtilities/Environment (5.3.6)
   - GoogleUtilities/Logger (5.3.6):
     - GoogleUtilities/Environment
@@ -54,6 +55,11 @@ PODS:
   - "MaterialComponents/AppBar+TypographyThemer (70.0.0)":
     - MaterialComponents/AppBar
     - "MaterialComponents/NavigationBar+TypographyThemer"
+  - MaterialComponents/BottomSheet (70.0.0):
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/ShapeLibrary
+    - MaterialComponents/private/Shapes
   - MaterialComponents/ButtonBar (70.0.0):
     - MaterialComponents/Buttons
     - MaterialComponents/private/Application
@@ -137,7 +143,12 @@ PODS:
     - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/Icons/ic_reorder (70.0.0):
     - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/KeyboardWatcher (70.0.0):
+    - MaterialComponents/private/Application
   - MaterialComponents/private/Math (70.0.0)
+  - MaterialComponents/private/ShapeLibrary (70.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Shapes
   - MaterialComponents/private/Shapes (70.0.0):
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
@@ -234,10 +245,9 @@ PODS:
   - RxWebKit (0.3.7):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - SwiftDate (5.0.13)
-  - SwiftFormat/CLI (0.35.7)
+  - SwiftFormat/CLI (0.35.8)
   - SwiftHEXColors (1.1.2)
-  - SwiftLint (0.28.1)
+  - SwiftLint (0.28.2)
   - SwiftMoment (0.7)
   - Swinject (2.5.0)
 
@@ -247,12 +257,14 @@ DEPENDENCIES:
   - EarlGrey (= 1.15.0)
   - Fakery (= 3.4.0)
   - Firebase/Database (= 5.13.0)
+  - Freedom (= 2.2.0)
   - Keys (from `Pods/CocoaPodsKeys`)
   - MaterialComponents/ActivityIndicator (= 70.0.0)
   - "MaterialComponents/ActivityIndicator+ColorThemer (= 70.0.0)"
   - MaterialComponents/AppBar (= 70.0.0)
   - "MaterialComponents/AppBar+ColorThemer (= 70.0.0)"
   - "MaterialComponents/AppBar+TypographyThemer (= 70.0.0)"
+  - MaterialComponents/BottomSheet (= 70.0.0)
   - MaterialComponents/Cards (= 70.0.0)
   - "MaterialComponents/Cards+ColorThemer (= 70.0.0)"
   - MaterialComponents/Collections (= 70.0.0)
@@ -280,10 +292,9 @@ DEPENDENCIES:
   - RxSwift (= 4.4.0)
   - RxSwiftUtilities (= 2.1.0)
   - RxWebKit (= 0.3.7)
-  - SwiftDate (= 5.0.13)
-  - SwiftFormat/CLI (= 0.35.7)
+  - SwiftFormat/CLI (= 0.35.8)
   - SwiftHEXColors (= 1.1.2)
-  - SwiftLint (= 0.28.1)
+  - SwiftLint (= 0.28.2)
   - SwiftMoment (= 0.7)
   - Swinject (= 2.5.0)
 
@@ -298,6 +309,7 @@ SPEC REPOS:
     - Firebase
     - FirebaseCore
     - FirebaseDatabase
+    - Freedom
     - GoogleUtilities
     - GRDB.swift
     - iOSSnapshotTestCase
@@ -326,7 +338,6 @@ SPEC REPOS:
     - RxSwift
     - RxSwiftUtilities
     - RxWebKit
-    - SwiftDate
     - SwiftFormat
     - SwiftHEXColors
     - SwiftLint
@@ -347,6 +358,7 @@ SPEC CHECKSUMS:
   Firebase: 6df9a6114bc9f106a98fe83d5438d4d9833c2019
   FirebaseCore: fba2bfaa691c49028309b92e4dd37cc4b5512fbe
   FirebaseDatabase: e2bcbc106adc4b11a2da3ec2eb63c0c4a44f2f54
+  Freedom: b8579f8b5d912b5b78c04dc0898c073edd9deb2f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   GRDB.swift: 225cf9c1354753e92e20c2a1fa2912b924c9da6e
   iOSSnapshotTestCase: 711379b19f69a22c131527df862352c877c2773c
@@ -376,13 +388,12 @@ SPEC CHECKSUMS:
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   RxSwiftUtilities: b486df7454cc867c3ea626ce24110511159e7044
   RxWebKit: e39e220919e5e24546c837f5f60689036a1e5920
-  SwiftDate: f4aea5fa9dee812485f34041121a4cbde01b0dee
-  SwiftFormat: d97eadc55d4e02d04cf1f03b8a2d6ff5b6cdb2fd
+  SwiftFormat: 5af0a2c27175163c317c88b00ae7b6f971a7822a
   SwiftHEXColors: 7f9f7e6bdce888d821e11749279733e5ddff5f51
-  SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
+  SwiftLint: f1629ae733b64e9cad20052de01d1debd5b640e7
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
 
-PODFILE CHECKSUM: 364a44de8b50cc50307c83e5d00166f95b7d5d8e
+PODFILE CHECKSUM: ed9e6417846d9f35cfe53748e9242ddd4bb7b068
 
 COCOAPODS: 1.5.3

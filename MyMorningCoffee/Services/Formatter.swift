@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftDate
 import SwiftMoment
 
 protocol Formatter {
@@ -18,11 +17,5 @@ class DefaultFormatter: Formatter {
   func relativeFromNow(date: Date) -> String {
     let momentDate = moment(date)
     return momentDate.fromNow()
-  }
-}
-
-class SwiftDateFormatter: Formatter {
-  func relativeFromNow(date: Date) -> String {
-    return date.toRelative(style: RelativeFormatter.twitterStyle())
   }
 }

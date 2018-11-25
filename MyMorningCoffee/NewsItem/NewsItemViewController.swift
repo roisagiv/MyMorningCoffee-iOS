@@ -6,6 +6,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
+import Freedom
 import MaterialComponents
 import RxSwift
 import RxWebKit
@@ -46,17 +47,17 @@ class NewsItemViewController: UIViewController {
   }
 
   private func setupAppBar() {
-    view.addSubview(appBar.view)
+    if parent != nil {
+      appBar.inferTopSafeAreaInsetFromViewController = true
+    }
     appBar.useAdditionalSafeAreaInsetsForWebKitScrollViews = true
+    appBar.headerView.minMaxHeightIncludesSafeArea = false
+    appBar.isTopLayoutGuideAdjustmentEnabled = true
     appBar.topLayoutGuideViewController = self
-    appBar.didMove(toParentViewController: self)
-    appBar.navigationBar.title = itemTitle
-    let backButton = UIBarButtonItem(title: "",
-                                     style: .done,
-                                     target: self,
-                                     action: #selector(back))
-    backButton.image = MDCIcons.imageFor_ic_arrow_back()
-    appBar.navigationBar.backItem = backButton
+    appBar.headerView.shiftBehavior = .enabled
+    appBar.headerView.delegate = self
+
+    addChildViewController(appBar)
 
     progressView.progress = 1
     progressView.backwardProgressAnimationMode = .animate
@@ -71,13 +72,28 @@ class NewsItemViewController: UIViewController {
     Theme.apply(to: progressView)
     Theme.apply(to: appBar)
     setNeedsStatusBarAppearanceUpdate()
+
+    var frame: CGRect = appBar.view.frame
+    frame.origin.x = 0
+    frame.size.width = appBar.parent?.view.bounds.size.width ?? 0
+    appBar.view.frame = frame
+    view.addSubview(appBar.view)
+    appBar.didMove(toParentViewController: self)
+
+    let moreOptionsButton = UIBarButtonItem(
+      image: Icons.moreOptions(),
+      style: .done,
+      target: self,
+      action: #selector(onMoreOptionsClicked)
+    )
+    appBar.navigationBar.rightBarButtonItem = moreOptionsButton
   }
 
   private func setupWebView() {
     let config = WKWebViewConfiguration()
     let webView = WKWebView(frame: view.bounds, configuration: config)
     webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    webView.scrollView.delegate = self
+    webView.scrollView.delegate = appBar
     view.addSubview(webView)
 
     self.webView = webView
@@ -88,8 +104,29 @@ class NewsItemViewController: UIViewController {
     navigationController?.setNavigationBarHidden(true, animated: false)
   }
 
-  @objc private func back() {
-    navigationController?.popViewController(animated: true)
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    appBar.updateTopLayoutGuide()
+  }
+
+  @objc private func onMoreOptionsClicked() {
+    let menu = NewsItemMoreMenuViewController { [weak self] action in
+      switch action {
+      case .openWith:
+        guard let url = self?.url, let `self` = self else {
+          return
+        }
+
+        let activities = Freedom.browsers()
+        let vc = UIActivityViewController(activityItems: [url], applicationActivities: activities)
+        self.present(vc, animated: true, completion: nil)
+        return
+      }
+    }
+    let bottomSheet = MDCBottomSheetController(contentViewController: menu)
+    bottomSheet.trackingScrollView = menu.tableView
+    bottomSheet.dismissOnBackgroundTap = true
+    present(bottomSheet, animated: true, completion: nil)
   }
 }
 
@@ -124,6 +161,27 @@ extension NewsItemViewController: UIScrollViewDelegate {
 
   override var childViewControllerForStatusBarStyle: UIViewController? {
     return appBar
+  }
+}
+
+extension NewsItemViewController: MDCFlexibleHeaderViewDelegate {
+  func flexibleHeaderViewNeedsStatusBarAppearanceUpdate(_: MDCFlexibleHeaderView) {
+    setNeedsStatusBarAppearanceUpdate()
+  }
+
+  func flexibleHeaderViewFrameDidChange(_ headerView: MDCFlexibleHeaderView) {
+    if let backButton = appBar.navigationBar.backItem,
+      let backButtonImage = MDCIcons.imageFor_ic_arrow_back() {
+      let minValue: CGFloat = 76
+      let maxValue: CGFloat = 100
+      let value = max(headerView.scrollPhaseValue, minValue)
+      let alpha: CGFloat = (value - minValue) / (maxValue - minValue)
+
+      backButton.image = Images.imageWithAlpha(backButtonImage, alpha: alpha)
+      appBar.navigationBar.rightBarButtonItem?.image = Images.imageWithAlpha(
+        Icons.moreOptions(), alpha: alpha
+      )
+    }
   }
 }
 

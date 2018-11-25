@@ -83,7 +83,7 @@ class Injector {
       container.register(ImageLoader.self) { _ in NukeImageLoader() }
 
       // Formatter
-      container.register(Formatter.self) { _ in SwiftDateFormatter() }
+      container.register(Formatter.self) { _ in DefaultFormatter() }
 
       // Router
       container.register(Router.self) { _ in Router() }

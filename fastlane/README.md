@@ -26,6 +26,11 @@ Description of what the lane does
 fastlane ios test
 ```
 run all tests
+### ios test_no_build
+```
+fastlane ios test_no_build
+```
+run all tests (skip build)
 
 ----
 

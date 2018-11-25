@@ -95,6 +95,7 @@ class TopNewsViewController: UICollectionViewController {
   private func setupAppBar() {
     view.addSubview(appBar.view)
     appBar.headerView.trackingScrollView = collectionView
+    addChildViewController(appBar)
     appBar.didMove(toParentViewController: self)
     appBar.navigationBar.title = "Top Bar"
 

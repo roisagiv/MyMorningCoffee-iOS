@@ -1,7 +1,7 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.28.1"
-pod "SwiftFormat/CLI", "0.35.7"
+pod "SwiftLint", "0.28.2"
+pod "SwiftFormat/CLI", "0.35.8"
 
 plugin "cocoapods-keys", {
   :project => "MyMorningCoffee",
@@ -55,8 +55,10 @@ target "MyMorningCoffee" do
   pod "MaterialComponents/ProgressView+ColorThemer", $MaterialComponents
   pod "MaterialComponents/ActivityIndicator", $MaterialComponents
   pod "MaterialComponents/ActivityIndicator+ColorThemer", $MaterialComponents
+  pod "MaterialComponents/BottomSheet", $MaterialComponents
   pod "MaterialComponents/schemes/Color", $MaterialComponents
   pod "MaterialComponents/schemes/Typography", $MaterialComponents
+
   pod "MaterialDesignSymbol", "2.3.0"
 
   # Fake Data
@@ -64,10 +66,12 @@ target "MyMorningCoffee" do
 
   # Dates
   pod "SwiftMoment", "0.7"
-  pod "SwiftDate", "5.0.13"
 
   # Acknowledgements
   pod "AcknowList", "1.7"
+
+  # Deep Link
+  pod "Freedom", "2.2.0"
 
   # Debug
   pod "netfox", "1.13.0", :configurations => ["Debug"]
