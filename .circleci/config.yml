@@ -1,8 +1,5 @@
 # iOS CircleCI 2.0 configuration file
 
-xcode_version: &xcode_version 10.1
-iphone_name: &iphone_name iPhone X
-
 version: 2
 jobs:
   build-and-test:
@@ -13,7 +10,7 @@ jobs:
     shell: /bin/bash --login -o pipefail
     # Specify the Xcode version to use
     macos:
-      xcode: "10.1"
+      xcode: "10.1.0"
 
     steps:
       - checkout
@@ -54,3 +51,9 @@ jobs:
 
       - store_test_results:
           path: output/scan
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build-and-test
