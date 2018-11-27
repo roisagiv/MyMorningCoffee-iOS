@@ -19,4 +19,12 @@ class Images {
     UIGraphicsEndImageContext()
     return image!
   }
+
+  class func imageWithAlpha(_ image: UIImage, alpha: CGFloat) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+    image.draw(at: CGPoint.zero, blendMode: .normal, alpha: alpha)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return newImage!
+  }
 }

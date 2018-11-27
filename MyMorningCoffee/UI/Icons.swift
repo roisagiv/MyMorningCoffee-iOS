@@ -9,11 +9,30 @@
 import MaterialDesignSymbol
 
 struct Icons {
-  static func settings(size: CGSize) -> UIImage {
+  private static let defaultSize = CGSize(width: 24, height: 24)
+  private static let defaultColor = Theme.textColor
+
+  static func settings(size: CGSize = defaultSize, color: UIColor = defaultColor) -> UIImage {
     return image(
       from: MaterialDesignIcon.settings48px,
       size: size,
-      color: Theme.tintTextColor
+      color: color
+    )
+  }
+
+  static func moreOptions(size: CGSize = defaultSize, color: UIColor = defaultColor) -> UIImage {
+    return image(
+      from: MaterialDesignIcon.moreHoriz48px,
+      size: size,
+      color: color
+    )
+  }
+
+  static func openWith(size: CGSize = defaultSize, color: UIColor = defaultColor) -> UIImage {
+    return image(
+      from: MaterialDesignIcon.launch48px,
+      size: size,
+      color: color
     )
   }
 

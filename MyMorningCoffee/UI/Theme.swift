@@ -71,6 +71,8 @@ struct Theme {
 
   static var tintTextColor: UIColor = Color.secondary.asUIColor()
 
+  static var textColor: UIColor = Color.black.asUIColor()
+
   static var placeHolderImage: UIImage = Images.imageWithColor(color: Color.placeHolder.asUIColor())
 
   static func apply(to appBar: MDCAppBarViewController) {

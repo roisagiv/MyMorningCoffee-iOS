@@ -15,6 +15,8 @@
 
 default_platform(:ios)
 
+devices = ["iPhone X"]
+
 platform :ios do
   before_all do
     ensure_xcode_version(version: "10.1")
@@ -30,7 +32,16 @@ platform :ios do
   desc "run all tests"
   lane :test do
     scan(
-      devices: ["iPhone X", "iPhone SE"],
+      devices: devices,
+    )
+  end
+
+  desc "run all tests (skip build)"
+  lane :test_no_build do
+    scan(
+      devices: devices,
+      test_without_building: true,
+      derived_data_path: "DerivedData",
     )
   end
 end

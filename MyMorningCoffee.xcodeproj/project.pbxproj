@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BA5E4C2F2521773F4EA36B6 /* Pods_MyMorningCoffeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B8D99F3067C4EF9EF3048 /* Pods_MyMorningCoffeeTests.framework */; };
+		5F02237421AB27ED00802796 /* NewsItemMoreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02237321AB27ED00802796 /* NewsItemMoreMenuViewController.swift */; };
 		5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */; };
 		5F13B35F2198B12E00FB1BF4 /* NewsItemViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F13B35E2198B12E00FB1BF4 /* NewsItemViewControllerSpec.swift */; };
 		5F13B3612198B2FE00FB1BF4 /* Hurricane-Utah-Wikipedia.html in Resources */ = {isa = PBXBuildFile; fileRef = 5F13B3602198B2FE00FB1BF4 /* Hurricane-Utah-Wikipedia.html */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		187AD5BEB80992E922F99624 /* Pods-MyMorningCoffeeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.release.xcconfig"; sourceTree = "<group>"; };
+		5F02237321AB27ED00802796 /* NewsItemMoreMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemMoreMenuViewController.swift; sourceTree = "<group>"; };
 		5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewController.swift; sourceTree = "<group>"; };
 		5F13B35E2198B12E00FB1BF4 /* NewsItemViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemViewControllerSpec.swift; sourceTree = "<group>"; };
 		5F13B3602198B2FE00FB1BF4 /* Hurricane-Utah-Wikipedia.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Hurricane-Utah-Wikipedia.html"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */,
+				5F02237321AB27ED00802796 /* NewsItemMoreMenuViewController.swift */,
 			);
 			path = NewsItem;
 			sourceTree = "<group>";
@@ -426,8 +429,6 @@
 			buildConfigurationList = 5F49F1242126029F0071DB49 /* Build configuration list for PBXNativeTarget "MyMorningCoffee" */;
 			buildPhases = (
 				C7114E465B85441117B50DAE /* [CP] Check Pods Manifest.lock */,
-				E8EB66B031366AEA522F1006 /* [CP-User] SwiftFormat */,
-				B188C440D26CA615FCEEF027 /* [CP-User] SwiftLint */,
 				5F49F1032126029D0071DB49 /* Sources */,
 				5F49F1042126029D0071DB49 /* Frameworks */,
 				5F49F1052126029D0071DB49 /* Resources */,
@@ -545,6 +546,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
+				"${BUILT_PRODUCTS_DIR}/Freedom/Freedom.framework",
 				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
@@ -565,7 +567,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxWebKit/RxWebKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -579,6 +580,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Freedom.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
@@ -599,7 +601,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxWebKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -665,25 +666,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B188C440D26CA615FCEEF027 /* [CP-User] SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP-User] SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-			showEnvVarsInLog = 0;
-		};
 		C7114E465B85441117B50DAE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -700,25 +682,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E8EB66B031366AEA522F1006 /* [CP-User] SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP-User] SwiftFormat";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"${SRCROOT}/MyMorningCoffee\" \"${SRCROOT}/MyMorningCoffeeTests\" \"--config\" \".swiftformat\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -749,6 +712,7 @@
 				5F6ABF87212CAC4100060690 /* DatabaseMigrations.swift in Sources */,
 				5F84856E219755B0001B94D2 /* Router.swift in Sources */,
 				5F6ABF83212C9A6E00060690 /* NewsItemRecord.swift in Sources */,
+				5F02237421AB27ED00802796 /* NewsItemMoreMenuViewController.swift in Sources */,
 				5F577215212DE742009C9E37 /* Environment.swift in Sources */,
 				5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */,
 				5FC574C32128B04100A49664 /* CardImageView.swift in Sources */,
