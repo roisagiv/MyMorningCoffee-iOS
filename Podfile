@@ -76,6 +76,8 @@ target "MyMorningCoffee" do
   # Debug
   pod "netfox", "1.13.0", :configurations => ["Debug"]
 
+=begin
+
   script_phase :name => "SwiftFormat",
                :script => '"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" "${SRCROOT}/MyMorningCoffee" "${SRCROOT}/MyMorningCoffeeTests" "--config" ".swiftformat"',
                :execution_position => :before_compile
@@ -83,6 +85,8 @@ target "MyMorningCoffee" do
   script_phase :name => "SwiftLint",
                :script => '"${PODS_ROOT}/SwiftLint/swiftlint"',
                :execution_position => :before_compile
+
+=end
 
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
