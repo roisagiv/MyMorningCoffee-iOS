@@ -1,5 +1,6 @@
-excluded:
-  - Pods
+included:
+  - MyMorningCoffee
+  - MyMorningCoffeeTests
 
 identifier_name:
   excluded: # excluded via string array
