@@ -11,11 +11,11 @@ import Nimble
 import Quick
 import Result
 import RxBlocking
-import RxNimble
 import RxSwift
 
 class NewsItemsGRDBDatabaseSpec: QuickSpec {
-  // swiftlint:disable:next function_body_length
+  // swiftlint:disable force_try
+  // swiftlint:disable function_body_length
   override func spec() {
     describe("Initial dataset") {
       it("does not override existing row") {
@@ -28,7 +28,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           expect(database.save(item: NewsItemRecord(
             id: id
           )).error).to(beNil())
-          expect(database.all()).first.to(haveCount(1))
+          expect { try! database.all().toBlocking().first() }.to(haveCount(1))
 
           // second save
           expect(database.save(

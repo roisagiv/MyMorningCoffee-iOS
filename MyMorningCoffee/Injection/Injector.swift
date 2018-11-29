@@ -7,86 +7,62 @@
 //
 
 import AlamofireNetworkActivityLogger
+import Firebase
 import GRDB
+import Keys
+import RxSwift
 import Swinject
 
 class Injector {
   static var topNewsViewModel: TopNewsViewModelType {
+    let operationQueue = OperationQueue()
+    operationQueue.qualityOfService = .background
+    operationQueue.name = "TopNewsViewModel"
+    operationQueue.maxConcurrentOperationCount = 5
+    let scheduler = OperationQueueScheduler(
+      operationQueue: operationQueue
+    )
+
     return TopNewsViewModel(
-      hackerNewsService: container.resolve(HackerNewsService.self)!,
-      scraperService: container.resolve(ScraperService.self)!,
-      newsItemDatabase: container.resolve(NewsItemsDatabase.self)!,
-      formatter: container.resolve(Formatter.self)!
+      hackerNewsService: assembler.resolver.resolve(HackerNewsService.self)!,
+      scraperService: assembler.resolver.resolve(ScraperService.self)!,
+      newsItemDatabase: assembler.resolver.resolve(NewsItemsDatabase.self)!,
+      formatter: assembler.resolver.resolve(Formatter.self)!,
+      scheduler: scheduler
     )
   }
 
   static var databaseWriter: DatabaseWriter {
-    return container.resolve(DatabaseWriter.self)!
+    return assembler.resolver.resolve(DatabaseWriter.self)!
   }
 
   static var imageLoader: ImageLoader {
-    return container.resolve(ImageLoader.self)!
+    return assembler.resolver.resolve(ImageLoader.self)!
   }
 
   static var formatter: Formatter {
-    return container.resolve(Formatter.self)!
+    return assembler.resolver.resolve(Formatter.self)!
   }
 
   static var router: Router {
-    return container.resolve(Router.self)!
+    return assembler.resolver.resolve(Router.self)!
   }
 
-  /* testable */ static var container: Container = Container()
-
-  class func configure() throws {
-    let log = Environment.log
-
-    if log {
-      NetworkActivityLogger.shared.startLogging()
-      NetworkActivityLogger.shared.level = .debug
-    }
-
-    container = Container { container in
-      // HackerNewsService
-      container.register(HackerNewsService.self) { _ in
-        return HackerNewsAlgoliaService(
-          provider: MoyaProviderFactory.create(log: log),
-          maxConcurrentOperationCount: 5
-        )
-      }
-
-      // ScraperService
-      container.register(ScraperService.self) { _ in
-        return MercuryWebParserScraperService(
-          provider: MoyaProviderFactory.create(log: log)
-        )
-      }
-
-      // NewsItemsDatabase
-      container.register(NewsItemsDatabase.self) { resolver in
-        return NewsItemsGRDBDatabase(databaseWriter: resolver.resolve(DatabaseWriter.self)!)
-      }
-
-      // DatabaseWriter
-      container.register(DatabaseWriter.self) { _ in
-        /*
-         do {
-         return try DatabaseFactory.create(log: log)
-         } catch {
-         return DatabaseFactory.createInMemory(log: log)
-         }
-         */
-        return DatabaseFactory.createInMemory(log: log)
-      }.inObjectScope(ObjectScope.container)
-
-      // ImageLoader
-      container.register(ImageLoader.self) { _ in NukeImageLoader() }
-
-      // Formatter
-      container.register(Formatter.self) { _ in DefaultFormatter() }
-
-      // Router
-      container.register(Router.self) { _ in Router() }
-    }
+  static var analyticsService: AnalyticsService {
+    return assembler.resolver.resolve(AnalyticsService.self)!
   }
+
+  static var remoteConfig: RemoteConfigType {
+    return assembler.resolver.resolve(RemoteConfigType.self)!
+  }
+
+  class func initialize() {
+    assembler.apply(assembly: PreConfigAssembly())
+  }
+
+  class func configure(remoteConfig _: RemoteConfigType) {
+    assembler.apply(assembly: PostConfigAssembly())
+  }
+
+  private static var assembler: Assembler = Assembler()
 }

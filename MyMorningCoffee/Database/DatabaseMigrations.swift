@@ -10,11 +10,18 @@ import GRDB
 
 class DatabaseMigrations {
   class func migrate(database: DatabaseWriter) throws {
+    #if DEBUG
+      try database.erase()
+      try database.vacuum()
+    #endif
     try migrator.migrate(database)
   }
 
   private static var migrator: DatabaseMigrator {
     var migrator = DatabaseMigrator()
+    #if DEBUG
+      migrator.eraseDatabaseOnSchemaChange = true
+    #endif
 
     migrator.registerMigration("v1.0") { database in
       try database.create(table: NewsItemRecord.databaseTableName) { table in

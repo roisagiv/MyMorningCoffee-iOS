@@ -9,21 +9,14 @@
 @testable import MyMorningCoffee
 import Nimble
 import Quick
-import RxNimble
+import RxBlocking
 import RxSwift
 
 class TopNewsViewModelSpec: QuickSpec {
-  // swiftlint:disable:next function_body_length
+  // swiftlint:disable function_body_length, force_try
   override func spec() {
     beforeEach {
       Fixtures.beforeEach()
-
-      do {
-        try Injector.configure()
-        try DatabaseMigrations.migrate(database: Injector.databaseWriter)
-      } catch {
-        fail(error.localizedDescription)
-      }
     }
 
     afterEach {
@@ -34,7 +27,7 @@ class TopNewsViewModelSpec: QuickSpec {
       it("should be empty at first") {
         let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
-        expect(items).first.to(beEmpty())
+        expect(try! items.toBlocking().first()).to(beEmpty())
       }
 
       it("should not be empty after reload") {
@@ -42,25 +35,24 @@ class TopNewsViewModelSpec: QuickSpec {
 
         let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
-        expect(items).first.to(beEmpty())
+        expect(try! items.toBlocking().first()).to(beEmpty())
 
         viewModel.refresh.onNext(())
-        expect(items.skip(1)).first.to(haveCount(500))
+        expect { try items.skip(1).toBlocking(timeout: 1.0).first() }.to(haveCount(500))
       }
 
       xit("should update after expanding an item") {
-        Fixtures.topStories()
-        Fixtures.storyItem()
         Fixtures.mercuryWebParser()
+        Fixtures.algoliaHackerNews()
 
         let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
-        expect(items).first.to(beEmpty())
+        expect(try! items.toBlocking().first()).to(beEmpty())
 
         let id: Int = 17_790_031
         viewModel.refresh.onNext(())
         do {
-          expect(items.skip(1)).first.to(haveCount(397))
+          expect(try! items.skip(1).toBlocking().first()).to(haveCount(397))
           viewModel.loadItem.onNext(id)
 
           let updatedItem = try items
@@ -83,6 +75,9 @@ class TopNewsViewModelSpec: QuickSpec {
     do {
       try DatabaseMigrations.migrate(database: sqlite)
     } catch {}
+
+    let scheduler = MainScheduler.instance
+
     return TopNewsViewModel(
       hackerNewsService: HackerNewsAlgoliaService(
         provider: MoyaProviderFactory.create(log: false),
@@ -92,7 +87,8 @@ class TopNewsViewModelSpec: QuickSpec {
         provider: MoyaProviderFactory.create(log: false)
       ),
       newsItemDatabase: NewsItemsGRDBDatabase(databaseWriter: sqlite),
-      formatter: StubFormatter()
+      formatter: StubFormatter(),
+      scheduler: scheduler
     )
   }
 }

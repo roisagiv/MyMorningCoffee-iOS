@@ -9,30 +9,37 @@
 #if DEBUG
   import netfox
 #endif
+import FirebasePerformance
 import RxSwift
 import UIKit
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+protocol AppDelegateType {
+  func remoteConfigDidFetch(remoteConfig: RemoteConfigType)
+}
+
+class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
   var window: UIWindow?
 
   func application(_: UIApplication,
                    didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // Start with off, may be turn on later, could not find configa
+    Performance.sharedInstance().isDataCollectionEnabled = false
+    Performance.sharedInstance().isInstrumentationEnabled = false
+
     #if DEBUG
-//      NFX.sharedInstance().start()
+      NFX.sharedInstance().start()
     #endif
+
     Theme.configure()
-    do {
-      try Injector.configure()
-      try DatabaseMigrations.migrate(database: Injector.databaseWriter)
-    } catch {
-      return false
-    }
+    Injector.initialize()
+
     let router = Injector.router
     let window = UIWindow(frame: UIScreen.main.bounds)
-    router.root(route: .topNews, window: window)
-    window.makeKeyAndVisible()
-
     self.window = window
+
+    router.root(route: .splash)
+
+    window.makeKeyAndVisible()
 
     #if TRACE_RESOURCES
       _ = Observable<Int>
@@ -41,6 +48,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           print("Resource count \(RxSwift.Resources.total)")
         })
     #endif
+
     return true
+  }
+
+  func remoteConfigDidFetch(remoteConfig: RemoteConfigType) {
+    let performanceEnabled = remoteConfig.analyticsEnabled
+    // Start with off, may be turn on later, could not find configa
+    Performance.sharedInstance().isDataCollectionEnabled = performanceEnabled
+    Performance.sharedInstance().isInstrumentationEnabled = performanceEnabled
+
+    Injector.configure(remoteConfig: remoteConfig)
   }
 }

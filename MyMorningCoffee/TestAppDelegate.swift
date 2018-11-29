@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestAppDelegate: UIResponder, UIApplicationDelegate {
+class TestAppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
   var window: UIWindow?
 
   func application(_: UIApplication,
@@ -23,14 +23,13 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   class func displayAsRoot(viewController: UIViewController) {
-    let appDelegate = UIApplication.shared.delegate as? TestAppDelegate
+    let appDelegate = UIApplication.shared.delegate
     let window = appDelegate?.window
-    window?.rootViewController = viewController
-    window?.makeKeyAndVisible()
+    window??.rootViewController = viewController
+    window??.makeKeyAndVisible()
   }
 
-  static var window: UIWindow? {
-    let appDelegate = UIApplication.shared.delegate as? TestAppDelegate
-    return appDelegate?.window
+  func remoteConfigDidFetch(remoteConfig _: RemoteConfigType) {
+    // nothing
   }
 }

@@ -98,25 +98,27 @@ class TopNewsViewModel: TopNewsViewModelType {
   private let formatter: Formatter
   private let activityIndicator = ActivityIndicator()
   private let disposeBag: DisposeBag
+  private let scheduler: ImmediateSchedulerType
 
+  // swiftlint:disable:next function_body_length
   init(
     hackerNewsService: HackerNewsService,
     scraperService: ScraperService,
     newsItemDatabase: NewsItemsDatabase,
-    formatter: Formatter
+    formatter: Formatter,
+    scheduler: ImmediateSchedulerType
   ) {
     self.hackerNewsService = hackerNewsService
     self.scraperService = scraperService
     self.newsItemDatabase = newsItemDatabase
     self.formatter = formatter
+    self.scheduler = scheduler
 
     disposeBag = DisposeBag()
 
     refreshSubject = PublishSubject<Void>()
     loadItemSubject = PublishSubject<Int>()
     scrapeItemSubject = PublishSubject<NewsItemRecord>()
-
-    let scheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .userInitiated)
 
     // Refresh
 

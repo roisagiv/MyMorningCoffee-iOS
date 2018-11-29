@@ -47,9 +47,12 @@ class TopNewsCellViewSpec: QuickSpec {
           loading: true
         )
         cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
+        Device.showView(cell)
 
+        print("before snapshot")
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
+        print("after snapshot")
       }
 
       it("should display basic state properly") {
@@ -67,6 +70,7 @@ class TopNewsCellViewSpec: QuickSpec {
           loading: false
         )
         cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
+        Device.showView(cell)
 
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
@@ -91,6 +95,7 @@ class TopNewsCellViewSpec: QuickSpec {
           loading: false
         )
         cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
+        Device.showView(cell)
 
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))

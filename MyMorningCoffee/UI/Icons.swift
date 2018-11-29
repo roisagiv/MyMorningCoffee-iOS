@@ -42,7 +42,7 @@ struct Icons {
       size: size.width
     )
     symbol.addAttribute(
-      attributeName: NSAttributedStringKey.foregroundColor,
+      attributeName: NSAttributedString.Key.foregroundColor,
       value: color
     )
     return symbol.image(size: size)
