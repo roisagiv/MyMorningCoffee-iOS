@@ -11,6 +11,7 @@ import UIKit
 
 class Router {
   enum Route {
+    case splash
     case topNews
     case item(url: URL, title: String)
     case settings
@@ -25,18 +26,26 @@ class Router {
           router: Injector.router
         )
       case let .item(url, title):
-        return NewsItemViewController.create(url: url, title: title)
+        let analyticsService = Injector.analyticsService
+        return NewsItemViewController.create(url: url, title: title, analyticsService: analyticsService)
 
       case .settings:
         return OpenSourceViewController()
+
+      case .splash:
+        return SplashViewController.create(
+          router: Injector.router,
+          remoteConfig: Injector.remoteConfig,
+          databaseWriter: Injector.databaseWriter
+        )
       }
     }
   }
 
-  func root(route: Route,
-            window: UIWindow?) {
+  func root(route: Route) {
     let vc = route.viewController()
-    window?.rootViewController = UINavigationController(rootViewController: vc)
+    let window = UIApplication.shared.delegate?.window
+    window??.rootViewController = UINavigationController(rootViewController: vc)
   }
 
   func navigate(to route: Route,

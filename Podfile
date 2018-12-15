@@ -1,12 +1,16 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.28.2"
-pod "SwiftFormat/CLI", "0.35.8"
+pod "SwiftLint", "0.29.1"
+pod "SwiftFormat/CLI", "0.35.9"
 
 plugin "cocoapods-keys", {
   :project => "MyMorningCoffee",
   :keys => [
     "MercuryWebParserKey",
+    "FirebaseGoogleAppID",
+    "FirebaseGCMSenderID",
+    "FirebaseProjectID",
+    "FirebaseClientID",
   ],
 }
 
@@ -34,14 +38,23 @@ target "MyMorningCoffee" do
   # UI
   pod "Reusable", "4.0.4"
   pod "Nuke", "7.5.1"
-  pod "SwiftHEXColors", "1.1.2"
+  pod "SwiftHEXColors", "1.2.0"
 
   # Firebase
-  $Firebase = "5.13.0"
+  $Firebase = "5.14.0"
+  pod "Firebase/Core", $Firebase
   pod "Firebase/Database", $Firebase
+  pod "Firebase/Analytics", $Firebase
+  pod "Firebase/ABTesting", $Firebase
+  pod "Firebase/Performance", $Firebase
+  pod "Firebase/RemoteConfig", $Firebase
+
+  # Crashlytics
+  pod "Fabric", "1.9.0"
+  pod "Crashlytics", "3.12.0"
 
   # Material.io
-  $MaterialComponents = "70.0.0"
+  $MaterialComponents = "72.2.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -68,13 +81,13 @@ target "MyMorningCoffee" do
   pod "SwiftMoment", "0.7"
 
   # Acknowledgements
-  pod "AcknowList", "1.7"
+  pod "AcknowList", "1.8"
 
   # Deep Link
   pod "Freedom", "2.2.0"
 
   # Debug
-  pod "netfox", "1.13.0", :configurations => ["Debug"]
+  pod "netfox", "1.14.0", :configurations => ["Debug"]
 
 =begin
 
@@ -88,12 +101,16 @@ target "MyMorningCoffee" do
 
 =end
 
+  script_phase :name => "Fabric",
+               :script => '"${PODS_ROOT}/Fabric/run"',
+               :execution_position => :after_compile,
+               :input_files => ['$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)']
+
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
 
     pod "Quick", "1.3.2"
     pod "Nimble", "7.3.1"
-    pod "RxNimble", "4.4.0"
     pod "OHHTTPStubs/Swift", "6.1.0"
     pod "RxBlocking", $Rx
     pod "EarlGrey", "1.15.0"
@@ -101,9 +118,9 @@ target "MyMorningCoffee" do
   end
 end
 
-DEFAULT_SWIFT_VERSION = "4.1"
+DEFAULT_SWIFT_VERSION = "4.2"
 
-POD_SWIFT_VERSION_MAP = {"AcknowList" => "4.2"}
+POD_SWIFT_VERSION_MAP = {"AcknowList" => "4.2", "SkeletonView" => "4.2"}
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

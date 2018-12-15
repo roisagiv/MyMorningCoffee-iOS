@@ -23,7 +23,7 @@ class TopNewsViewControllerSpec: QuickSpec {
           formatter: StubFormatter(),
           router: Router()
         )
-        TestAppDelegate.displayAsRoot(viewController: vc)
+        Device.showController(vc)
         expect(vc).toNot(beNil())
       }
     }

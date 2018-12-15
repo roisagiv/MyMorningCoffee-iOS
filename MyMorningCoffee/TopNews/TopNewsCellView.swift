@@ -53,8 +53,7 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
     imageLoader?.load(url: imageUrl, imageView: coverImageView)
   }
 
-  override func prepareForReuse() {
-    super.prepareForReuse()
+  private func clear() {
     titleLabel.text = nil
     captionLabel.text = nil
     descriptionLabel.text = nil
@@ -63,8 +62,14 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
     faviconImageView.image = nil
   }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    clear()
+  }
+
   override func awakeFromNib() {
     super.awakeFromNib()
+    clear()
 
     Theme.apply(to: self)
     Theme.apply(.headline6, to: titleLabel)

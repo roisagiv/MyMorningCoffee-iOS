@@ -86,17 +86,15 @@ class TopNewsViewController: UICollectionViewController {
   private func setupCollectionView() {
     collectionView?.register(cellType: TopNewsCellView.self)
     if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-      let size = CGSize(width: collectionView?.bounds.width ?? 0, height: TopNewsCellView.height)
-      layout.minimumLineSpacing = 80
-      layout.itemSize = size
+      Layout.apply(to: layout)
     }
   }
 
   private func setupAppBar() {
     view.addSubview(appBar.view)
     appBar.headerView.trackingScrollView = collectionView
-    addChildViewController(appBar)
-    appBar.didMove(toParentViewController: self)
+    addChild(appBar)
+    appBar.didMove(toParent: self)
     appBar.navigationBar.title = "Top Bar"
 
     Theme.apply(to: activityIndicator)
@@ -161,11 +159,11 @@ extension TopNewsViewController {
     }
   }
 
-  override var childViewControllerForStatusBarStyle: UIViewController? {
+  override var childForStatusBarStyle: UIViewController? {
     return appBar
   }
 
-  override var childViewControllerForStatusBarHidden: UIViewController? {
+  override var childForStatusBarHidden: UIViewController? {
     return appBar
   }
 }

@@ -14,10 +14,4 @@ private func delegateClassName() -> String? {
     NSStringFromClass(TestAppDelegate.self)
 }
 
-private let unsafeArgv = UnsafeMutableRawPointer(CommandLine.unsafeArgv)
-  .bindMemory(
-    to: UnsafeMutablePointer<Int8>.self,
-    capacity: Int(CommandLine.argc)
-  )
-
-_ = UIApplicationMain(CommandLine.argc, unsafeArgv, nil, delegateClassName())
+_ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, delegateClassName())

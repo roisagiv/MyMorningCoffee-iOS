@@ -20,6 +20,7 @@ class NewsItemViewController: UIViewController {
   fileprivate var itemTitle: String?
   private let disposeBag = DisposeBag()
   private let progressView = MDCProgressView(frame: CGRect.zero)
+  private var analyticsService: AnalyticsService?
 
   /* testable*/ var finishLoading: Bool = false
 
@@ -57,7 +58,7 @@ class NewsItemViewController: UIViewController {
     appBar.headerView.shiftBehavior = .enabled
     appBar.headerView.delegate = self
 
-    addChildViewController(appBar)
+    addChild(appBar)
 
     progressView.progress = 1
     progressView.backwardProgressAnimationMode = .animate
@@ -78,7 +79,7 @@ class NewsItemViewController: UIViewController {
     frame.size.width = appBar.parent?.view.bounds.size.width ?? 0
     appBar.view.frame = frame
     view.addSubview(appBar.view)
-    appBar.didMove(toParentViewController: self)
+    appBar.didMove(toParent: self)
 
     let moreOptionsButton = UIBarButtonItem(
       image: Icons.moreOptions(),
@@ -102,6 +103,7 @@ class NewsItemViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(true, animated: false)
+    analyticsService?.track(event: .newItemScreenView(url: url?.absoluteString ?? ""))
   }
 
   override func viewDidLayoutSubviews() {
@@ -159,7 +161,7 @@ extension NewsItemViewController: UIScrollViewDelegate {
     }
   }
 
-  override var childViewControllerForStatusBarStyle: UIViewController? {
+  override var childForStatusBarStyle: UIViewController? {
     return appBar
   }
 }
@@ -186,10 +188,11 @@ extension NewsItemViewController: MDCFlexibleHeaderViewDelegate {
 }
 
 extension NewsItemViewController {
-  class func create(url: URL, title: String) -> NewsItemViewController {
+  class func create(url: URL, title: String, analyticsService: AnalyticsService) -> NewsItemViewController {
     let vc = NewsItemViewController(nibName: nil, bundle: Bundle.main)
     vc.url = url
     vc.itemTitle = title
+    vc.analyticsService = analyticsService
     return vc
   }
 }

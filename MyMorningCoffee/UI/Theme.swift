@@ -86,6 +86,10 @@ struct Theme {
     appBar.isTopLayoutGuideAdjustmentEnabled = true
   }
 
+  static func apply(to viewController: UIViewController) {
+    viewController.view.backgroundColor = colorScheme.backgroundColor
+  }
+
   static func apply(to collectionView: UICollectionView?) {
     collectionView?.backgroundColor = colorScheme.backgroundColor
   }

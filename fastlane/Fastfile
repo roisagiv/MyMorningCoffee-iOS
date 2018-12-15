@@ -15,7 +15,7 @@
 
 default_platform(:ios)
 
-devices = ["iPhone X"]
+devices = ["iPhone X", "iPhone SE"]
 
 platform :ios do
   before_all do
@@ -32,7 +32,11 @@ platform :ios do
   desc "run all tests"
   lane :test do
     scan(
+      workspace: "MyMorningCoffee.xcworkspace",
+      scheme: "MyMorningCoffee",
       devices: devices,
+      disable_concurrent_testing: true,
+      clean: false,
     )
   end
 
