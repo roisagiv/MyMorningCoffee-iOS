@@ -61,6 +61,6 @@ extension NewsItemRecord: FetchableRecord, PersistableRecord, MutablePersistable
   }
 
   static var persistenceConflictPolicy = PersistenceConflictPolicy(
-    insert: .replace, update: .ignore
+    insert: .ignore, update: .replace
   )
 }
