@@ -145,7 +145,7 @@ class TopNewsViewModel: TopNewsViewModelType {
         }
       }
       .map { [unowned self] records in
-        self.newsItemDatabase.save(items: records)
+        self.newsItemDatabase.insert(items: records)
       }
       .subscribe()
       .disposed(by: disposeBag)
@@ -166,7 +166,7 @@ class TopNewsViewModel: TopNewsViewModelType {
         switch record.status {
         case .fetched:
           record.status = .scraping
-          _ = self.newsItemDatabase.save(item: record)
+          _ = self.newsItemDatabase.update(item: record)
           self.scrapeItemSubject.onNext(record)
 
         default:
@@ -184,7 +184,7 @@ class TopNewsViewModel: TopNewsViewModelType {
         }
         var scraped = record
         scraped.status = .scraping
-        _ = self.newsItemDatabase.save(item: scraped)
+        _ = self.newsItemDatabase.update(item: scraped)
         return self.scraperService.scrape(url: url)
           .catchErrorJustReturn(ScrapedItem.empty())
           .map { [scraped] scrapedItem in (scraped, scrapedItem) }
@@ -203,7 +203,7 @@ class TopNewsViewModel: TopNewsViewModelType {
           record.url = scraped.url
           record.status = .scraped
           record.domain = scraped.source
-          _ = self.newsItemDatabase.save(item: record)
+          _ = self.newsItemDatabase.update(item: record)
         default:
           return
         }

@@ -10,10 +10,6 @@ import GRDB
 
 class DatabaseMigrations {
   class func migrate(database: DatabaseWriter) throws {
-    #if DEBUG
-      try database.erase()
-      try database.vacuum()
-    #endif
     try migrator.migrate(database)
   }
 

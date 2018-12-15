@@ -6,6 +6,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
+import Fakery
 @testable import MyMorningCoffee
 import Nimble
 import Quick
@@ -25,13 +26,13 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           let database = NewsItemsGRDBDatabase(databaseWriter: db)
           let id = 500
           // first save
-          expect(database.save(item: NewsItemRecord(
+          expect(database.insert(items: [NewsItemRecord(
             id: id
-          )).error).to(beNil())
+          )]).error).to(beNil())
           expect { try! database.all().toBlocking().first() }.to(haveCount(1))
 
           // second save
-          expect(database.save(
+          expect(database.update(
             item: NewsItemRecord(
               id: id,
               time: Date(),
@@ -71,8 +72,31 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
             NewsItemRecord(id: $0)
           }
 
-          let result = database.save(items: records)
+          let result = database.insert(items: records)
           expect(result.error).to(beNil())
+        } catch {
+          fail(error.localizedDescription)
+        }
+      }
+      it("should keep existing items") {
+        do {
+          let db = DatabaseFactory.createInMemory()
+          try DatabaseMigrations.migrate(database: db)
+          let database = NewsItemsGRDBDatabase(databaseWriter: db)
+
+          let length = 500
+          var records = Array(0 ..< length).map {
+            NewsItemRecord(id: $0)
+          }
+
+          var result = database.insert(items: records)
+          expect(result.error).to(beNil())
+
+          records = self.fakeNewsItemRecords(count: length)
+          result = database.insert(items: records)
+          expect(result.error).to(beNil())
+          expect { try database.all().toBlocking().first() }
+            .to(satisfyAllOf(allPass { $0?.status == .empty }, haveCount(length)))
         } catch {
           fail(error.localizedDescription)
         }
@@ -90,7 +114,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           let records = Array(0 ... length).map {
             NewsItemRecord(id: $0)
           }
-          _ = database.save(items: records)
+          _ = database.insert(items: records)
 
           let result = try database.record(by: 5).toBlocking().first()!
           expect(result?.id).to(equal(5))
@@ -109,13 +133,28 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           let records = Array(0 ... length).map {
             NewsItemRecord(id: $0)
           }
-          _ = database.save(items: records)
+          _ = database.insert(items: records)
           let record = try database.record(by: 0).toBlocking().first()!
           expect(record).toNot(beNil())
         } catch {
           fail(error.localizedDescription)
         }
       }
+    }
+  }
+
+  private func fakeNewsItemRecords(count: Int) -> [NewsItemRecord] {
+    let faker = Faker()
+    return Array(0 ..< count).map {
+      NewsItemRecord(id: $0,
+                     time: Date(),
+                     timeRelative: nil,
+                     title: faker.lorem.words(),
+                     url: faker.internet.url(),
+                     subTitle: nil,
+                     imageUrl: nil,
+                     domain: faker.internet.domainName(),
+                     status: NewsItemRecord.Status.fetched)
     }
   }
 }
