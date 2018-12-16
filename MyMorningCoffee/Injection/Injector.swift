@@ -18,7 +18,7 @@ class Injector {
     let operationQueue = OperationQueue()
     operationQueue.qualityOfService = .background
     operationQueue.name = "TopNewsViewModel"
-    operationQueue.maxConcurrentOperationCount = 5
+    operationQueue.maxConcurrentOperationCount = 10
     let scheduler = OperationQueueScheduler(
       operationQueue: operationQueue
     )

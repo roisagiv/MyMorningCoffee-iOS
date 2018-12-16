@@ -42,7 +42,7 @@ enum Device {
   static func showController(_ viewController: UIViewController, window: UIWindow = UIWindow()) {
     let frame: CGRect
     let view: UIView = viewController.view
-    if view.frame.size.width > 0 && view.frame.size.height > 0 {
+    if view.frame.size.width > 0, view.frame.size.height > 0 {
       frame = CGRect(origin: .zero, size: view.frame.size)
     } else {
       frame = UIScreen.main.bounds

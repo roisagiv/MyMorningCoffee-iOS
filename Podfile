@@ -1,7 +1,8 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.29.1"
-pod "SwiftFormat/CLI", "0.35.9"
+pod "SwiftLint", "0.29.2"
+pod "SwiftFormat/CLI", "0.37.1"
+pod "IBLinter", "0.4.11"
 
 plugin "cocoapods-keys", {
   :project => "MyMorningCoffee",
@@ -39,9 +40,10 @@ target "MyMorningCoffee" do
   pod "Reusable", "4.0.4"
   pod "Nuke", "7.5.1"
   pod "SwiftHEXColors", "1.2.0"
+  pod "Skeleton", "0.3.1"
 
   # Firebase
-  $Firebase = "5.14.0"
+  $Firebase = "5.15.0"
   pod "Firebase/Core", $Firebase
   pod "Firebase/Database", $Firebase
   pod "Firebase/Analytics", $Firebase
@@ -54,7 +56,7 @@ target "MyMorningCoffee" do
   pod "Crashlytics", "3.12.0"
 
   # Material.io
-  $MaterialComponents = "72.2.0"
+  $MaterialComponents = "73.0.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -73,9 +75,6 @@ target "MyMorningCoffee" do
   pod "MaterialComponents/schemes/Typography", $MaterialComponents
 
   pod "MaterialDesignSymbol", "2.3.0"
-
-  # Fake Data
-  pod "Fakery", "3.4.0"
 
   # Dates
   pod "SwiftMoment", "0.7"
@@ -104,7 +103,7 @@ target "MyMorningCoffee" do
   script_phase :name => "Fabric",
                :script => '"${PODS_ROOT}/Fabric/run"',
                :execution_position => :after_compile,
-               :input_files => ['$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)']
+               :input_files => ["$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"]
 
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
@@ -115,12 +114,15 @@ target "MyMorningCoffee" do
     pod "RxBlocking", $Rx
     pod "EarlGrey", "1.15.0"
     pod "Nimble-Snapshots", "6.9.0"
+
+    # Fake Data
+    pod "Fakery", "3.4.0"
   end
 end
 
 DEFAULT_SWIFT_VERSION = "4.2"
 
-POD_SWIFT_VERSION_MAP = {"AcknowList" => "4.2", "SkeletonView" => "4.2"}
+POD_SWIFT_VERSION_MAP = {"Example" => "4.1"}
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
@@ -138,6 +140,7 @@ post_install do |installer|
         end
       end
     end
+
   end
 
   require "fileutils" # for acknowledgements

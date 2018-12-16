@@ -6,13 +6,15 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
-import UIKit
+import MaterialComponents
+import Reusable
+import Skeleton
 
-struct Layout {
-  static func apply(to layout: UICollectionViewFlowLayout) {
-    layout.minimumLineSpacing = 64
-    let width = layout.collectionView?.bounds.width ?? 0
-    let size = CGSize(width: width - 16, height: TopNewsCellView.height)
-    layout.itemSize = size
+class SplashSkeletonCellView: SkeletonCollectionViewCell, Reusable, NibLoadable {
+  static let height: CGFloat = 8 * 32
+
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    stopAnimation()
   }
 }
