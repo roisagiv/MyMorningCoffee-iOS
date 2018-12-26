@@ -228,10 +228,7 @@ class TopNewsViewModel: TopNewsViewModelType {
       publishedAtRelative: record.timeRelative,
       source: record.domain,
       sourceFavicon: favicon,
-      loading: [
-        NewsItemRecord.Status.fetching,
-        NewsItemRecord.Status.scraping
-      ].contains(record.status)
+      loading: record.status != .scraped
     )
   }
 

@@ -23,6 +23,7 @@ class TopNewsViewController: UICollectionViewController {
   fileprivate var imageLoader: ImageLoader?
   fileprivate var router: Router?
   fileprivate var formatter: Formatter?
+  private let scrollIdleSubject = BehaviorSubject<Bool>(value: true)
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,21 +34,79 @@ class TopNewsViewController: UICollectionViewController {
 
     navigationItem.title = "Top News"
 
+    if let collectionView = collectionView, let viewModel = viewModel {
+      let indexToFetch = Driver.merge(
+        collectionView.rx.prefetchItems.asDriver(onErrorJustReturn: []),
+        collectionView.rx.willDisplayCell.map { [$1] }.asDriver(onErrorJustReturn: [])
+      )
+      Driver.combineLatest(
+        indexToFetch.distinctUntilChanged(),
+        scrollIdleSubject.asDriver(onErrorJustReturn: true)
+      )
+      .withLatestFrom(viewModel.items) { ($0.0, $0.1, $1) }
+      .drive(onNext: { [unowned self] indexPaths, idle, items in
+        guard items.isEmpty == false, idle else {
+          return
+        }
+        indexPaths
+          .map { items[$0.row].id }
+          .forEach {
+            self.viewModel?.loadItem.onNext($0)
+          }
+      }).disposed(by: disposeBag)
+
+      collectionView.rx.modelSelected(TopNewsItem.self)
+        .subscribe(onNext: { [unowned self] item in
+          if let urlAsString = item.url, let url = URL(string: urlAsString) {
+            self.router?.navigate(to: .item(url: url, title: item.title), from: self.navigationController)
+          }
+        })
+        .disposed(by: disposeBag)
+
+      Observable.merge(collectionView.rx.willBeginDragging.asObservable())
+        .map { false }
+        .bind(to: scrollIdleSubject)
+        .disposed(by: disposeBag)
+
+      Observable.merge(collectionView.rx.didEndScrollingAnimation.asObservable(),
+                       collectionView.rx.didEndDecelerating.asObservable())
+        .map { true }
+        .bind(to: scrollIdleSubject)
+        .disposed(by: disposeBag)
+    }
+
+    viewModel?.refresh.onNext(())
+  }
+
+  private func setupCollectionView() {
+    collectionView?.register(cellType: TopNewsCellView.self)
+    collectionView?.register(cellType: SplashSkeletonCellView.self)
+
+    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+      Layout.apply(to: layout)
+    }
+    collectionView?.dataSource = nil
+
     let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
       configureCell: { [unowned self] _, collectionView, indexPath, item in
         self.viewModel?.loadItem.onNext(item.id)
 
-        let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
+        if item.loading {
+          let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
+          cell.startAnimation()
+          return cell
+        } else {
+          let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
 
-        cell.configure(item: item, imageLoader: self.imageLoader, formatter: self.formatter)
+          cell.configure(item: item, imageLoader: self.imageLoader, formatter: self.formatter)
 
-        return cell
+          return cell
+        }
       }
     )
     if let collectionView = collectionView, let viewModel = viewModel {
-      collectionView.dataSource = nil
       viewModel.items
-        .throttle(0.3)
+        .throttle(0.3, latest: true)
         .do(onNext: { [unowned self] items in
           if items.isEmpty {
             self.activityIndicator.startAnimating()
@@ -58,35 +117,6 @@ class TopNewsViewController: UICollectionViewController {
         .map { [TopNewsItemModel(model: "", items: $0)] }
         .drive(collectionView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
-
-      collectionView.rx.prefetchItems.distinctUntilChanged().withLatestFrom(viewModel.items) { ($0, $1) }
-        .subscribe(onNext: { [unowned self] indexPaths, items in
-          guard items.isEmpty == false else {
-            return
-          }
-          indexPaths
-            .map { items[$0.row].id }
-            .forEach {
-              self.viewModel?.loadItem.onNext($0)
-            }
-        }).disposed(by: disposeBag)
-
-      collectionView.rx.modelSelected(TopNewsItem.self)
-        .subscribe(onNext: { [unowned self] item in
-          if let urlAsString = item.url, let url = URL(string: urlAsString) {
-            self.router?.navigate(to: .item(url: url, title: item.title), from: self.navigationController)
-          }
-        })
-        .disposed(by: disposeBag)
-    }
-
-    viewModel?.refresh.onNext(())
-  }
-
-  private func setupCollectionView() {
-    collectionView?.register(cellType: TopNewsCellView.self)
-    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-      Layout.apply(to: layout)
     }
   }
 

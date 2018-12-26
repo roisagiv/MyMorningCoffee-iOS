@@ -25,8 +25,19 @@ platform :ios do
 
   desc "Description of what the lane does"
   lane :format do
-    sh "cd ..; ./Pods/SwiftLint/switflint autocorrect"
-    sh "cd ..; ./Pods/SwiftLint/switflint lint"
+    sh "cd ../; ./Pods/SwiftFormat/CommandLineTool/swiftformat MyMorningCoffee --config .swiftformat"
+
+    swiftlint(
+      mode: "autocorrect",
+      executable: "Pods/SwiftLint/swiftlint",
+      config_file: ".swiftlint.yml",
+    )
+
+    swiftlint(
+      mode: "lint",
+      executable: "Pods/SwiftLint/swiftlint",
+      config_file: ".swiftlint.yml",
+    )
   end
 
   desc "run all tests"

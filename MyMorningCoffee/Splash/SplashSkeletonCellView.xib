@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SplashSkeletonCellView" customModule="MyMorningCoffee" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-MS-mmj">
+                    <rect key="frame" x="16" y="8" width="368" height="384"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="71W-kq-1h0">
+                            <rect key="frame" x="0.0" y="0.0" width="368" height="24"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwo-Jm-yKy" customClass="GradientContainerView" customModule="Skeleton">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="HY8-Z6-NIR"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEj-zv-qqj" customClass="GradientContainerView" customModule="Skeleton">
+                                    <rect key="frame" x="28" y="8" width="308" height="8"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="98c-5f-bCh"/>
+                                <constraint firstItem="zwo-Jm-yKy" firstAttribute="height" secondItem="71W-kq-1h0" secondAttribute="height" id="9mE-Hd-hZ4"/>
+                                <constraint firstItem="wEj-zv-qqj" firstAttribute="top" secondItem="71W-kq-1h0" secondAttribute="top" constant="8" id="BCd-M7-rw7"/>
+                                <constraint firstAttribute="bottom" secondItem="wEj-zv-qqj" secondAttribute="bottom" constant="8" id="HBx-wy-e9m"/>
+                                <constraint firstItem="wEj-zv-qqj" firstAttribute="leading" secondItem="zwo-Jm-yKy" secondAttribute="trailing" constant="4" id="LHj-yZ-mbB"/>
+                                <constraint firstAttribute="trailing" secondItem="wEj-zv-qqj" secondAttribute="trailing" constant="32" id="Tt4-lK-yXK"/>
+                                <constraint firstItem="zwo-Jm-yKy" firstAttribute="centerY" secondItem="71W-kq-1h0" secondAttribute="centerY" id="Vt5-Hr-nqG"/>
+                                <constraint firstItem="zwo-Jm-yKy" firstAttribute="leading" secondItem="71W-kq-1h0" secondAttribute="leading" id="phW-cy-FuL"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoY-2j-EkY" customClass="GradientContainerView" customModule="Skeleton">
+                            <rect key="frame" x="0.0" y="32" width="368" height="208"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="208" id="AeC-FD-luB"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-wE-mGl">
+                            <rect key="frame" x="0.0" y="248" width="368" height="136"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="MFK-bH-uoH"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KTs-MS-mmj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="5ad-Kc-Aqi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KTs-MS-mmj" secondAttribute="trailing" constant="16" id="BhW-r6-Q4r"/>
+                <constraint firstItem="KTs-MS-mmj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="MMs-Zf-0lw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KTs-MS-mmj" secondAttribute="bottom" constant="8" id="cFB-q5-2Dm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="views" destination="RoY-2j-EkY" collectionClass="NSMutableArray" id="LO2-Gc-3hs"/>
+                <outletCollection property="views" destination="wEj-zv-qqj" collectionClass="NSMutableArray" id="sBR-Kn-DP5"/>
+                <outletCollection property="views" destination="zwo-Jm-yKy" collectionClass="NSMutableArray" id="whH-rN-guj"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -31,6 +31,7 @@ struct Theme {
     case secondaryDark = 0x4BA2C6
     case black = 0x000000
     case placeHolder = 0xF2F2F2
+    case placeHolderDark = 0xE5E5E5
 
     func asUIColor() -> UIColor {
       return UIColor(hex: rawValue)!
@@ -74,6 +75,8 @@ struct Theme {
   static var textColor: UIColor = Color.black.asUIColor()
 
   static var placeHolderImage: UIImage = Images.imageWithColor(color: Color.placeHolder.asUIColor())
+  static var placeHolderColor: UIColor = Color.placeHolder.asUIColor()
+  static var placeHolderDarkColor: UIColor = Color.placeHolderDark.asUIColor()
 
   static func apply(to appBar: MDCAppBarViewController) {
     MDCAppBarColorThemer.applyColorScheme(colorScheme, to: appBar)

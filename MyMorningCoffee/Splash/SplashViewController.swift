@@ -12,20 +12,21 @@ import FirebasePerformance
 import GRDB
 import MaterialComponents
 
-class SplashViewController: UIViewController {
+class SplashViewController: UICollectionViewController {
   private let appBar = MDCAppBarViewController()
   private var router: Router?
   private var remoteConfig: RemoteConfigType?
   private var databaseWriter: DatabaseWriter?
-  private let activityIndicator = MDCActivityIndicator()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    FirebaseConfiguration.shared.setLoggerLevel(.debug)
+
     Theme.apply(to: self)
+    Theme.apply(to: collectionView)
+
+    setupCollectionView()
     setupAppBar()
 
-    activityIndicator.startAnimating()
     if let remoteConfig = remoteConfig {
       remoteConfig.fetch(completionHandler: { [unowned self, remoteConfig] status, error in
         if status == .success {
@@ -55,21 +56,34 @@ class SplashViewController: UIViewController {
 
   private func setupAppBar() {
     Theme.apply(to: appBar)
+    appBar.headerView.trackingScrollView = collectionView
     view.addSubview(appBar.view)
     addChild(appBar)
     appBar.didMove(toParent: self)
     appBar.navigationBar.title = ""
+  }
 
-    Theme.apply(to: activityIndicator)
-    activityIndicator.sizeToFit()
-    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(activityIndicator)
-    activityIndicator.centerXAnchor.constraint(
-      equalTo: view.centerXAnchor
-    ).isActive = true
-    activityIndicator.centerYAnchor.constraint(
-      equalTo: view.centerYAnchor
-    ).isActive = true
+  private func setupCollectionView() {
+    collectionView?.register(cellType: SplashSkeletonCellView.self)
+    if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+      layout.minimumLineSpacing = 32
+      let width = layout.collectionView?.bounds.width ?? 0
+      let size = CGSize(width: width - 16, height: SplashSkeletonCellView.height)
+      layout.itemSize = size
+    }
+  }
+}
+
+extension SplashViewController {
+  override func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
+    cell.startAnimation()
+    return cell
+  }
+
+  override func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+    return 2
   }
 }
 
@@ -77,7 +91,7 @@ extension SplashViewController {
   class func create(router: Router,
                     remoteConfig: RemoteConfigType,
                     databaseWriter: DatabaseWriter) -> SplashViewController {
-    let vc = SplashViewController()
+    let vc = SplashViewController(collectionViewLayout: UICollectionViewFlowLayout())
     vc.router = router
     vc.remoteConfig = remoteConfig
     vc.databaseWriter = databaseWriter
