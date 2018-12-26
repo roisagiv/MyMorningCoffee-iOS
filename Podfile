@@ -1,7 +1,7 @@
 platform :ios, "11.4"
 
 pod "SwiftLint", "0.29.2"
-pod "SwiftFormat/CLI", "0.37.1"
+pod "SwiftFormat/CLI", "0.37.2"
 pod "IBLinter", "0.4.11"
 
 plugin "cocoapods-keys", {
@@ -38,7 +38,7 @@ target "MyMorningCoffee" do
 
   # UI
   pod "Reusable", "4.0.4"
-  pod "Nuke", "7.5.1"
+  pod "Nuke", "7.5.2"
   pod "SwiftHEXColors", "1.2.0"
   pod "Skeleton", "0.3.1"
 

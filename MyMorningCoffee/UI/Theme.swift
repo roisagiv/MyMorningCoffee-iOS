@@ -1,13 +1,14 @@
 //
 // My Morning Coffee
 //
-// Copyright © 2018 Roi Sagiv. All rights reserved.
+// Copyright © 2019 Roi Sagiv. All rights reserved.
 // This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
 import MaterialComponents
 import SwiftHEXColors
+import WebKit
 
 struct Theme {
   enum Typography {
@@ -106,7 +107,16 @@ struct Theme {
     cell.setShadowElevation(ShadowElevation(rawValue: 0), for: .normal)
     cell.setShadowElevation(ShadowElevation(rawValue: 0), for: .highlighted)
     cell.setShadowElevation(ShadowElevation(rawValue: 0), for: .selected)
+    cell.backgroundColor = colorScheme.backgroundColor
     cell.inkView.inkColor = .clear
+  }
+
+  static func apply(to cell: UICollectionViewCell) {
+    cell.backgroundColor = colorScheme.backgroundColor
+  }
+
+  static func apply(to webView: WKWebView) {
+    webView.backgroundColor = colorScheme.backgroundColor
   }
 
   static func apply(to progressView: MDCProgressView) {

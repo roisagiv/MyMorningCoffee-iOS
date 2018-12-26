@@ -965,6 +965,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F00838B21CF597E00DF9ABA /* MyMorningCoffee-Debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -972,6 +974,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F00838F21CF597E00DF9ABA /* MyMorningCoffee-Release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
