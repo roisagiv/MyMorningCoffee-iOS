@@ -59,4 +59,13 @@ platform :ios do
       derived_data_path: "DerivedData",
     )
   end
+
+  desc "generate app icon"
+  lane :assets do
+    appicon(
+      # appicon_image_file: "fastlane/metadata/app_icon.png",
+      appicon_devices: [:iphone, :ios_marketing],
+      appicon_path: "MyMorningCoffee/Assets.xcassets",
+    )
+  end
 end

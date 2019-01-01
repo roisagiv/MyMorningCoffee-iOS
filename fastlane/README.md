@@ -31,6 +31,11 @@ run all tests
 fastlane ios test_no_build
 ```
 run all tests (skip build)
+### ios assets
+```
+fastlane ios assets
+```
+generate app icon
 
 ----
 

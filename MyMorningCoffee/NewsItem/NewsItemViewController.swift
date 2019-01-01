@@ -1,7 +1,7 @@
 //
 // My Morning Coffee
 //
-// Copyright © 2018 Roi Sagiv. All rights reserved.
+// Copyright © 2019 Roi Sagiv. All rights reserved.
 // This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
@@ -28,6 +28,7 @@ class NewsItemViewController: UIViewController {
     super.viewDidLoad()
     setupWebView()
     setupAppBar()
+    Theme.apply(to: self)
 
     appBar.headerView.trackingScrollView = webView?.scrollView
 
@@ -97,6 +98,7 @@ class NewsItemViewController: UIViewController {
     webView.scrollView.delegate = appBar
     view.addSubview(webView)
 
+    Theme.apply(to: webView)
     self.webView = webView
   }
 
