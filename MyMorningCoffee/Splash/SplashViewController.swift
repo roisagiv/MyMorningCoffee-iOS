@@ -37,6 +37,7 @@ class SplashViewController: UICollectionViewController {
         do {
           if let databaseWriter = self.databaseWriter {
             try DatabaseMigrations.migrate(database: databaseWriter)
+            try DatabaseMigrations.trim(database: databaseWriter)
           }
         } catch {
           print("error with migration - \(error.localizedDescription)")
