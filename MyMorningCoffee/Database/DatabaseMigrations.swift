@@ -16,6 +16,20 @@ class DatabaseMigrations {
     try migrator.migrate(database)
   }
 
+  class func trim(database: DatabaseWriter) throws {
+    try database.write { db in
+      try db.execute("""
+      DELETE FROM \(NewsItemRecord.databaseTableName)
+      WHERE \(NewsItemRecord.Columns.id.name) < (
+          SELECT MIN(\(NewsItemRecord.Columns.id.name))
+          FROM (SELECT \(NewsItemRecord.Columns.id.name)
+                FROM \(NewsItemRecord.databaseTableName)
+                ORDER BY \(NewsItemRecord.Columns.id.name) DESC
+                LIMIT 500))
+      """)
+    }
+  }
+
   private static var migrator: DatabaseMigrator {
     var migrator = DatabaseMigrator()
     #if DEBUG

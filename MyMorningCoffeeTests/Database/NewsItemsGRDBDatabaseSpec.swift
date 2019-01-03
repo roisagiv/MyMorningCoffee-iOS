@@ -78,6 +78,7 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           fail(error.localizedDescription)
         }
       }
+
       it("should keep existing items") {
         do {
           let db = DatabaseFactory.createInMemory()
@@ -136,6 +137,37 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
           _ = database.insert(items: records)
           let record = try database.record(by: 0).toBlocking().first()!
           expect(record).toNot(beNil())
+        } catch {
+          fail(error.localizedDescription)
+        }
+      }
+    }
+
+    describe("db trimming") {
+      it("deletes older rows") {
+        do {
+          // arrange
+          let db = DatabaseFactory.createInMemory()
+          try DatabaseMigrations.migrate(database: db)
+          let database = NewsItemsGRDBDatabase(databaseWriter: db)
+
+          let length = 600
+          let records = Array(0 ..< length).map {
+            NewsItemRecord(id: $0)
+          }
+          _ = database.insert(items: records)
+
+          expect { try! database.all().toBlocking().first() }.to(haveCount(600))
+          expect { try database.record(by: 599).toBlocking().first()! }.toNot(beNil())
+          expect { try database.record(by: 0).toBlocking().first()! }.toNot(beNil())
+
+          // act
+          try DatabaseMigrations.trim(database: db)
+
+          // assert
+          expect { try! database.all().toBlocking().first() }.to(haveCount(500))
+          expect { try database.record(by: 599).toBlocking().first()! }.toNot(beNil())
+          expect { try database.record(by: 0).toBlocking().first()! }.to(beNil())
         } catch {
           fail(error.localizedDescription)
         }
