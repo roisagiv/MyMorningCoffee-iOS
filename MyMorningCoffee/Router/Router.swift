@@ -6,7 +6,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
-import AcknowList
+import MaterialComponents
 import UIKit
 
 class Router {
@@ -44,8 +44,11 @@ class Router {
 
   func root(route: Route) {
     let vc = route.viewController()
-    let window = UIApplication.shared.delegate?.window
-    window??.rootViewController = UINavigationController(rootViewController: vc)
+    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    let window = appDelegate?.window
+    let nc = MDCAppBarNavigationController(rootViewController: vc)
+    nc.delegate = appDelegate
+    window?.rootViewController = nc
   }
 
   func navigate(to route: Route,

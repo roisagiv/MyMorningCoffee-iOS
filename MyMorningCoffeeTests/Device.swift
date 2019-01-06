@@ -6,6 +6,8 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
+import MaterialComponents
+@testable import MyMorningCoffee
 import UIKit
 
 enum Device {
@@ -39,7 +41,8 @@ enum Device {
     Device.iPhoneX.name: Device.iPhoneX.size
   ]
 
-  static func showController(_ viewController: UIViewController, window: UIWindow = UIWindow()) {
+  @discardableResult
+  static func showController(_ viewController: UIViewController, window: UIWindow = UIWindow()) -> UIWindow {
     let frame: CGRect
     let view: UIView = viewController.view
     if view.frame.size.width > 0, view.frame.size.height > 0 {
@@ -54,6 +57,16 @@ enum Device {
     window.frame = frame
     window.makeKeyAndVisible()
     viewController.view.layoutIfNeeded()
+    return window
+  }
+
+  @discardableResult
+  static func showWithAppBar(_ viewController: UIViewController, window: UIWindow = UIWindow()) -> UIWindow {
+    let nc = MDCAppBarNavigationController(rootViewController: viewController)
+    if let appBar = nc.appBarViewController(for: viewController) {
+      Theme.apply(to: appBar)
+    }
+    return showController(nc, window: window)
   }
 
   static func showView(_ view: UIView, container: UIView = UIView()) {

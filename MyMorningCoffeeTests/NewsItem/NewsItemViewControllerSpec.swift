@@ -23,7 +23,7 @@ class NewsItemViewControllerSpec: QuickSpec {
           analyticsService: analytics
         )
 
-        Device.showController(vc)
+        Device.showWithAppBar(vc)
         expect(vc.finishLoading).toEventually(beTrue(), timeout: 20)
         RunLoop.main.run(until: Date().addingTimeInterval(1.0))
 

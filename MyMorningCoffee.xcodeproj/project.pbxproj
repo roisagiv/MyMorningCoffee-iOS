@@ -70,6 +70,7 @@
 		5F8485712197FC8D001B94D2 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */; };
 		5F8FDAC021AED51B0068E1EF /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FDABF21AED51B0068E1EF /* AnalyticsService.swift */; };
 		5F8FDAC621AFB6120068E1EF /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FDAC521AFB6120068E1EF /* AnalyticsEvent.swift */; };
+		5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9187A521E282F400D95CEA /* OpenSourceViewControllerSpec.swift */; };
 		5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */; };
 		5F92004F212C31B000E824E7 /* mercury-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F92004E212C31B000E824E7 /* mercury-response.json */; };
 		5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */; };
@@ -170,6 +171,7 @@
 		5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		5F8FDABF21AED51B0068E1EF /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		5F8FDAC521AFB6120068E1EF /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		5F9187A521E282F400D95CEA /* OpenSourceViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewControllerSpec.swift; sourceTree = "<group>"; };
 		5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderFactory.swift; sourceTree = "<group>"; };
 		5F92004E212C31B000E824E7 /* mercury-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "mercury-response.json"; sourceTree = "<group>"; };
 		5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsAlgoliaService.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				5F6ABF88212CAD6B00060690 /* Database */,
 				5F13B35D2198B11C00FB1BF4 /* NewsItem */,
 				5F43F8CD2129342C00BD62CC /* Services */,
+				5F9187A421E282D600D95CEA /* Settings */,
 				5FC8AF8E21B4FD6200BCB73C /* Splash */,
 				5F43F8C521292F9A00BD62CC /* Stubs */,
 				5F7A5A9C212EC05B00E49054 /* TopNews */,
@@ -468,6 +471,14 @@
 				5F8FDABF21AED51B0068E1EF /* AnalyticsService.swift */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		5F9187A421E282D600D95CEA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5F9187A521E282F400D95CEA /* OpenSourceViewControllerSpec.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		5F92004B212C2FEC00E824E7 /* Network */ = {
@@ -908,6 +919,7 @@
 				5F655E3F219BF639003E0B27 /* StubFormatter.swift in Sources */,
 				5FE6FD4F214D864600E596C3 /* Dates.swift in Sources */,
 				5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */,
+				5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */,
 				5F1C957A21B0768600175F07 /* StubAnalyticsService.swift in Sources */,
 				5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */,
 				5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */,

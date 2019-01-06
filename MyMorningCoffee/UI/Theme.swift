@@ -99,8 +99,12 @@ struct Theme {
   }
 
   static func apply(to cell: MDCCollectionViewTextCell) {
-    cell.textLabel?.font = typographyScheme.subtitle1
-    cell.detailTextLabel?.font = typographyScheme.subtitle2
+    if let textLabel = cell.textLabel {
+      apply(.subtitle1, to: textLabel)
+    }
+    if let detailTextLabel = cell.detailTextLabel {
+      apply(.subtitle1, to: detailTextLabel)
+    }
   }
 
   static func apply(to cell: MDCCardCollectionCell) {
@@ -135,7 +139,17 @@ struct Theme {
   }
 
   static func apply(_ typography: Typography, to label: UILabel, alpha: CGFloat = 1) {
-    var font: UIFont = label.font
+    label.font = font(of: typography)
+    label.textColor = Color.black.asUIColor().withAlphaComponent(alpha)
+  }
+
+  static func apply(_ typography: Typography, to textView: UITextView, alpha: CGFloat = 1) {
+    textView.font = font(of: typography)
+    textView.textColor = Color.black.asUIColor().withAlphaComponent(alpha)
+  }
+
+  private static func font(of typography: Typography) -> UIFont {
+    var font: UIFont
     switch typography {
     case .body1:
       font = typographyScheme.body1
@@ -156,7 +170,6 @@ struct Theme {
     case .headline6:
       font = typographyScheme.headline6
     }
-    label.font = font
-    label.textColor = Color.black.asUIColor().withAlphaComponent(alpha)
+    return font
   }
 }

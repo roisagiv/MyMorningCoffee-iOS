@@ -10,6 +10,7 @@
   import netfox
 #endif
 import FirebasePerformance
+import MaterialComponents
 import RxSwift
 import UIKit
 
@@ -59,5 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
     Performance.sharedInstance().isInstrumentationEnabled = performanceEnabled
 
     Injector.configure(remoteConfig: remoteConfig)
+  }
+}
+
+extension AppDelegate: MDCAppBarNavigationControllerDelegate {
+  func appBarNavigationController(_: MDCAppBarNavigationController,
+                                  willAdd appBarViewController: MDCAppBarViewController,
+                                  asChildOf _: UIViewController) {
+    Theme.apply(to: appBarViewController)
   }
 }
