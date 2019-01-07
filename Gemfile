@@ -5,7 +5,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem "cocoapods", "1.5.3"
-gem "cocoapods-keys", "2.0.6"
+gem "cocoapods-keys", "2.0.7"
 gem "cocoapods-check", "1.0.2"
 gem "synx", "0.2.1"
 gem "fastlane", "2.112.0"

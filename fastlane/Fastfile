@@ -26,6 +26,7 @@ platform :ios do
   desc "Description of what the lane does"
   lane :format do
     sh "cd ../; ./Pods/SwiftFormat/CommandLineTool/swiftformat MyMorningCoffee --config .swiftformat"
+    sh "cd ../; ./Pods/SwiftFormat/CommandLineTool/swiftformat MyMorningCoffeeTests --config .swiftformat"
 
     swiftlint(
       mode: "autocorrect",

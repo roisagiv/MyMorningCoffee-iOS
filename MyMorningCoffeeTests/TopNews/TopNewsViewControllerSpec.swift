@@ -23,7 +23,7 @@ class TopNewsViewControllerSpec: QuickSpec {
           formatter: StubFormatter(),
           router: Router()
         )
-        Device.showController(vc)
+        Device.showWithAppBar(vc)
         expect(vc).toNot(beNil())
       }
     }
