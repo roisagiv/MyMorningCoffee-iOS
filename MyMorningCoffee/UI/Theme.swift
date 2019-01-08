@@ -99,11 +99,17 @@ struct Theme {
   }
 
   static func apply(to cell: MDCCollectionViewTextCell) {
+    cell.backgroundColor = colorScheme.surfaceColor
+    cell.tintColor = colorScheme.onPrimaryColor
+
     if let textLabel = cell.textLabel {
       apply(.subtitle1, to: textLabel)
+      textLabel.textColor = colorScheme.onSurfaceColor
     }
+
     if let detailTextLabel = cell.detailTextLabel {
-      apply(.subtitle1, to: detailTextLabel)
+      apply(.body2, to: detailTextLabel)
+      detailTextLabel.textColor = colorScheme.onSurfaceColor.withAlphaComponent(0.5)
     }
   }
 
@@ -116,11 +122,15 @@ struct Theme {
   }
 
   static func apply(to cell: UICollectionViewCell) {
-    cell.backgroundColor = colorScheme.backgroundColor
+    cell.backgroundColor = colorScheme.surfaceColor
   }
 
   static func apply(to webView: WKWebView) {
     webView.backgroundColor = colorScheme.backgroundColor
+  }
+
+  static func apply(to toggle: UISwitch) {
+    toggle.onTintColor = colorScheme.secondaryColor
   }
 
   static func apply(to progressView: MDCProgressView) {

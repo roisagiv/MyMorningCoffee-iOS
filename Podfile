@@ -1,6 +1,6 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.29.2"
+pod "SwiftLint", "0.29.3"
 pod "SwiftFormat/CLI", "0.37.2"
 pod "IBLinter", "0.4.11"
 
@@ -25,6 +25,7 @@ target "MyMorningCoffee" do
   pod "RxDataSources", "3.1.0"
   pod "RxWebKit", "0.3.7"
   pod "RxSwiftUtilities", "2.1.0"
+  pod "Action", "3.9.1"
 
   # DI
   pod "Swinject", "2.5.0"
@@ -56,7 +57,7 @@ target "MyMorningCoffee" do
   pod "Crashlytics", "3.12.0"
 
   # Material.io
-  $MaterialComponents = "73.0.0"
+  $MaterialComponents = "73.1.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents

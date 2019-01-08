@@ -18,7 +18,7 @@ class PreConfigAssembly: Assembly {
     // DatabaseWriter
     container.register(DatabaseWriter.self) { _ in
       do {
-        return try DatabaseFactory.createInMemory(log: true)
+        return try DatabaseFactory.create(log: true)
       } catch {
         return DatabaseFactory.createInMemory(log: log)
       }
@@ -45,5 +45,8 @@ class PreConfigAssembly: Assembly {
 
       return FirebaseRemoteConfig(remoteConfig: RemoteConfig.remoteConfig())
     }.inObjectScope(.container)
+
+    // BuildIdentity
+    container.register(BuildIdentityServiceType.self) { _ in BuildIdentityService() }
   }
 }

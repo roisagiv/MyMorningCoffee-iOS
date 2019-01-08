@@ -7,6 +7,7 @@
 //
 
 import MaterialComponents
+import SafariServices
 import UIKit
 
 class Router {
@@ -15,6 +16,8 @@ class Router {
     case topNews
     case item(url: URL, title: String)
     case settings
+    case licenses
+    case iconAttribute
 
     func viewController() -> UIViewController {
       switch self {
@@ -30,7 +33,13 @@ class Router {
         return NewsItemViewController.create(url: url, title: title, analyticsService: analyticsService)
 
       case .settings:
+        return SettingsViewController.create(router: Injector.router)
+
+      case .licenses:
         return OpenSourceViewController()
+
+      case .iconAttribute:
+        return SFSafariViewController(url: URL(string: "https://www.flaticon.com")!)
 
       case .splash:
         return SplashViewController.create(
@@ -53,6 +62,12 @@ class Router {
 
   func navigate(to route: Route,
                 from navigationController: UINavigationController?) {
-    navigationController?.pushViewController(route.viewController(), animated: true)
+    let vc = route.viewController()
+    switch route {
+    case .iconAttribute:
+      navigationController?.present(vc, animated: true, completion: nil)
+    default:
+      navigationController?.pushViewController(route.viewController(), animated: true)
+    }
   }
 }
