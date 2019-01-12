@@ -11,11 +11,11 @@ import Nimble
 import Nimble_Snapshots
 import Quick
 
-class OpenSourceViewControllerSpec: QuickSpec {
+class SettingsViewControllerSpec: QuickSpec {
   override func spec() {
     describe("loadView") {
       it("should render correctly") {
-        let vc = OpenSourceViewController()
+        let vc = SettingsViewController.create(router: StubRouter())
         Device.showWithAppBar(vc)
 
         // expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
