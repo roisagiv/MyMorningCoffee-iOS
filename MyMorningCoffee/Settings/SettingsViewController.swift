@@ -91,7 +91,7 @@ class SettingsViewController: MDCCollectionViewController {
       return false
     }
 
-    return item?.navigational ?? false
+    return item?.clickable ?? false
   }
 
   class SettingsHeaderCell: MDCCollectionViewTextCell, Reusable {
@@ -132,9 +132,9 @@ class SettingsViewController: MDCCollectionViewController {
 }
 
 extension SettingsViewController {
-  class func create(router: Router) -> SettingsViewController {
+  class func create(viewModel: SettingsViewModelType, router: Router) -> SettingsViewController {
     let vc = SettingsViewController()
-    vc.viewModel = SettingsViewModel(buildIdentity: BuildIdentityService())
+    vc.viewModel = viewModel
     vc.router = router
     return vc
   }

@@ -20,7 +20,7 @@ class TopNewsViewController: UICollectionViewController {
 
   private let disposeBag = DisposeBag()
   fileprivate var viewModel: TopNewsViewModelType?
-  fileprivate var imageLoader: ImageLoader?
+  fileprivate var imageLoader: ImageLoaderType?
   fileprivate var router: Router?
   fileprivate var formatter: Formatter?
   private let scrollIdleSubject = BehaviorSubject<Bool>(value: true)
@@ -201,7 +201,7 @@ extension TopNewsViewController {
 extension TopNewsViewController {
   class func create(
     viewModel: TopNewsViewModelType,
-    imageLoader: ImageLoader,
+    imageLoader: ImageLoaderType,
     formatter: Formatter,
     router: Router
   ) -> TopNewsViewController {

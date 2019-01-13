@@ -24,7 +24,6 @@
 		5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B31932148610600A18D03 /* StubImageLoader.swift */; };
 		5F1C957A21B0768600175F07 /* StubAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C957921B0768600175F07 /* StubAnalyticsService.swift */; };
 		5F1C957D21B1DE2600175F07 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C957C21B1DE2600175F07 /* SplashViewController.swift */; };
-		5F1EEBEE21964FF300FB34B4 /* NukeImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */; };
 		5F23C182212B55D00030199A /* ScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C181212B55D00030199A /* ScraperService.swift */; };
 		5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */; };
 		5F23C186212B64630030199A /* MercuryWebParserScraperServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */; };
@@ -43,7 +42,7 @@
 		5F43F8D52129360100BD62CC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43F8D42129360100BD62CC /* main.swift */; };
 		5F457C6821484B3300409DF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6721484B3300409DF6 /* Device.swift */; };
 		5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */; };
-		5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6B21485DCC00409DF6 /* ImageLoader.swift */; };
+		5F457C6C21485DCC00409DF6 /* ImageLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F457C6B21485DCC00409DF6 /* ImageLoaderType.swift */; };
 		5F461124219E13070007AEC2 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */; };
 		5F461126219EEBD50007AEC2 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F461125219EEBD50007AEC2 /* Icons.swift */; };
 		5F461129219EEEF40007AEC2 /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F461128219EEEF40007AEC2 /* OpenSourceViewController.swift */; };
@@ -70,6 +69,7 @@
 		5F84856E219755B0001B94D2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F84856D219755B0001B94D2 /* Router.swift */; };
 		5F8485712197FC8D001B94D2 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */; };
 		5F87E17421E5C56000715B44 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F87E17321E5C56000715B44 /* SettingsViewModel.swift */; };
+		5F8DC5ED21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DC5EC21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift */; };
 		5F8FDAC021AED51B0068E1EF /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FDABF21AED51B0068E1EF /* AnalyticsService.swift */; };
 		5F8FDAC621AFB6120068E1EF /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8FDAC521AFB6120068E1EF /* AnalyticsEvent.swift */; };
 		5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9187A521E282F400D95CEA /* OpenSourceViewControllerSpec.swift */; };
@@ -125,7 +125,6 @@
 		5F1B31932148610600A18D03 /* StubImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubImageLoader.swift; sourceTree = "<group>"; };
 		5F1C957921B0768600175F07 /* StubAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnalyticsService.swift; sourceTree = "<group>"; };
 		5F1C957C21B1DE2600175F07 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeImageLoader.swift; sourceTree = "<group>"; };
 		5F23C181212B55D00030199A /* ScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScraperService.swift; sourceTree = "<group>"; };
 		5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperService.swift; sourceTree = "<group>"; };
 		5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperServiceSpec.swift; sourceTree = "<group>"; };
@@ -144,7 +143,7 @@
 		5F43F8D42129360100BD62CC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5F457C6721484B3300409DF6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		5F457C6921484C6600409DF6 /* TopNewsCellViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellViewSpec.swift; sourceTree = "<group>"; };
-		5F457C6B21485DCC00409DF6 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		5F457C6B21485DCC00409DF6 /* ImageLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderType.swift; sourceTree = "<group>"; };
 		5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		5F461125219EEBD50007AEC2 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		5F461128219EEEF40007AEC2 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		5F84856D219755B0001B94D2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		5F87E17321E5C56000715B44 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		5F8DC5EC21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsItemsDatabaseType.swift; sourceTree = "<group>"; };
 		5F8FDABF21AED51B0068E1EF /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		5F8FDAC521AFB6120068E1EF /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		5F9187A521E282F400D95CEA /* OpenSourceViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -300,6 +300,7 @@
 				5F1C957921B0768600175F07 /* StubAnalyticsService.swift */,
 				5F655E3E219BF639003E0B27 /* StubFormatter.swift */,
 				5F1B31932148610600A18D03 /* StubImageLoader.swift */,
+				5F8DC5EC21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift */,
 				5FC8AF9321B4FE4900BCB73C /* StubRemoteConfig.swift */,
 				5FC8AF9121B4FDE100BCB73C /* StubRouter.swift */,
 				5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */,
@@ -320,9 +321,8 @@
 				5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */,
 				5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */,
 				5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */,
-				5F457C6B21485DCC00409DF6 /* ImageLoader.swift */,
+				5F457C6B21485DCC00409DF6 /* ImageLoaderType.swift */,
 				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
-				5F1EEBED21964FF300FB34B4 /* NukeImageLoader.swift */,
 				5F23C181212B55D00030199A /* ScraperService.swift */,
 			);
 			path = Services;
@@ -887,13 +887,12 @@
 				5F5654C421B5950800908612 /* Layout.swift in Sources */,
 				5F43F8CC2129311C00BD62CC /* HackerNewsService.swift in Sources */,
 				5FE6B1F421BDB784006D144D /* PostConfigAssembly.swift in Sources */,
-				5F457C6C21485DCC00409DF6 /* ImageLoader.swift in Sources */,
+				5F457C6C21485DCC00409DF6 /* ImageLoaderType.swift in Sources */,
 				5FE6FD51214D99A800E596C3 /* Images.swift in Sources */,
 				5F56F3F721E3241500EDD306 /* SettingsViewController.swift in Sources */,
 				5F655E3D219BF3D2003E0B27 /* Formatter.swift in Sources */,
 				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
 				5F3A0A0421C6E19F00F87598 /* SplashSkeletonCellView.swift in Sources */,
-				5F1EEBEE21964FF300FB34B4 /* NukeImageLoader.swift in Sources */,
 				5F461129219EEEF40007AEC2 /* OpenSourceViewController.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
@@ -938,6 +937,7 @@
 				5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */,
 				5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */,
 				5F1C957A21B0768600175F07 /* StubAnalyticsService.swift in Sources */,
+				5F8DC5ED21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift in Sources */,
 				5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */,
 				5F457C6A21484C6600409DF6 /* TopNewsCellViewSpec.swift in Sources */,
 				5FC8AF9421B4FE4900BCB73C /* StubRemoteConfig.swift in Sources */,

@@ -143,6 +143,58 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
       }
     }
 
+    describe("clear") {
+      it("clears the items") {
+        do {
+          let db = DatabaseFactory.createInMemory()
+          try DatabaseMigrations.migrate(database: db)
+          let database = NewsItemsGRDBDatabase(databaseWriter: db)
+
+          let length = 500
+          let records = Array(0 ... length).map {
+            NewsItemRecord(id: $0)
+          }
+          _ = database.insert(items: records)
+
+          // act
+          _ = database.clear()
+
+          expect { try! database.all().toBlocking().first() }.to(haveCount(0))
+        } catch {
+          fail(error.localizedDescription)
+        }
+      }
+    }
+
+    describe("diskSize") {
+      it("returns the file size on disk") {
+        do {
+          let db = DatabaseFactory.createInMemory()
+          try DatabaseMigrations.migrate(database: db)
+          let database = NewsItemsGRDBDatabase(databaseWriter: db)
+
+          // act
+          var results = database.diskSize()
+          expect(results.value).to(equal(16384))
+
+          // arrange
+          let length = 500
+          let records = Array(0 ... length).map {
+            NewsItemRecord(id: $0)
+          }
+          _ = database.insert(items: records)
+
+          // act
+          results = database.diskSize()
+
+          // assert
+          expect(results.value).to(equal(40960))
+        } catch {
+          fail(error.localizedDescription)
+        }
+      }
+    }
+
     describe("db trimming") {
       it("deletes older rows") {
         do {

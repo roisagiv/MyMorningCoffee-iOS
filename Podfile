@@ -1,7 +1,7 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.29.3"
-pod "SwiftFormat/CLI", "0.37.2"
+pod "SwiftLint", "0.30.0"
+pod "SwiftFormat/CLI", "0.37.3"
 pod "IBLinter", "0.4.11"
 
 plugin "cocoapods-keys", {
@@ -38,7 +38,7 @@ target "MyMorningCoffee" do
   pod "RxGRDB", "0.13.0"
 
   # UI
-  pod "Reusable", "4.0.4"
+  pod "Reusable", "4.0.5"
   pod "Nuke", "7.5.2"
   pod "SwiftHEXColors", "1.2.0"
   pod "Skeleton", "0.3.1"
@@ -57,7 +57,7 @@ target "MyMorningCoffee" do
   pod "Crashlytics", "3.12.0"
 
   # Material.io
-  $MaterialComponents = "73.1.0"
+  $MaterialComponents = "74.0.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -110,7 +110,7 @@ target "MyMorningCoffee" do
     inherit! :search_paths
 
     pod "Quick", "1.3.2"
-    pod "Nimble", "7.3.1"
+    pod "Nimble", "7.3.2"
     pod "OHHTTPStubs/Swift", "6.1.0"
     pod "RxBlocking", $Rx
     pod "EarlGrey", "1.15.0"

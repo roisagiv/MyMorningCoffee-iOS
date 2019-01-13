@@ -26,9 +26,18 @@ class Injector {
     return TopNewsViewModel(
       hackerNewsService: assembler.resolver.resolve(HackerNewsService.self)!,
       scraperService: assembler.resolver.resolve(ScraperService.self)!,
-      newsItemDatabase: assembler.resolver.resolve(NewsItemsDatabase.self)!,
+      newsItemDatabase: assembler.resolver.resolve(NewsItemsDatabaseType.self)!,
       formatter: assembler.resolver.resolve(Formatter.self)!,
       scheduler: scheduler
+    )
+  }
+
+  static var settingsViewModel: SettingsViewModelType {
+    return SettingsViewModel(
+      buildIdentity: assembler.resolver.resolve(BuildIdentityServiceType.self)!,
+      analyticsService: analyticsService,
+      database: assembler.resolver.resolve(NewsItemsDatabaseType.self)!,
+      imageLoader: imageLoader
     )
   }
 
@@ -36,8 +45,8 @@ class Injector {
     return assembler.resolver.resolve(DatabaseWriter.self)!
   }
 
-  static var imageLoader: ImageLoader {
-    return assembler.resolver.resolve(ImageLoader.self)!
+  static var imageLoader: ImageLoaderType {
+    return assembler.resolver.resolve(ImageLoaderType.self)!
   }
 
   static var formatter: Formatter {

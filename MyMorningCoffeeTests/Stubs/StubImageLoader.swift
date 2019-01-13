@@ -9,7 +9,7 @@
 @testable import MyMorningCoffee
 import UIKit
 
-class StubImageLoader: ImageLoader {
+class StubImageLoader: ImageLoaderType {
   func load(url: String?, imageView: UIImageView) {
     guard let url = url else {
       imageView.image = Images.imageWithColor(color: .red)
