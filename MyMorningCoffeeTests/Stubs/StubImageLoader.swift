@@ -29,4 +29,8 @@ class StubImageLoader: ImageLoaderType {
   func cancel(imageView: UIImageView) {
     imageView.image = nil
   }
+
+  func clearCache() {
+    // nothing
+  }
 }

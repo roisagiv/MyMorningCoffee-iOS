@@ -31,7 +31,8 @@ class SettingsViewControllerSpec: QuickSpec {
     return SettingsViewModel(
       buildIdentity: BuildIdentityService(),
       analyticsService: StubAnalyticsService(),
-      database: StubNewsItemDatabase()
+      database: StubNewsItemDatabase(),
+      imageLoader: StubImageLoader()
     )
   }
 }
