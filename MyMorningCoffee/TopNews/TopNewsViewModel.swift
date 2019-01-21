@@ -94,7 +94,7 @@ class TopNewsViewModel: TopNewsViewModelType {
 
   private let hackerNewsService: HackerNewsService
   private let scraperService: ScraperService
-  private let newsItemDatabase: NewsItemsDatabase
+  private let newsItemDatabase: NewsItemsDatabaseType
   private let formatter: Formatter
   private let activityIndicator = ActivityIndicator()
   private let disposeBag: DisposeBag
@@ -104,7 +104,7 @@ class TopNewsViewModel: TopNewsViewModelType {
   init(
     hackerNewsService: HackerNewsService,
     scraperService: ScraperService,
-    newsItemDatabase: NewsItemsDatabase,
+    newsItemDatabase: NewsItemsDatabaseType,
     formatter: Formatter,
     scheduler: ImmediateSchedulerType
   ) {

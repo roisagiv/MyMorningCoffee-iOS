@@ -33,7 +33,10 @@ class Router {
         return NewsItemViewController.create(url: url, title: title, analyticsService: analyticsService)
 
       case .settings:
-        return SettingsViewController.create(router: Injector.router)
+        return SettingsViewController.create(
+          viewModel: Injector.settingsViewModel,
+          router: Injector.router
+        )
 
       case .licenses:
         return OpenSourceViewController()

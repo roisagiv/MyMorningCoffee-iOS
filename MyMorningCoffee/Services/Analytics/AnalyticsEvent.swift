@@ -18,6 +18,8 @@ enum AnalyticsEvent: AnalyticsEventType {
 
   case topNewsScreenView
   case newItemScreenView(url: String)
+  case settingsScreenView
+  case settingsItemClicked(item: String)
 
   var name: String {
     return "screen_\(self)"

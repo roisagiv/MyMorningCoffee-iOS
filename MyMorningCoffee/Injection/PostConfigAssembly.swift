@@ -15,7 +15,7 @@ class PostConfigAssembly: Assembly {
 
     // HackerNewsService
     container.register(HackerNewsService.self) { _ in
-      return HackerNewsAlgoliaService(
+      HackerNewsAlgoliaService(
         provider: MoyaProviderFactory.create(log: log),
         maxConcurrentOperationCount: 15
       )
@@ -23,18 +23,18 @@ class PostConfigAssembly: Assembly {
 
     // ScraperService
     container.register(ScraperService.self) { _ in
-      return MercuryWebParserScraperService(
+      MercuryWebParserScraperService(
         provider: MoyaProviderFactory.create(log: log)
       )
     }
 
-    // NewsItemsDatabase
-    container.register(NewsItemsDatabase.self) { resolver in
-      return NewsItemsGRDBDatabase(databaseWriter: resolver.resolve(DatabaseWriter.self)!)
+    // NewsItemsDatabaseType
+    container.register(NewsItemsDatabaseType.self) { resolver in
+      NewsItemsGRDBDatabase(databaseWriter: resolver.resolve(DatabaseWriter.self)!)
     }
 
     // ImageLoader
-    container.register(ImageLoader.self) { _ in NukeImageLoader() }
+    container.register(ImageLoaderType.self) { _ in NukeImageLoader() }
 
     // Formatter
     container.register(Formatter.self) { _ in DefaultFormatter() }

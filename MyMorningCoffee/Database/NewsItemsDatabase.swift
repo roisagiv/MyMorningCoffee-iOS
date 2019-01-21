@@ -12,14 +12,16 @@ import Result
 import RxGRDB
 import RxSwift
 
-protocol NewsItemsDatabase {
+protocol NewsItemsDatabaseType {
   func update(item: NewsItemRecord) -> Result<Void, AnyError>
   func insert(items: [NewsItemRecord]) -> Result<Void, AnyError>
   func all() -> Observable<[NewsItemRecord]>
   func record(by id: Int) -> Single<NewsItemRecord?>
+  func clear() -> Result<Void, AnyError>
+  func diskSize() -> Result<Int, AnyError>
 }
 
-class NewsItemsGRDBDatabase: NewsItemsDatabase {
+class NewsItemsGRDBDatabase: NewsItemsDatabaseType {
   private let databaseWriter: DatabaseWriter
 
   init(databaseWriter: DatabaseWriter) {
@@ -60,5 +62,34 @@ class NewsItemsGRDBDatabase: NewsItemsDatabase {
     return NewsItemRecord.filter(key: id).rx.fetchOne(in: databaseWriter)
       .take(1)
       .asSingle()
+  }
+
+  func clear() -> Result<Void, AnyError> {
+    do {
+      _ = try databaseWriter.write { database in
+        try NewsItemRecord.deleteAll(database)
+      }
+      return .success(())
+    } catch {
+      return .failure(AnyError(error))
+    }
+  }
+
+  func diskSize() -> Result<Int, AnyError> {
+    do {
+      let size: Int = try databaseWriter.read { database in
+        if let row = try Row.fetchOne(
+          database,
+          "SELECT page_count * page_size as size FROM pragma_page_count(), pragma_page_size();"
+        ) {
+          return row["size"] as Int
+        } else {
+          return 0
+        }
+      }
+      return Result.success(size)
+    } catch {
+      return .failure(AnyError(error))
+    }
   }
 }

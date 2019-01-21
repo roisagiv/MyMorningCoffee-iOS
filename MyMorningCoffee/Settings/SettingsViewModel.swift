@@ -62,6 +62,15 @@ struct SettingsViewModelSection {
         return false
       }
     }
+
+    var clickable: Bool {
+      switch self {
+      case .clearCache:
+        return true
+      default:
+        return self.navigational
+      }
+    }
   }
 
   enum SettingsItemSection: String {
@@ -115,10 +124,17 @@ class SettingsViewModel: SettingsViewModelType {
       switch settings {
       case .licenses:
         self.routeSubject.onNext(Router.Route.licenses)
-        break
+
       case .appIcon:
         self.routeSubject.onNext(Router.Route.iconAttribute)
-        break
+
+      case let .analytics(enabled):
+        self.analyticsService.setEnabled(enabled)
+
+      case .clearCache:
+        _ = self.database.clear()
+        self.imageLoader.clearCache()
+
       default:
         break
       }
@@ -127,10 +143,21 @@ class SettingsViewModel: SettingsViewModelType {
   }()
 
   private let buildIdentity: BuildIdentityServiceType
+  private let analyticsService: AnalyticsService
+  private let database: NewsItemsDatabaseType
+  private let imageLoader: ImageLoaderType
   private let routeSubject: PublishSubject<Router.Route>
 
-  init(buildIdentity: BuildIdentityServiceType) {
+  init(
+    buildIdentity: BuildIdentityServiceType,
+    analyticsService: AnalyticsService,
+    database: NewsItemsDatabaseType,
+    imageLoader: ImageLoaderType
+  ) {
     self.buildIdentity = buildIdentity
+    self.analyticsService = analyticsService
+    self.database = database
+    self.imageLoader = imageLoader
     routeSubject = PublishSubject<Router.Route>()
     route = routeSubject.asDriver(onErrorJustReturn: .topNews)
   }

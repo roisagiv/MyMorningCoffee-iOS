@@ -21,9 +21,9 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
   static let height: CGFloat = 8 * 50
 
-  private var imageLoader: ImageLoader?
+  private var imageLoader: ImageLoaderType?
 
-  func configure(item: TopNewsItem, imageLoader: ImageLoader?, formatter _: Formatter?) {
+  func configure(item: TopNewsItem, imageLoader: ImageLoaderType?, formatter _: Formatter?) {
     self.imageLoader = imageLoader
 
     titleLabel.text = item.title
@@ -49,7 +49,7 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
     Theme.apply(to: captionLabel, disabled: item.loading)
   }
 
-  private func loadImage(loading: Bool, url: String?, imageLoader: ImageLoader?) {
+  private func loadImage(loading: Bool, url: String?, imageLoader: ImageLoaderType?) {
     guard loading == false, let url = url, let imageUrl = URL(string: url) else {
       coverImageView.image = Theme.placeHolderImage
       return

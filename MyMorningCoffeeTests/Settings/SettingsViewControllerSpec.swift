@@ -15,12 +15,24 @@ class SettingsViewControllerSpec: QuickSpec {
   override func spec() {
     describe("loadView") {
       it("should render correctly") {
-        let vc = SettingsViewController.create(router: StubRouter())
+        let vc = SettingsViewController.create(
+          viewModel: SettingsViewControllerSpec.createViewModel(),
+          router: StubRouter()
+        )
         Device.showWithAppBar(vc)
 
         // expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
         expect(vc).to(haveValidDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
       }
     }
+  }
+
+  class func createViewModel() -> SettingsViewModelType {
+    return SettingsViewModel(
+      buildIdentity: BuildIdentityService(),
+      analyticsService: StubAnalyticsService(),
+      database: StubNewsItemDatabase(),
+      imageLoader: StubImageLoader()
+    )
   }
 }
