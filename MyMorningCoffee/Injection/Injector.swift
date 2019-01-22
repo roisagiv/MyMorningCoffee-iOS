@@ -16,9 +16,9 @@ import Swinject
 class Injector {
   static var topNewsViewModel: TopNewsViewModelType {
     let operationQueue = OperationQueue()
-    operationQueue.qualityOfService = .background
-    operationQueue.name = "TopNewsViewModel"
-    operationQueue.maxConcurrentOperationCount = 10
+    operationQueue.qualityOfService = .userInitiated
+    operationQueue.name = String(describing: TopNewsViewModel.self)
+    operationQueue.maxConcurrentOperationCount = 5
     let scheduler = OperationQueueScheduler(
       operationQueue: operationQueue
     )

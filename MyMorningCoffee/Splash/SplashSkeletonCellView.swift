@@ -8,18 +8,24 @@
 
 import MaterialComponents
 import Reusable
-import Skeleton
 
-class SplashSkeletonCellView: SkeletonCollectionViewCell, Reusable, NibLoadable {
-  static let height: CGFloat = 8 * 32
+class SplashSkeletonCellView: MDCCollectionViewCell, Reusable, NibLoadable {
+  static let height: CGFloat = 9 * 32
+
+  @IBOutlet private var favicon: UIView!
+  @IBOutlet private var header: UIView!
+  @IBOutlet private var cover: UIView!
 
   override func prepareForReuse() {
     super.prepareForReuse()
-    stopAnimation()
   }
 
   override func awakeFromNib() {
     super.awakeFromNib()
     Theme.apply(to: self)
+  }
+
+  func placeHolders() -> [UIView] {
+    return [favicon, header, cover]
   }
 }

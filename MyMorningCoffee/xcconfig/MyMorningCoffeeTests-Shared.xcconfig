@@ -96,3 +96,14 @@ TARGETED_DEVICE_FAMILY = 1,2
 // setting if testing an application or other executable.
 
 TEST_HOST = $(BUILT_PRODUCTS_DIR)/MyMorningCoffee.app/MyMorningCoffee
+
+
+
+// Header Search Path
+//
+// This is a list of paths to folders to be searched by the
+// compiler for included or imported header files when compiling C,
+// Objective-C, C++, or Objective-C++. Paths are delimited by whitespace,
+// so any paths with spaces in them need to be properly quoted.
+
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Firebase/CoreOnly/Sources"
