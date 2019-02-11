@@ -13,7 +13,7 @@ import RxBlocking
 import RxSwift
 
 class TopNewsViewModelSpec: QuickSpec {
-  // swiftlint:disable function_body_length, force_try
+  // swiftlint:disable force_try
   override func spec() {
     beforeEach {
       Fixtures.beforeEach()
@@ -30,14 +30,13 @@ class TopNewsViewModelSpec: QuickSpec {
         expect(try! items.toBlocking().first()).to(beEmpty())
       }
 
-      it("should not be empty after reload") {
+      it("should not be empty after refresh") {
         Fixtures.algoliaHackerNews()
 
         let viewModel = self.createViewModel()
         let items = viewModel.items.asObservable()
         expect(try! items.toBlocking().first()).to(beEmpty())
-
-        viewModel.refresh.onNext(())
+        viewModel.refresh.execute(())
         expect { try items.skip(1).toBlocking(timeout: 1.0).first() }.to(haveCount(500))
       }
 
@@ -50,10 +49,10 @@ class TopNewsViewModelSpec: QuickSpec {
         expect(try! items.toBlocking().first()).to(beEmpty())
 
         let id: Int = 17_790_031
-        viewModel.refresh.onNext(())
+        viewModel.refresh.execute(())
         do {
           expect(try! items.skip(1).toBlocking().first()).to(haveCount(397))
-          viewModel.loadItem.onNext(id)
+          viewModel.loadItem.execute(id)
 
           let updatedItem = try items
             .map {

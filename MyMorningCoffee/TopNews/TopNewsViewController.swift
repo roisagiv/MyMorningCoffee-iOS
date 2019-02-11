@@ -7,9 +7,11 @@
 //
 
 import MaterialComponents
+import RHPlaceholder
 import RxCocoa
 import RxDataSources
 import RxSwift
+import RxSwiftExt
 import UIKit
 
 class TopNewsViewController: UICollectionViewController {
@@ -17,6 +19,7 @@ class TopNewsViewController: UICollectionViewController {
 
   fileprivate let appBar = MDCAppBarViewController()
   private let activityIndicator = MDCActivityIndicator()
+  private let placeHolderMarker = Placeholder()
 
   private let disposeBag = DisposeBag()
   fileprivate var viewModel: TopNewsViewModelType?
@@ -28,32 +31,26 @@ class TopNewsViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    Theme.apply(to: collectionView)
     setupAppBar()
     setupCollectionView()
 
-    navigationItem.title = "Top News"
-
     if let collectionView = collectionView, let viewModel = viewModel {
-      let indexToFetch = Driver.merge(
-        collectionView.rx.prefetchItems.asDriver(onErrorJustReturn: []),
-        collectionView.rx.willDisplayCell.map { [$1] }.asDriver(onErrorJustReturn: [])
+      let indexToFetch = Observable.merge(
+        collectionView.rx.prefetchItems.asObservable(),
+        collectionView.rx.willDisplayCell.map { [$1] }.asObservable()
       )
-      Driver.combineLatest(
-        indexToFetch.distinctUntilChanged(),
-        scrollIdleSubject.asDriver(onErrorJustReturn: true)
-      )
-      .withLatestFrom(viewModel.items) { ($0.0, $0.1, $1) }
-      .drive(onNext: { [unowned self] indexPaths, idle, items in
-        guard items.isEmpty == false, idle else {
-          return
+
+      indexToFetch.distinctUntilChanged()
+        .withLatestFrom(viewModel.items.asObservable()) { ($0, $1) }
+        .filter { $0.0.isNotEmpty }
+        .pausableBuffered(scrollIdleSubject, limit: 5)
+        .flatMap { indexPaths, items in
+          Driver.from(indexPaths.map { $0.row }.map { items[$0].id })
         }
-        indexPaths
-          .map { items[$0.row].id }
-          .forEach {
-            self.viewModel?.loadItem.onNext($0)
-          }
-      }).disposed(by: disposeBag)
+        .distinctUntilChanged()
+        .asDriver(onErrorJustReturn: 0)
+        .drive(viewModel.loadItem.inputs)
+        .disposed(by: disposeBag)
 
       collectionView.rx.modelSelected(TopNewsItem.self)
         .subscribe(onNext: { [unowned self] item in
@@ -63,22 +60,34 @@ class TopNewsViewController: UICollectionViewController {
         })
         .disposed(by: disposeBag)
 
-      Observable.merge(collectionView.rx.willBeginDragging.asObservable())
+      Observable.merge(collectionView.rx.willBeginDragging.asObservable(),
+                       collectionView.rx.didEndDragging.filter { $0 == true }.map { _ in () })
         .map { false }
         .bind(to: scrollIdleSubject)
         .disposed(by: disposeBag)
 
       Observable.merge(collectionView.rx.didEndScrollingAnimation.asObservable(),
-                       collectionView.rx.didEndDecelerating.asObservable())
+                       collectionView.rx.didEndDecelerating.asObservable(),
+                       collectionView.rx.didEndDragging.filter { $0 == false }.map { _ in () }.asObservable())
         .map { true }
         .bind(to: scrollIdleSubject)
         .disposed(by: disposeBag)
-    }
 
-    viewModel?.refresh.onNext(())
+      Driver.merge(
+        Driver.combineLatest(rx.displayed.asDriver(onErrorJustReturn: false), viewModel.items)
+          .filter { displayed, items in
+            items.isEmpty && displayed
+          }
+          .map { _, _ in () }, rx.firstTimeViewDidAppear.asDriver(onErrorJustReturn: ())
+      )
+      .drive(viewModel.refresh.inputs)
+      .disposed(by: disposeBag)
+    }
   }
 
   private func setupCollectionView() {
+    Theme.apply(to: collectionView)
+
     collectionView?.register(cellType: TopNewsCellView.self)
     collectionView?.register(cellType: SplashSkeletonCellView.self)
 
@@ -89,11 +98,12 @@ class TopNewsViewController: UICollectionViewController {
 
     let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
       configureCell: { [unowned self] _, collectionView, indexPath, item in
-        self.viewModel?.loadItem.onNext(item.id)
+//        self.viewModel?.loadItem.execute(item.id)
 
         if item.loading {
           let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
-          cell.startAnimation()
+          self.placeHolderMarker.register(cell.placeHolders())
+          self.placeHolderMarker.startAnimation()
           return cell
         } else {
           let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
@@ -121,11 +131,12 @@ class TopNewsViewController: UICollectionViewController {
   }
 
   private func setupAppBar() {
+    navigationItem.title = "Top News"
+
     view.addSubview(appBar.view)
     appBar.headerView.trackingScrollView = collectionView
     addChild(appBar)
     appBar.didMove(toParent: self)
-    appBar.navigationBar.title = "Top Bar"
 
     Theme.apply(to: activityIndicator)
     activityIndicator.sizeToFit()

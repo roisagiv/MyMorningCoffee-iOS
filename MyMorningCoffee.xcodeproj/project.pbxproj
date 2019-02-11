@@ -28,11 +28,8 @@
 		5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */; };
 		5F23C186212B64630030199A /* MercuryWebParserScraperServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */; };
 		5F2D394E21BA709400D30A51 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D394D21BA709400D30A51 /* RemoteConfigDefaults.plist */; };
-		5F3A09FE21C6DFAB00F87598 /* SkeletonAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A09FD21C6DFAB00F87598 /* SkeletonAnimatable.swift */; };
-		5F3A0A0021C6DFE500F87598 /* NSObject+AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A09FF21C6DFE500F87598 /* NSObject+AssociatedObject.swift */; };
 		5F3A0A0221C6E17400F87598 /* SplashSkeletonCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F3A0A0121C6E17400F87598 /* SplashSkeletonCellView.xib */; };
 		5F3A0A0421C6E19F00F87598 /* SplashSkeletonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A0A0321C6E19F00F87598 /* SplashSkeletonCellView.swift */; };
-		5F3A0A0621C6EA5000F87598 /* SkeletonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A0A0521C6EA5000F87598 /* SkeletonCollectionViewCell.swift */; };
 		5F43F8C721292FB500BD62CC /* top-stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F43F8C621292FB500BD62CC /* top-stories.json */; };
 		5F43F8C9212930F300BD62CC /* story.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F43F8C8212930F300BD62CC /* story.json */; };
 		5F43F8CC2129311C00BD62CC /* HackerNewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */; };
@@ -63,6 +60,7 @@
 		5F7600E821597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */; };
 		5F7600EA21597CD90038E998 /* hn.algolia.search_by_date.success.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */; };
 		5F77A2FA2144612600197926 /* TopNewsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */; };
+		5F77B3F321F6E83A0045ACE6 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F77B3F221F6E83A0045ACE6 /* UIViewController+Rx.swift */; };
 		5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */; };
 		5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9F212EC36A00E49054 /* Injector.swift */; };
 		5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5AA1212EC96A00E49054 /* Fixtures.swift */; };
@@ -129,11 +127,8 @@
 		5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperService.swift; sourceTree = "<group>"; };
 		5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebParserScraperServiceSpec.swift; sourceTree = "<group>"; };
 		5F2D394D21BA709400D30A51 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
-		5F3A09FD21C6DFAB00F87598 /* SkeletonAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonAnimatable.swift; sourceTree = "<group>"; };
-		5F3A09FF21C6DFE500F87598 /* NSObject+AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+AssociatedObject.swift"; sourceTree = "<group>"; };
 		5F3A0A0121C6E17400F87598 /* SplashSkeletonCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashSkeletonCellView.xib; sourceTree = "<group>"; };
 		5F3A0A0321C6E19F00F87598 /* SplashSkeletonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSkeletonCellView.swift; sourceTree = "<group>"; };
-		5F3A0A0521C6EA5000F87598 /* SkeletonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F43F8C621292FB500BD62CC /* top-stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "top-stories.json"; sourceTree = "<group>"; };
 		5F43F8C8212930F300BD62CC /* story.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = story.json; sourceTree = "<group>"; };
 		5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsService.swift; sourceTree = "<group>"; };
@@ -168,6 +163,7 @@
 		5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsAlgoliaServiceSpec.swift; sourceTree = "<group>"; };
 		5F7600E921597CD90038E998 /* hn.algolia.search_by_date.success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hn.algolia.search_by_date.success.json; sourceTree = "<group>"; };
 		5F77A2F92144612600197926 /* TopNewsViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewControllerSpec.swift; sourceTree = "<group>"; };
+		5F77B3F221F6E83A0045ACE6 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModelSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9F212EC36A00E49054 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		5F7A5AA1212EC96A00E49054 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
@@ -282,16 +278,6 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		5F3A09FC21C6DF0D00F87598 /* Skeleton */ = {
-			isa = PBXGroup;
-			children = (
-				5F3A09FF21C6DFE500F87598 /* NSObject+AssociatedObject.swift */,
-				5F3A09FD21C6DFAB00F87598 /* SkeletonAnimatable.swift */,
-				5F3A0A0521C6EA5000F87598 /* SkeletonCollectionViewCell.swift */,
-			);
-			path = Skeleton;
-			sourceTree = "<group>";
-		};
 		5F43F8C521292F9A00BD62CC /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				5F6ABF81212C9A3D00060690 /* Database */,
+				5F77B3F121F6E82B0045ACE6 /* Extensions */,
 				5F577213212DE733009C9E37 /* Injection */,
 				5F92004B212C2FEC00E824E7 /* Network */,
 				5F84856F2197FC80001B94D2 /* NewsItem */,
@@ -446,6 +433,14 @@
 				5F6ABF89212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		5F77B3F121F6E82B0045ACE6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F77B3F221F6E83A0045ACE6 /* UIViewController+Rx.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5F7A5A9C212EC05B00E49054 /* TopNews */ = {
@@ -550,7 +545,6 @@
 			children = (
 				5FC574C12128B02D00A49664 /* Components */,
 				5FB247F421275CF400BFE636 /* Fonts */,
-				5F3A09FC21C6DF0D00F87598 /* Skeleton */,
 				5F461125219EEBD50007AEC2 /* Icons.swift */,
 				5FE6FD50214D99A800E596C3 /* Images.swift */,
 				5F5654C321B5950800908612 /* Layout.swift */,
@@ -701,7 +695,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
 				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
@@ -722,16 +716,18 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RHPlaceholder/RHPlaceholder.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGRDB/RxGRDB.framework",
+				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxWebKit/RxWebKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Skeleton/Skeleton.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -761,16 +757,18 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RHPlaceholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGRDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxWebKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Skeleton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -780,7 +778,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2FE38EC28850E9370771EA14 /* [CP] Embed Pods Frameworks */ = {
@@ -789,7 +787,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
@@ -816,7 +814,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3E9686D5FD6F803C2017D4B8 /* [CP] Check Pods Manifest.lock */ = {
@@ -883,13 +881,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE238C6212617D100F2AB9A /* Theme.swift in Sources */,
-				5F3A09FE21C6DFAB00F87598 /* SkeletonAnimatable.swift in Sources */,
 				5F5654C421B5950800908612 /* Layout.swift in Sources */,
 				5F43F8CC2129311C00BD62CC /* HackerNewsService.swift in Sources */,
 				5FE6B1F421BDB784006D144D /* PostConfigAssembly.swift in Sources */,
 				5F457C6C21485DCC00409DF6 /* ImageLoaderType.swift in Sources */,
 				5FE6FD51214D99A800E596C3 /* Images.swift in Sources */,
 				5F56F3F721E3241500EDD306 /* SettingsViewController.swift in Sources */,
+				5F77B3F321F6E83A0045ACE6 /* UIViewController+Rx.swift in Sources */,
 				5F655E3D219BF3D2003E0B27 /* Formatter.swift in Sources */,
 				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
 				5F3A0A0421C6E19F00F87598 /* SplashSkeletonCellView.swift in Sources */,
@@ -904,13 +902,11 @@
 				5F43F8D52129360100BD62CC /* main.swift in Sources */,
 				5F461126219EEBD50007AEC2 /* Icons.swift in Sources */,
 				5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */,
-				5F3A0A0621C6EA5000F87598 /* SkeletonCollectionViewCell.swift in Sources */,
 				5F49F10B2126029D0071DB49 /* AppDelegate.swift in Sources */,
 				5F6ABF87212CAC4100060690 /* DatabaseMigrations.swift in Sources */,
 				5F84856E219755B0001B94D2 /* Router.swift in Sources */,
 				5F6ABF83212C9A6E00060690 /* NewsItemRecord.swift in Sources */,
 				5F02237421AB27ED00802796 /* NewsItemMoreMenuViewController.swift in Sources */,
-				5F3A0A0021C6DFE500F87598 /* NSObject+AssociatedObject.swift in Sources */,
 				5F577215212DE742009C9E37 /* Environment.swift in Sources */,
 				5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */,
 				5FC8AF9721B5011C00BCB73C /* FirebaseRemoteConfig.swift in Sources */,

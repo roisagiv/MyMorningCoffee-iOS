@@ -18,7 +18,8 @@ class PreConfigAssembly: Assembly {
     // DatabaseWriter
     container.register(DatabaseWriter.self) { _ in
       do {
-        return try DatabaseFactory.create(log: true)
+//        return try DatabaseFactory.createInMemory(log: log)
+        return try DatabaseFactory.create(log: log)
       } catch {
         return DatabaseFactory.createInMemory(log: log)
       }

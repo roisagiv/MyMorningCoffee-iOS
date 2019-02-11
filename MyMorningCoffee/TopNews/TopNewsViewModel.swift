@@ -6,8 +6,11 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
+import Action
+import Result
 import RxCocoa
 import RxDataSources
+import RxOptional
 import RxSwift
 import RxSwiftUtilities
 import SwiftMoment
@@ -53,8 +56,8 @@ extension TopNewsItem: IdentifiableType {
 }
 
 protocol TopNewsViewModelType {
-  var refresh: AnyObserver<Void> { get }
-  var loadItem: AnyObserver<Int> { get }
+  var refresh: Action<Void, Void> { get }
+  var loadItem: Action<Int, Void> { get }
   var items: Driver<[TopNewsItem]> { get }
   var loading: Driver<Bool> { get }
 }
@@ -62,21 +65,93 @@ protocol TopNewsViewModelType {
 class TopNewsViewModel: TopNewsViewModelType {
   // MARK: - Inputs
 
-  private(set) lazy var refresh: AnyObserver<Void> = {
-    self.refreshSubject.asObserver()
+  // refresh
+  lazy var refresh: Action<Void, Void> = {
+    Action<Void, Void> { [unowned self] _ in
+      self.hackerNewsService
+        .topStories(size: 500)
+        .trackActivity(self.activityIndicator)
+        .observeOn(self.scheduler)
+        .map { [unowned self] stories in
+          stories.map {
+            NewsItemRecord(
+              id: $0.id,
+              time: Date(timeIntervalSince1970: $0.time),
+              timeRelative: self.formatter.relativeFromNow(date: Date(timeIntervalSince1970: $0.time)),
+              title: $0.title,
+              url: $0.url,
+              subTitle: nil,
+              imageUrl: nil,
+              domain: nil,
+              status: NewsItemRecord.Status.fetched
+            )
+          }
+        }
+        .flatMap { [unowned self] (records: [NewsItemRecord]) -> Observable<Void> in
+          switch self.newsItemDatabase.insert(items: records) {
+          case .success:
+            return .empty()
+          case let .failure(error):
+            return Observable.error(error)
+          }
+        }
+    }
   }()
 
-  private(set) lazy var loadItem: AnyObserver<Int> = {
-    self.loadItemSubject.asObserver()
+  lazy var loadItem: Action<Int, Void> = {
+    Action<Int, Void> { [unowned self] (id: Int) -> Observable<Void> in
+      self.newsItemDatabase.record(by: id)
+        .observeOn(self.scheduler)
+        .asObservable()
+        .filterNil()
+        .filter { [unowned self] record in
+          guard record.url != nil else {
+            return false
+          }
+          return record.status == .fetched
+        }
+        .do(onNext: { [unowned self] record in
+          var record = record
+          record.status = .scraping
+          _ = self.newsItemDatabase.update(item: record)
+        })
+        .flatMap { [unowned self] (record: NewsItemRecord) -> Single<(NewsItemRecord, ScrapedItem)> in
+          guard let url = record.url else {
+            return Single.error(TopNewsViewModelError.recordMissingUrl)
+          }
+          var scraped = record
+          scraped.status = .scraping
+          _ = self.newsItemDatabase.update(item: scraped)
+          return self.scraperService.scrape(url: url)
+            .catchErrorJustReturn(ScrapedItem.empty())
+            .map { [scraped] scrapedItem in (scraped, scrapedItem) }
+        }
+        .materialize()
+        .do(onNext: { [unowned self] event in
+          switch event {
+          case let .next(results):
+            var record = results.0
+            let scraped = results.1
+            let published = moment(scraped.datePublished ?? "")
+
+            record.imageUrl = scraped.coverImageUrl
+            record.subTitle = scraped.description
+            record.time = published?.date ?? Date()
+            record.url = scraped.url
+            record.status = .scraped
+            record.domain = scraped.source
+            _ = self.newsItemDatabase.update(item: record)
+          default:
+            return
+          }
+        })
+        .map { _ in () }
+    }
   }()
 
   private(set) lazy var loading: Driver<Bool> = {
     self.activityIndicator.asDriver()
   }()
-
-  private let refreshSubject: PublishSubject<Void>
-  private let loadItemSubject: PublishSubject<Int>
-  private let scrapeItemSubject: PublishSubject<NewsItemRecord>
 
   // MARK: - Outputs
 
@@ -97,10 +172,8 @@ class TopNewsViewModel: TopNewsViewModelType {
   private let newsItemDatabase: NewsItemsDatabaseType
   private let formatter: Formatter
   private let activityIndicator = ActivityIndicator()
-  private let disposeBag: DisposeBag
   private let scheduler: ImmediateSchedulerType
 
-  // swiftlint:disable:next function_body_length
   init(
     hackerNewsService: HackerNewsService,
     scraperService: ScraperService,
@@ -113,102 +186,6 @@ class TopNewsViewModel: TopNewsViewModelType {
     self.newsItemDatabase = newsItemDatabase
     self.formatter = formatter
     self.scheduler = scheduler
-
-    disposeBag = DisposeBag()
-
-    refreshSubject = PublishSubject<Void>()
-    loadItemSubject = PublishSubject<Int>()
-    scrapeItemSubject = PublishSubject<NewsItemRecord>()
-
-    // Refresh
-
-    refreshSubject
-      .trackActivity(activityIndicator)
-      .subscribeOn(scheduler)
-      .observeOn(scheduler)
-      .flatMap { [unowned self] _ -> Single<[HackerNewsStory]> in
-        self.hackerNewsService.topStories(size: 500)
-      }
-      .map {
-        $0.map {
-          NewsItemRecord(
-            id: $0.id,
-            time: Date(timeIntervalSince1970: $0.time),
-            timeRelative: formatter.relativeFromNow(date: Date(timeIntervalSince1970: $0.time)),
-            title: $0.title,
-            url: $0.url,
-            subTitle: nil,
-            imageUrl: nil,
-            domain: nil,
-            status: NewsItemRecord.Status.fetched
-          )
-        }
-      }
-      .map { [unowned self] records in
-        self.newsItemDatabase.insert(items: records)
-      }
-      .subscribe()
-      .disposed(by: disposeBag)
-
-    loadItemSubject
-      .observeOn(scheduler)
-      .subscribeOn(scheduler)
-      .flatMap { [unowned self] (id: Int) -> Single<NewsItemRecord?> in
-        self.newsItemDatabase.record(by: id)
-      }
-      .subscribe(onNext: { [unowned self] record in
-        guard var record = record else {
-          return
-        }
-        guard record.url != nil else {
-          return
-        }
-        switch record.status {
-        case .fetched:
-          record.status = .scraping
-          _ = self.newsItemDatabase.update(item: record)
-          self.scrapeItemSubject.onNext(record)
-
-        default:
-          return
-        }
-      })
-      .disposed(by: disposeBag)
-
-    scrapeItemSubject
-      .observeOn(scheduler)
-      .subscribeOn(scheduler)
-      .flatMap { [unowned self] (record: NewsItemRecord) -> Single<(NewsItemRecord, ScrapedItem)> in
-        guard let url = record.url else {
-          return Single.error(TopNewsViewModelError.recordMissingUrl)
-        }
-        var scraped = record
-        scraped.status = .scraping
-        _ = self.newsItemDatabase.update(item: scraped)
-        return self.scraperService.scrape(url: url)
-          .catchErrorJustReturn(ScrapedItem.empty())
-          .map { [scraped] scrapedItem in (scraped, scrapedItem) }
-      }
-      .materialize()
-      .subscribe(onNext: { [unowned self] event in
-        switch event {
-        case let .next(results):
-          var record = results.0
-          let scraped = results.1
-          let published = moment(scraped.datePublished ?? "")
-
-          record.imageUrl = scraped.coverImageUrl
-          record.subTitle = scraped.description
-          record.time = published?.date ?? Date()
-          record.url = scraped.url
-          record.status = .scraped
-          record.domain = scraped.source
-          _ = self.newsItemDatabase.update(item: record)
-        default:
-          return
-        }
-      })
-      .disposed(by: disposeBag)
   }
 
   private func map(record: NewsItemRecord) -> TopNewsItem {

@@ -54,7 +54,7 @@ struct Theme {
     colorScheme.onSurfaceColor = Color.black.asUIColor()
 
     let defaultTypography: MDCTypographyScheme = MDCTypographyScheme()
-    let fontName = "Nunito"
+    let fontName: String = "Nunito"
     typographyScheme.body1 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body1.pointSize)!
     typographyScheme.body2 = UIFont(name: "\(fontName)-Regular", size: defaultTypography.body2.pointSize)!
     typographyScheme.button = UIFont(name: "\(fontName)-SemiBold", size: defaultTypography.button.pointSize)!

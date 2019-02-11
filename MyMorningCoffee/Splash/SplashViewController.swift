@@ -11,12 +11,14 @@ import FirebaseCore
 import FirebasePerformance
 import GRDB
 import MaterialComponents
+import RHPlaceholder
 
 class SplashViewController: UICollectionViewController {
   private let appBar = MDCAppBarViewController()
   private var router: Router?
   private var remoteConfig: RemoteConfigType?
   private var databaseWriter: DatabaseWriter?
+  private let placeHolderMarker = Placeholder()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,8 +70,8 @@ class SplashViewController: UICollectionViewController {
     collectionView?.register(cellType: SplashSkeletonCellView.self)
     if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
       layout.minimumLineSpacing = 32
-      let width = layout.collectionView?.bounds.width ?? 0
-      let size = CGSize(width: width - 16, height: SplashSkeletonCellView.height)
+      let width = collectionView.bounds.width
+      let size = CGSize(width: width - 32, height: SplashSkeletonCellView.height)
       layout.itemSize = size
     }
   }
@@ -79,7 +81,8 @@ extension SplashViewController {
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
-    cell.startAnimation()
+    placeHolderMarker.register(cell.placeHolders())
+    placeHolderMarker.startAnimation()
     return cell
   }
 

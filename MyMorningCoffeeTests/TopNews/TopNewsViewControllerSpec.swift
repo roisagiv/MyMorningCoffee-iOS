@@ -6,6 +6,7 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
+import Action
 @testable import MyMorningCoffee
 import Nimble
 import Quick
@@ -30,11 +31,11 @@ class TopNewsViewControllerSpec: QuickSpec {
   }
 
   class StubViewModel: TopNewsViewModelType {
-    var refresh: AnyObserver<Void> = PublishSubject<Void>().asObserver()
+    var refresh: Action<Void, Void> = Action<Void, Void> { _ in .empty() }
 
     var loading: Driver<Bool> = PublishSubject<Bool>().asDriver(onErrorJustReturn: false)
 
-    var loadItem: AnyObserver<Int> = PublishSubject<Int>().asObserver()
+    var loadItem: Action<Int, Void> = Action<Int, Void> { _ in .empty() }
 
     var items: Driver<[TopNewsItem]>
 
