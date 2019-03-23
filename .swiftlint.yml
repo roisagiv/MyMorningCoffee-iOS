@@ -9,3 +9,6 @@ identifier_name:
     - vc
     - id
     - nc
+
+line_length:
+  ignores_urls: true

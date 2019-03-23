@@ -16,6 +16,8 @@ struct NewsItemRecord: Codable {
   var url: String?
   var subTitle: String?
   var imageUrl: String?
+  var logoUrl: String?
+  var author: String?
   var domain: String?
   var status: Status
 
@@ -39,6 +41,8 @@ extension NewsItemRecord {
       url: nil,
       subTitle: nil,
       imageUrl: nil,
+      logoUrl: nil,
+      author: nil,
       domain: nil,
       status: .empty
     )
@@ -56,6 +60,8 @@ extension NewsItemRecord: FetchableRecord, PersistableRecord, MutablePersistable
     case subTitle
     case url
     case imageUrl
+    case logoUrl
+    case author
     case domain
     case status
   }

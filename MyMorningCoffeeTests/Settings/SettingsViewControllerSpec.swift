@@ -21,7 +21,7 @@ class SettingsViewControllerSpec: QuickSpec {
         )
         Device.showWithAppBar(vc)
 
-        // expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
+//         expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
         expect(vc).to(haveValidDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
       }
     }

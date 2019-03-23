@@ -42,12 +42,14 @@ class MercuryWebParserScraperService: ScraperService {
       .map(MercuryWebParserResponse.self)
       .map {
         ScrapedItem(
-          source: $0.domain,
+          publisher: $0.domain,
           description: $0.excerpt,
           url: $0.url,
           coverImageUrl: $0.leadImageUrl,
           datePublished: $0.datePublished,
-          title: $0.title
+          title: $0.title,
+          logo: nil,
+          author: nil
         )
       }
   }

@@ -19,7 +19,6 @@ devices = ["iPhone X", "iPhone SE"]
 
 platform :ios do
   before_all do
-    ensure_xcode_version(version: "10.1")
     setup_circle_ci
   end
 

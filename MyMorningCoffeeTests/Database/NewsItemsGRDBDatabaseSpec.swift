@@ -41,6 +41,8 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
               url: nil,
               subTitle: "subTitle subTitle",
               imageUrl: nil,
+              logoUrl: nil,
+              author: nil,
               domain: nil,
               status: .fetched
             )
@@ -237,6 +239,8 @@ class NewsItemsGRDBDatabaseSpec: QuickSpec {
                      url: faker.internet.url(),
                      subTitle: nil,
                      imageUrl: nil,
+                     logoUrl: nil,
+                     author: nil,
                      domain: faker.internet.domainName(),
                      status: NewsItemRecord.Status.fetched)
     }

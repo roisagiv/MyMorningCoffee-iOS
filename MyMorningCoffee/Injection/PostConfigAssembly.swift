@@ -22,10 +22,24 @@ class PostConfigAssembly: Assembly {
     }
 
     // ScraperService
+    /*
+     container.register(ScraperService.self) { _ in
+       MercuryWebParserScraperService(
+         provider: MoyaProviderFactory.create(log: log)
+       )
+     }
+     */
+
+    // ScraperService
+
+    /*
+     container.register(ScraperService.self) { _ in
+       SwiftLinkPreviewScraperService()
+     }
+     */
+
     container.register(ScraperService.self) { _ in
-      MercuryWebParserScraperService(
-        provider: MoyaProviderFactory.create(log: log)
-      )
+      KannaScraperService()
     }
 
     // NewsItemsDatabaseType

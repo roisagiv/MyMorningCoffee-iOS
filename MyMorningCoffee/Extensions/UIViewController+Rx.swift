@@ -27,7 +27,7 @@ extension Reactive where Base: UIViewController {
       .map { _ in false }
 
     let movedToParentSource = sentMessage(#selector(Base.didMove))
-      .filter({ !($0.first is UIViewController) })
+      .filter { !($0.first is UIViewController) }
       .map { _ in false }
 
     return ControlEvent(events: Observable.merge(dismissedSource, movedToParentSource))

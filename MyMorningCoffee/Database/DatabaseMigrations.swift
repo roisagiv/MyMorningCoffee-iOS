@@ -41,6 +41,8 @@ class DatabaseMigrations {
         table.column(NewsItemRecord.Columns.id.name, .integer).primaryKey()
         table.column(NewsItemRecord.Columns.domain.name, .text)
         table.column(NewsItemRecord.Columns.imageUrl.name, .text)
+        table.column(NewsItemRecord.Columns.logoUrl.name, .text)
+        table.column(NewsItemRecord.Columns.author.name, .text)
         table.column(NewsItemRecord.Columns.status.name, .text).notNull()
         table.column(NewsItemRecord.Columns.subTitle.name, .text)
         table.column(NewsItemRecord.Columns.time.name, .datetime).notNull()
