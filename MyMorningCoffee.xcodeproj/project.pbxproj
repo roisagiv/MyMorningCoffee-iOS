@@ -49,6 +49,7 @@
 		5F5654C421B5950800908612 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5654C321B5950800908612 /* Layout.swift */; };
 		5F56F3F721E3241500EDD306 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56F3F621E3241500EDD306 /* SettingsViewController.swift */; };
 		5F577215212DE742009C9E37 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F577214212DE742009C9E37 /* Environment.swift */; };
+		5F5E5F4B2251D7BC0084E811 /* bloomberg.com.html in Resources */ = {isa = PBXBuildFile; fileRef = 5F5E5F4A2251D7BC0084E811 /* bloomberg.com.html */; };
 		5F655E3A219B6818003E0B27 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F655E38219B67E1003E0B27 /* Nunito-SemiBold.ttf */; };
 		5F655E3B219B681B003E0B27 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F655E39219B67E1003E0B27 /* Nunito-Regular.ttf */; };
 		5F655E3D219BF3D2003E0B27 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F655E3C219BF3D2003E0B27 /* Formatter.swift */; };
@@ -74,6 +75,10 @@
 		5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */; };
 		5F92004F212C31B000E824E7 /* mercury-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F92004E212C31B000E824E7 /* mercury-response.json */; };
 		5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */; };
+		5FAB2AFE2262F9FE0021F75A /* forbes.com.html in Resources */ = {isa = PBXBuildFile; fileRef = 5FAB2AFD2262F9FE0021F75A /* forbes.com.html */; };
+		5FAB2AFF2262FFC10021F75A /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD4E214D864600E596C3 /* Dates.swift */; };
+		5FABFA3C224824EF009B204E /* KannaScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FABFA3B224824EF009B204E /* KannaScraperService.swift */; };
+		5FAEE57D2253B2BE00B50628 /* ft.com.html in Resources */ = {isa = PBXBuildFile; fileRef = 5FAEE57C2253B2BE00B50628 /* ft.com.html */; };
 		5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */; };
 		5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */; };
 		5FC1F03721E4760000120F3D /* SettingsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC1F03621E4760000120F3D /* SettingsViewControllerSpec.swift */; };
@@ -83,14 +88,16 @@
 		5FC8AF9221B4FDE100BCB73C /* StubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9121B4FDE100BCB73C /* StubRouter.swift */; };
 		5FC8AF9421B4FE4900BCB73C /* StubRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9321B4FE4900BCB73C /* StubRemoteConfig.swift */; };
 		5FC8AF9721B5011C00BCB73C /* FirebaseRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9621B5011C00BCB73C /* FirebaseRemoteConfig.swift */; };
+		5FCAB98422475B520097A614 /* SwiftLinkPreviewScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */; };
 		5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */; };
 		5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */; };
 		5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC620021283583004B0B29 /* TopNewsCellView.swift */; };
 		5FD6CDB821E71F2D0053DAD1 /* BuildIdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD6CDB721E71F2D0053DAD1 /* BuildIdentityService.swift */; };
+		5FD9C8F2224933E500BA581A /* KannaScraperServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD9C8F1224933E500BA581A /* KannaScraperServiceSpec.swift */; };
+		5FD9C8F42249351C00BA581A /* fast-company.html in Resources */ = {isa = PBXBuildFile; fileRef = 5FD9C8F32249351C00BA581A /* fast-company.html */; };
 		5FE238C6212617D100F2AB9A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE238C5212617D100F2AB9A /* Theme.swift */; };
 		5FE6B1F221BDB6E1006D144D /* PreConfigAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6B1F121BDB6E1006D144D /* PreConfigAssembly.swift */; };
 		5FE6B1F421BDB784006D144D /* PostConfigAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6B1F321BDB784006D144D /* PostConfigAssembly.swift */; };
-		5FE6FD4F214D864600E596C3 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD4E214D864600E596C3 /* Dates.swift */; };
 		5FE6FD51214D99A800E596C3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD50214D99A800E596C3 /* Images.swift */; };
 		7FE4F11476946C7014902C8B /* Pods_MyMorningCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */; };
 /* End PBXBuildFile section */
@@ -152,6 +159,7 @@
 		5F5654C321B5950800908612 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		5F56F3F621E3241500EDD306 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F577214212DE742009C9E37 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		5F5E5F4A2251D7BC0084E811 /* bloomberg.com.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = bloomberg.com.html; sourceTree = "<group>"; };
 		5F655E38219B67E1003E0B27 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		5F655E39219B67E1003E0B27 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		5F655E3C219BF3D2003E0B27 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -177,6 +185,9 @@
 		5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderFactory.swift; sourceTree = "<group>"; };
 		5F92004E212C31B000E824E7 /* mercury-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "mercury-response.json"; sourceTree = "<group>"; };
 		5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsAlgoliaService.swift; sourceTree = "<group>"; };
+		5FAB2AFD2262F9FE0021F75A /* forbes.com.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = forbes.com.html; sourceTree = "<group>"; };
+		5FABFA3B224824EF009B204E /* KannaScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KannaScraperService.swift; sourceTree = "<group>"; };
+		5FAEE57C2253B2BE00B50628 /* ft.com.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = ft.com.html; sourceTree = "<group>"; };
 		5FB247FC21275CFF00BFE636 /* MontserratAlternates-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Medium.ttf"; sourceTree = "<group>"; };
 		5FB2480121275CFF00BFE636 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		5FB2480421275CFF00BFE636 /* MontserratAlternates-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.ttf"; sourceTree = "<group>"; };
@@ -187,10 +198,13 @@
 		5FC8AF9121B4FDE100BCB73C /* StubRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRouter.swift; sourceTree = "<group>"; };
 		5FC8AF9321B4FE4900BCB73C /* StubRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRemoteConfig.swift; sourceTree = "<group>"; };
 		5FC8AF9621B5011C00BCB73C /* FirebaseRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfig.swift; sourceTree = "<group>"; };
+		5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLinkPreviewScraperService.swift; sourceTree = "<group>"; };
 		5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModel.swift; sourceTree = "<group>"; };
 		5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopNewsCellView.xib; sourceTree = "<group>"; };
 		5FCC620021283583004B0B29 /* TopNewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellView.swift; sourceTree = "<group>"; };
 		5FD6CDB721E71F2D0053DAD1 /* BuildIdentityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildIdentityService.swift; sourceTree = "<group>"; };
+		5FD9C8F1224933E500BA581A /* KannaScraperServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KannaScraperServiceSpec.swift; sourceTree = "<group>"; };
+		5FD9C8F32249351C00BA581A /* fast-company.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "fast-company.html"; sourceTree = "<group>"; };
 		5FE238C5212617D100F2AB9A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5FE6B1F121BDB6E1006D144D /* PreConfigAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreConfigAssembly.swift; sourceTree = "<group>"; };
 		5FE6B1F321BDB784006D144D /* PostConfigAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfigAssembly.swift; sourceTree = "<group>"; };
@@ -281,7 +295,6 @@
 		5F43F8C521292F9A00BD62CC /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				5FE6FD4E214D864600E596C3 /* Dates.swift */,
 				5F7A5AA1212EC96A00E49054 /* Fixtures.swift */,
 				5F1C957921B0768600175F07 /* StubAnalyticsService.swift */,
 				5F655E3E219BF639003E0B27 /* StubFormatter.swift */,
@@ -302,14 +315,14 @@
 			children = (
 				5F8FDAC421AFB5F70068E1EF /* Analytics */,
 				5FC8AF9521B5010600BCB73C /* Firebase */,
+				5FABFA3922482458009B204E /* Scraper */,
 				5FD6CDB721E71F2D0053DAD1 /* BuildIdentityService.swift */,
+				5FE6FD4E214D864600E596C3 /* Dates.swift */,
 				5F655E3C219BF3D2003E0B27 /* Formatter.swift */,
 				5FA8C1D9215974A700265046 /* HackerNewsAlgoliaService.swift */,
 				5F43F8D0212934E800BD62CC /* HackerNewsHTTPService.swift */,
 				5F43F8CB2129311C00BD62CC /* HackerNewsService.swift */,
 				5F457C6B21485DCC00409DF6 /* ImageLoaderType.swift */,
-				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
-				5F23C181212B55D00030199A /* ScraperService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -317,9 +330,9 @@
 		5F43F8CD2129342C00BD62CC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5FABFA3A22482472009B204E /* Scraper */,
 				5F7600E721597BFC0038E998 /* HackerNewsAlgoliaServiceSpec.swift */,
 				5F43F8CE2129344200BD62CC /* HackerNewsHTTPServiceSpecs.swift */,
-				5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -405,6 +418,17 @@
 				5FE6B1F121BDB6E1006D144D /* PreConfigAssembly.swift */,
 			);
 			path = Injection;
+			sourceTree = "<group>";
+		};
+		5F5E5F492251D7A00084E811 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				5F5E5F4A2251D7BC0084E811 /* bloomberg.com.html */,
+				5FD9C8F32249351C00BA581A /* fast-company.html */,
+				5FAB2AFD2262F9FE0021F75A /* forbes.com.html */,
+				5FAEE57C2253B2BE00B50628 /* ft.com.html */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		5F655E37219B67D4003E0B27 /* Nunito */ = {
@@ -494,6 +518,27 @@
 				5F92004C212C2FFB00E824E7 /* MoyaProviderFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		5FABFA3922482458009B204E /* Scraper */ = {
+			isa = PBXGroup;
+			children = (
+				5FABFA3B224824EF009B204E /* KannaScraperService.swift */,
+				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
+				5F23C181212B55D00030199A /* ScraperService.swift */,
+				5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */,
+			);
+			path = Scraper;
+			sourceTree = "<group>";
+		};
+		5FABFA3A22482472009B204E /* Scraper */ = {
+			isa = PBXGroup;
+			children = (
+				5F5E5F492251D7A00084E811 /* Fixtures */,
+				5FD9C8F1224933E500BA581A /* KannaScraperServiceSpec.swift */,
+				5F23C185212B64630030199A /* MercuryWebParserScraperServiceSpec.swift */,
+			);
+			path = Scraper;
 			sourceTree = "<group>";
 		};
 		5FB247F421275CF400BFE636 /* Fonts */ = {
@@ -679,8 +724,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F43F8C721292FB500BD62CC /* top-stories.json in Resources */,
+				5F5E5F4B2251D7BC0084E811 /* bloomberg.com.html in Resources */,
+				5FAB2AFE2262F9FE0021F75A /* forbes.com.html in Resources */,
 				5F7600EA21597CD90038E998 /* hn.algolia.search_by_date.success.json in Resources */,
+				5FD9C8F42249351C00BA581A /* fast-company.html in Resources */,
 				5F13B3612198B2FE00FB1BF4 /* Hurricane-Utah-Wikipedia.html in Resources */,
+				5FAEE57D2253B2BE00B50628 /* ft.com.html in Resources */,
 				5F43F8C9212930F300BD62CC /* story.json in Resources */,
 				5F92004F212C31B000E824E7 /* mercury-response.json in Resources */,
 			);
@@ -706,6 +755,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
@@ -719,7 +769,7 @@
 				"${BUILT_PRODUCTS_DIR}/RHPlaceholder/RHPlaceholder.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGRDB/RxGRDB.framework",
@@ -729,6 +779,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxWebKit/RxWebKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -747,6 +798,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
@@ -760,7 +812,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RHPlaceholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGRDB.framework",
@@ -770,6 +822,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxWebKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -788,7 +841,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
 				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
@@ -801,7 +853,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EarlGrey.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
@@ -892,8 +943,10 @@
 				5FA8C1DA215974A700265046 /* HackerNewsAlgoliaService.swift in Sources */,
 				5F3A0A0421C6E19F00F87598 /* SplashSkeletonCellView.swift in Sources */,
 				5F461129219EEEF40007AEC2 /* OpenSourceViewController.swift in Sources */,
+				5FAB2AFF2262FFC10021F75A /* Dates.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
+				5FCAB98422475B520097A614 /* SwiftLinkPreviewScraperService.swift in Sources */,
 				5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */,
 				5FE6B1F221BDB6E1006D144D /* PreConfigAssembly.swift in Sources */,
 				5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */,
@@ -915,6 +968,7 @@
 				5F8FDAC021AED51B0068E1EF /* AnalyticsService.swift in Sources */,
 				5F8485712197FC8D001B94D2 /* NewsItemViewController.swift in Sources */,
 				5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */,
+				5FABFA3C224824EF009B204E /* KannaScraperService.swift in Sources */,
 				5F8FDAC621AFB6120068E1EF /* AnalyticsEvent.swift in Sources */,
 				5FC38028212D3E82003E1F4B /* NewsItemsDatabase.swift in Sources */,
 				5FD6CDB821E71F2D0053DAD1 /* BuildIdentityService.swift in Sources */,
@@ -929,9 +983,9 @@
 			files = (
 				5F6ABF8A212CAD8000060690 /* NewsItemsGRDBDatabaseSpec.swift in Sources */,
 				5F655E3F219BF639003E0B27 /* StubFormatter.swift in Sources */,
-				5FE6FD4F214D864600E596C3 /* Dates.swift in Sources */,
 				5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */,
 				5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */,
+				5FD9C8F2224933E500BA581A /* KannaScraperServiceSpec.swift in Sources */,
 				5F1C957A21B0768600175F07 /* StubAnalyticsService.swift in Sources */,
 				5F8DC5ED21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift in Sources */,
 				5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */,

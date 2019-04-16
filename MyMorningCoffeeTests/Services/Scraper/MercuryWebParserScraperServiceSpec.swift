@@ -39,7 +39,7 @@ class MercuryWebParserScraperServiceSpec: QuickSpec {
             .to(equal("https://www.wired.com/wp-content/uploads/2016/09/Rosetta_impact-1-1200x630.jpg"))
           expect(response.datePublished).to(equal("2016-09-30T07:00:12.000Z"))
           expect(response.description).to(equal("Time to break out the tissues, space fans."))
-          expect(response.source).to(equal("www.wired.com"))
+          expect(response.publisher).to(equal("www.wired.com"))
           expect(response.url).to(equal("https://www.wired.com/2016/09/ode-rosetta-spacecraft-going-die-comet/"))
         } catch {
           fail(error.localizedDescription)

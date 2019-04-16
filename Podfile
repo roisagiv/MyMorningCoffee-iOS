@@ -1,8 +1,8 @@
 platform :ios, "11.4"
 
-pod "SwiftLint", "0.30.1"
-pod "SwiftFormat/CLI", "0.39.0"
-pod "IBLinter", "0.4.11"
+pod "SwiftLint", "0.31.0"
+pod "SwiftFormat/CLI", "0.40.7"
+pod "IBLinter", "0.4.14"
 
 plugin "cocoapods-keys", {
   :project => "MyMorningCoffee",
@@ -19,34 +19,37 @@ target "MyMorningCoffee" do
   use_frameworks!
 
   # Rx
-  $Rx = "4.4.1"
+  $Rx = "4.5.0"
   pod "RxSwift", $Rx
   pod "RxCocoa", $Rx
   pod "RxDataSources", "3.1.0"
   pod "RxWebKit", "0.3.7"
   pod "RxSwiftUtilities", "2.1.0"
   pod "RxOptional", "3.6.2"
-  pod "Action", "3.10.0"
+  pod "Action", "3.11.0"
   pod "RxSwiftExt", "3.4.0"
+  pod "RxAlamofire", "4.3.0"
 
   # DI
-  pod "Swinject", "2.5.0"
+  pod "Swinject", "2.6.0"
 
   # Network
   pod "Moya/RxSwift", "12.0.1"
   pod "AlamofireNetworkActivityLogger", "2.3.0"
+  pod "SwiftLinkPreview", "3.0.1"
+  pod "Kanna", "4.0.3"
 
   # DB
   pod "RxGRDB", "0.13.0"
 
   # UI
   pod "Reusable", "4.0.5"
-  pod "Nuke", "7.5.2"
+  pod "Nuke", "7.6.1"
   pod "SwiftHEXColors", "1.2.0"
   pod "RHPlaceholder", "0.0.5"
 
   # Firebase
-  $Firebase = "5.16.0"
+  $Firebase = "5.20.2"
   pod "Firebase/Core", $Firebase
   pod "Firebase/Database", $Firebase
   pod "Firebase/Analytics", $Firebase
@@ -59,7 +62,7 @@ target "MyMorningCoffee" do
   pod "Crashlytics", "3.12.0"
 
   # Material.io
-  $MaterialComponents = "76.1.2"
+  $MaterialComponents = "81.1.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -77,7 +80,7 @@ target "MyMorningCoffee" do
   pod "MaterialComponents/schemes/Color", $MaterialComponents
   pod "MaterialComponents/schemes/Typography", $MaterialComponents
 
-  pod "MaterialDesignSymbol", "2.3.0"
+  pod "MaterialDesignSymbol", "2.3.2"
 
   # Dates
   pod "SwiftMoment", "0.7"
@@ -86,7 +89,7 @@ target "MyMorningCoffee" do
   pod "AcknowList", "1.8"
 
   # Deep Link
-  pod "Freedom", "2.2.0"
+  pod "Freedom", "2.3.0"
 
   # Debug
   pod "netfox", "1.15.0", :configurations => ["Debug"]
@@ -111,12 +114,12 @@ target "MyMorningCoffee" do
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
 
-    pod "Quick", "1.3.4"
-    pod "Nimble", "7.3.4"
-    pod "OHHTTPStubs/Swift", "6.1.0"
+    pod "Quick", "2.0.0"
+    pod "Nimble", "8.0.1"
+    pod "OHHTTPStubs/Swift", "7.0.0"
     pod "RxBlocking", $Rx
     pod "EarlGrey", "1.15.0"
-    pod "Nimble-Snapshots", "6.9.1"
+    pod "Nimble-Snapshots", "7.0.0"
 
     # Fake Data
     pod "Fakery", "3.4.0"
@@ -143,7 +146,6 @@ post_install do |installer|
         end
       end
     end
-
   end
 
   require "fileutils" # for acknowledgements

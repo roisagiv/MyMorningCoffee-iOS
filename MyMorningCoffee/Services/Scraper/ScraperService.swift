@@ -9,23 +9,27 @@
 import RxSwift
 
 struct ScrapedItem {
-  let source: String?
+  let publisher: String?
   let description: String?
   let url: String?
   let coverImageUrl: String?
   let datePublished: String?
   let title: String?
+  let logo: String?
+  let author: String?
 }
 
 extension ScrapedItem {
   static func empty() -> ScrapedItem {
     return ScrapedItem(
-      source: nil,
+      publisher: nil,
       description: nil,
       url: nil,
       coverImageUrl: nil,
       datePublished: nil,
-      title: nil
+      title: nil,
+      logo: nil,
+      author: nil
     )
   }
 }

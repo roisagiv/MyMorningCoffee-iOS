@@ -29,7 +29,7 @@ class HackerNewsAlgoliaService: HackerNewsService {
 
   func topStories(size: Int) -> Single<[HackerNewsStory]> {
     let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .formatted(.iso8601Full)
+    decoder.dateDecodingStrategy = .formatted(Dates.iso8601Full)
     decoder.keyDecodingStrategy = .convertFromSnakeCase
 
     return provider.rx
@@ -103,15 +103,4 @@ extension HackerNewsAlgoliaService.API: TargetType {
   var headers: [String: String]? {
     return [:]
   }
-}
-
-extension DateFormatter {
-  static let iso8601Full: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
-    formatter.calendar = Calendar(identifier: .iso8601)
-    formatter.timeZone = TimeZone(secondsFromGMT: 0)
-    formatter.locale = Locale(identifier: "en_US_POSIX")
-    return formatter
-  }()
 }

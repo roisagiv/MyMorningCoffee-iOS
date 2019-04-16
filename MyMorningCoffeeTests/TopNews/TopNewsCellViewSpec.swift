@@ -49,10 +49,8 @@ class TopNewsCellViewSpec: QuickSpec {
         cell.configure(item: item, imageLoader: imageLoader, formatter: formatter)
         Device.showView(cell)
 
-        print("before snapshot")
 //        expect(cell).to(recordDynamicSizeSnapshot(sizes: sizes))
         expect(cell).to(haveValidDynamicSizeSnapshot(sizes: sizes))
-        print("after snapshot")
       }
 
       it("should display basic state properly") {

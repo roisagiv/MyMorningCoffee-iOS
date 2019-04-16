@@ -82,6 +82,8 @@ class TopNewsViewModel: TopNewsViewModelType {
               url: $0.url,
               subTitle: nil,
               imageUrl: nil,
+              logoUrl: nil,
+              author: nil,
               domain: nil,
               status: NewsItemRecord.Status.fetched
             )
@@ -139,7 +141,9 @@ class TopNewsViewModel: TopNewsViewModelType {
             record.time = published?.date ?? Date()
             record.url = scraped.url
             record.status = .scraped
-            record.domain = scraped.source
+            record.domain = scraped.publisher
+            record.logoUrl = scraped.logo
+            record.author = scraped.author
             _ = self.newsItemDatabase.update(item: record)
           default:
             return
@@ -158,9 +162,9 @@ class TopNewsViewModel: TopNewsViewModelType {
   private(set) lazy var items: Driver<[TopNewsItem]> = {
     newsItemDatabase
       .all()
-      .map({ [unowned self] records in
+      .map { [unowned self] records in
         records.map(self.map)
-      })
+      }
       .share()
       .asDriver(onErrorJustReturn: [])
   }()
@@ -189,11 +193,6 @@ class TopNewsViewModel: TopNewsViewModelType {
   }
 
   private func map(record: NewsItemRecord) -> TopNewsItem {
-    var favicon: String?
-    if let domain = record.domain {
-      favicon = "https://api.faviconkit.com/\(domain)/64"
-    }
-
     return TopNewsItem(
       id: record.id,
       title: record.title ?? "",
@@ -204,7 +203,7 @@ class TopNewsViewModel: TopNewsViewModelType {
       publishedAt: record.time,
       publishedAtRelative: record.timeRelative,
       source: record.domain,
-      sourceFavicon: favicon,
+      sourceFavicon: record.logoUrl,
       loading: record.status != .scraped
     )
   }

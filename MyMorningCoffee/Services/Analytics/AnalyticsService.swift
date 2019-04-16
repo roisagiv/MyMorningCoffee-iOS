@@ -16,7 +16,7 @@ protocol AnalyticsService {
 
 struct FirebaseAnalyticsService: AnalyticsService {
   func setEnabled(_ enabled: Bool) {
-    AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(enabled)
+    Analytics.setAnalyticsCollectionEnabled(enabled)
   }
 
   func track(event: AnalyticsEvent) {
