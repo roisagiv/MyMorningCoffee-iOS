@@ -13,9 +13,14 @@ import FirebasePerformance
 import MaterialComponents
 import RxSwift
 import UIKit
+import XCGLogger
 
 protocol AppDelegateType {
   func remoteConfigDidFetch(remoteConfig: RemoteConfigType)
+}
+
+struct Logger {
+  static let `default` = XCGLogger.default
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
@@ -29,6 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
 
     #if DEBUG
       NFX.sharedInstance().start()
+      Logger.default.identifier = "default"
+      Logger.default.setup(
+        level: .verbose,
+        showLogIdentifier: false,
+        showFunctionName: true,
+        showThreadName: true,
+        showLevel: true,
+        showFileNames: true,
+        showLineNumbers: true,
+        showDate: true,
+        writeToFile: nil,
+        fileLevel: nil
+      )
     #endif
 
     Theme.configure()
@@ -46,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
       _ = Observable<Int>
         .interval(1, scheduler: MainScheduler.instance)
         .subscribe(onNext: { _ in
-          print("Resource count \(RxSwift.Resources.total)")
+          log.trace("Resource count \(RxSwift.Resources.total)")
         })
     #endif
 
@@ -55,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppDelegateType {
 
   func remoteConfigDidFetch(remoteConfig: RemoteConfigType) {
     let performanceEnabled = remoteConfig.analyticsEnabled
-    // Start with off, may be turn on later, could not find configa
+    // Start with off, may be turn on later, could not find configs
     Performance.sharedInstance().isDataCollectionEnabled = performanceEnabled
     Performance.sharedInstance().isInstrumentationEnabled = performanceEnabled
 

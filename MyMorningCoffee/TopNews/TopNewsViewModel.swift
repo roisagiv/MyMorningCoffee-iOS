@@ -12,7 +12,6 @@ import RxCocoa
 import RxDataSources
 import RxOptional
 import RxSwift
-import RxSwiftUtilities
 import SwiftMoment
 
 struct TopNewsItem {
@@ -27,6 +26,7 @@ struct TopNewsItem {
   let source: String?
   let sourceFavicon: String?
   let loading: Bool
+  let recordStatus: NewsItemRecord.Status
 }
 
 extension TopNewsItem {
@@ -42,12 +42,13 @@ extension TopNewsItem {
       publishedAtRelative: nil,
       source: nil,
       sourceFavicon: nil,
-      loading: false
+      loading: false,
+      recordStatus: .empty
     )
   }
 }
 
-extension TopNewsItem: IdentifiableType {
+extension TopNewsItem: IdentifiableType, Equatable {
   var identity: Int {
     return id
   }
@@ -106,13 +107,14 @@ class TopNewsViewModel: TopNewsViewModelType {
         .observeOn(self.scheduler)
         .asObservable()
         .filterNil()
-        .filter { [unowned self] record in
+        .filter { record in
           guard record.url != nil else {
             return false
           }
           return record.status == .fetched
         }
         .do(onNext: { [unowned self] record in
+          Logger.default.verbose("record=\(record.id) - scraping")
           var record = record
           record.status = .scraping
           _ = self.newsItemDatabase.update(item: record)
@@ -134,12 +136,15 @@ class TopNewsViewModel: TopNewsViewModelType {
           case let .next(results):
             var record = results.0
             let scraped = results.1
+
+            Logger.default.verbose("record=\(record.id) - scraped")
+
             let published = moment(scraped.datePublished ?? "")
 
             record.imageUrl = scraped.coverImageUrl
             record.subTitle = scraped.description
             record.time = published?.date ?? Date()
-            record.url = scraped.url
+            record.url = scraped.url ?? "https://source.unsplash.com/320x320/daily"
             record.status = .scraped
             record.domain = scraped.publisher
             record.logoUrl = scraped.logo
@@ -198,13 +203,14 @@ class TopNewsViewModel: TopNewsViewModelType {
       title: record.title ?? "",
       cover: record.imageUrl,
       url: record.url,
-      author: nil,
+      author: record.author,
       description: record.subTitle,
       publishedAt: record.time,
       publishedAtRelative: record.timeRelative,
       source: record.domain,
       sourceFavicon: record.logoUrl,
-      loading: record.status != .scraped
+      loading: record.status != .scraped,
+      recordStatus: record.status
     )
   }
 

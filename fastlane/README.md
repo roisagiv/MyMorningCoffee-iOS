@@ -36,6 +36,11 @@ run all tests (skip build)
 fastlane ios assets
 ```
 generate app icon
+### ios setup
+```
+fastlane ios setup
+```
+setup environment
 
 ----
 

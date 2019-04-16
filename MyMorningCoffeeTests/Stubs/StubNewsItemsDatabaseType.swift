@@ -42,7 +42,7 @@ class StubNewsItemDatabase: NewsItemsDatabaseType {
     do {
       try DatabaseMigrations.migrate(database: db)
     } catch {
-      print(error.localizedDescription)
+      print("error=\(error.localizedDescription)")
     }
     underline = NewsItemsGRDBDatabase(databaseWriter: db)
   }

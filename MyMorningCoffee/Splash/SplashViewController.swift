@@ -34,7 +34,7 @@ class SplashViewController: UICollectionViewController {
         if status == .success {
           _ = self.remoteConfig?.activateFetched()
         } else {
-          print("error with config - \(error?.localizedDescription ?? "")")
+          Logger.default.error("error with config - \(error?.localizedDescription ?? "")")
         }
         do {
           if let databaseWriter = self.databaseWriter {
@@ -42,7 +42,7 @@ class SplashViewController: UICollectionViewController {
             try DatabaseMigrations.trim(database: databaseWriter)
           }
         } catch {
-          print("error with migration - \(error.localizedDescription)")
+          Logger.default.error("error with migration - \(error.localizedDescription)")
         }
 
         let appDelegate = UIApplication.shared.delegate as? AppDelegateType

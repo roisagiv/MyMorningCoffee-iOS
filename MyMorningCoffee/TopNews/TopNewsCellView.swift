@@ -23,7 +23,7 @@ final class TopNewsCellView: MDCCardCollectionCell, Reusable, NibLoadable {
 
   private var imageLoader: ImageLoaderType?
 
-  func configure(item: TopNewsItem, imageLoader: ImageLoaderType?, formatter _: Formatter?) {
+  func configure(item: TopNewsItem, imageLoader: ImageLoaderType?) {
     self.imageLoader = imageLoader
 
     titleLabel.text = item.title

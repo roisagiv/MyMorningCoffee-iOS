@@ -21,7 +21,6 @@ class TopNewsViewControllerSpec: QuickSpec {
         let vc = TopNewsViewController.create(
           viewModel: viewModel,
           imageLoader: StubImageLoader(),
-          formatter: StubFormatter(),
           router: Router()
         )
         Device.showWithAppBar(vc)

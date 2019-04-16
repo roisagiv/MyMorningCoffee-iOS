@@ -16,6 +16,7 @@ import UIKit
 
 class TopNewsViewController: UICollectionViewController {
   typealias TopNewsItemModel = SectionModel<String, TopNewsItem>
+  private static let sectionHeader = "Items"
 
   fileprivate let appBar = MDCAppBarViewController()
   private let activityIndicator = MDCActivityIndicator()
@@ -25,12 +26,11 @@ class TopNewsViewController: UICollectionViewController {
   fileprivate var viewModel: TopNewsViewModelType?
   fileprivate var imageLoader: ImageLoaderType?
   fileprivate var router: Router?
-  fileprivate var formatter: Formatter?
   private let scrollIdleSubject = BehaviorSubject<Bool>(value: true)
 
+  // swiftlint:disable function_body_length
   override func viewDidLoad() {
     super.viewDidLoad()
-
     setupAppBar()
     setupCollectionView()
 
@@ -77,8 +77,8 @@ class TopNewsViewController: UICollectionViewController {
         Driver.combineLatest(rx.displayed.asDriver(onErrorJustReturn: false), viewModel.items)
           .filter { displayed, items in
             items.isEmpty && displayed
-          }
-          .map { _, _ in () }, rx.firstTimeViewDidAppear.asDriver(onErrorJustReturn: ())
+          }.map { _, _ in () },
+        rx.firstTimeViewDidAppear.asDriver(onErrorJustReturn: ())
       )
       .drive(viewModel.refresh.inputs)
       .disposed(by: disposeBag)
@@ -98,8 +98,6 @@ class TopNewsViewController: UICollectionViewController {
 
     let dataSource = RxCollectionViewSectionedReloadDataSource<TopNewsItemModel>(
       configureCell: { [unowned self] _, collectionView, indexPath, item in
-//        self.viewModel?.loadItem.execute(item.id)
-
         if item.loading {
           let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
           self.placeHolderMarker.register(cell.placeHolders())
@@ -107,16 +105,14 @@ class TopNewsViewController: UICollectionViewController {
           return cell
         } else {
           let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
-
-          cell.configure(item: item, imageLoader: self.imageLoader, formatter: self.formatter)
-
+          cell.configure(item: item, imageLoader: self.imageLoader)
           return cell
         }
       }
     )
     if let collectionView = collectionView, let viewModel = viewModel {
       viewModel.items
-        .throttle(0.3, latest: true)
+        .throttle(0.1, latest: true)
         .do(onNext: { [unowned self] items in
           if items.isEmpty {
             self.activityIndicator.startAnimating()
@@ -124,7 +120,9 @@ class TopNewsViewController: UICollectionViewController {
             self.activityIndicator.stopAnimating()
           }
         })
-        .map { [TopNewsItemModel(model: "", items: $0)] }
+        .map {
+          [TopNewsItemModel(model: TopNewsViewController.self.sectionHeader, items: $0)]
+        }
         .drive(collectionView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
     }
@@ -213,13 +211,11 @@ extension TopNewsViewController {
   class func create(
     viewModel: TopNewsViewModelType,
     imageLoader: ImageLoaderType,
-    formatter: Formatter,
     router: Router
   ) -> TopNewsViewController {
     let vc = TopNewsViewController(collectionViewLayout: UICollectionViewFlowLayout())
     vc.viewModel = viewModel
     vc.imageLoader = imageLoader
-    vc.formatter = formatter
     vc.router = router
     return vc
   }

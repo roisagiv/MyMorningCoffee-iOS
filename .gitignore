@@ -73,10 +73,11 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
-
 # End of https://www.gitignore.io/api/swift
 
 # Custom
 Index/
 # ReferenceImages/
 FailureDiffs/
+GoogleService-Info.plist
+.env

@@ -15,12 +15,10 @@
 
 default_platform(:ios)
 
-devices = ["iPhone X", "iPhone SE"]
+devices = ["iPhone SE (12.2)", "iPhone 11 Pro (13.0)"]
 
 platform :ios do
-  before_all do
-    setup_circle_ci
-  end
+  before_all { setup_circle_ci }
 
   desc "Description of what the lane does"
   lane :format do
@@ -42,11 +40,14 @@ platform :ios do
 
   desc "run all tests"
   lane :test do
+    setup
+
     scan(
       workspace: "MyMorningCoffee.xcworkspace",
       scheme: "MyMorningCoffee",
       devices: devices,
       disable_concurrent_testing: true,
+      include_simulator_logs: false,
       clean: false,
     )
   end
@@ -63,9 +64,28 @@ platform :ios do
   desc "generate app icon"
   lane :assets do
     appicon(
-      # appicon_image_file: "fastlane/metadata/app_icon.png",
-      appicon_devices: [:iphone, :ios_marketing],
+      appicon_devices: %i[iphone ios_marketing],
       appicon_path: "MyMorningCoffee/Assets.xcassets",
     )
+  end
+
+  desc "setup environment"
+  lane :setup do
+    path = "./MyMorningCoffee/GoogleService-Info.plist"
+    sh "cd ../; cp ./MyMorningCoffee/GoogleService-Info.plist.template #{path}"
+    [
+      "CLIENT_ID",
+      "REVERSED_CLIENT_ID",
+      "API_KEY",
+      "GCM_SENDER_ID",
+      "GOOGLE_APP_ID",
+    ].each { |key|
+      set_info_plist_value(
+        path: path,
+        key: key,
+        value: ENV[key],
+        output_file_name: path,
+      )
+    }
   end
 end

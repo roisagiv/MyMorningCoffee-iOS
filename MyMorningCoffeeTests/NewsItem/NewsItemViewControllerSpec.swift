@@ -25,7 +25,6 @@ class NewsItemViewControllerSpec: QuickSpec {
 
         Device.showWithAppBar(vc)
         expect(vc.finishLoading).toEventually(beTrue(), timeout: 20)
-        RunLoop.main.run(until: Date().addingTimeInterval(1.0))
 
 //        expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
         expect(vc).to(haveValidDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true, tolerance: 0.95))

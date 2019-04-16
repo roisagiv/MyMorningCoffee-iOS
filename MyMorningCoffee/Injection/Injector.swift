@@ -6,7 +6,6 @@
 // To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/
 //
 
-import AlamofireNetworkActivityLogger
 import Firebase
 import GRDB
 import Keys
@@ -16,7 +15,7 @@ import Swinject
 class Injector {
   static var topNewsViewModel: TopNewsViewModelType {
     let operationQueue = OperationQueue()
-    operationQueue.qualityOfService = .userInitiated
+    operationQueue.qualityOfService = .userInteractive
     operationQueue.name = String(describing: TopNewsViewModel.self)
     operationQueue.maxConcurrentOperationCount = 5
     let scheduler = OperationQueueScheduler(

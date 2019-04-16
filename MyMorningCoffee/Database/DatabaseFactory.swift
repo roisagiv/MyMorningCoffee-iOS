@@ -23,7 +23,7 @@ class DatabaseFactory {
 
     var configuration = Configuration()
     if log {
-      configuration.trace = { print("SQL: \($0)") }
+      configuration.trace = { Logger.default.verbose("SQL: \($0)") }
     }
     return try DatabasePool(path: databaseURL.path, configuration: configuration)
   }
@@ -31,7 +31,7 @@ class DatabaseFactory {
   class func createInMemory(log: Bool = Environment.log) -> DatabaseWriter {
     var configuration = Configuration()
     if log {
-      configuration.trace = { print("SQL: \($0)") }
+      configuration.trace = { Logger.default.verbose("SQL: \($0)") }
     }
     return DatabaseQueue(configuration: configuration)
   }

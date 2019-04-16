@@ -125,9 +125,7 @@ class SettingsViewController: MDCCollectionViewController {
       accessoryView = toggle
     }
 
-    @objc private func switchToggled(sender: UISwitch) {
-      print("switch = \(sender)")
-    }
+    @objc private func switchToggled(sender _: UISwitch) {}
   }
 }
 
