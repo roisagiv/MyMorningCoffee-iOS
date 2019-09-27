@@ -23,9 +23,8 @@ class SplashSkeletonCellView: MDCCollectionViewCell, Reusable, NibLoadable {
   override func awakeFromNib() {
     super.awakeFromNib()
     Theme.apply(to: self)
-  }
-
-  func placeHolders() -> [UIView] {
-    return [favicon, header, cover]
+    favicon.backgroundColor = Theme.placeHolderColor
+    header.backgroundColor = Theme.placeHolderColor
+    cover.backgroundColor = Theme.placeHolderColor
   }
 }

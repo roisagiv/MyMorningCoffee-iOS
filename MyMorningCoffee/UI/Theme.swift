@@ -139,7 +139,6 @@ struct Theme {
   }
 
   static func apply(to activityIndicator: MDCActivityIndicator) {
-    MDCActivityIndicatorColorThemer.applySemanticColorScheme(colorScheme, to: activityIndicator)
     activityIndicator.cycleColors = [colorScheme.secondaryColor]
   }
 

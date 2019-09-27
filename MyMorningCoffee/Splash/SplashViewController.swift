@@ -11,14 +11,12 @@ import FirebaseCore
 import FirebasePerformance
 import GRDB
 import MaterialComponents
-import RHPlaceholder
 
 class SplashViewController: UICollectionViewController {
   private let appBar = MDCAppBarViewController()
   private var router: Router?
   private var remoteConfig: RemoteConfigType?
   private var databaseWriter: DatabaseWriter?
-  private let placeHolderMarker = Placeholder()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,9 +29,7 @@ class SplashViewController: UICollectionViewController {
 
     if let remoteConfig = remoteConfig {
       remoteConfig.fetch(completionHandler: { [unowned self, remoteConfig] status, error in
-        if status == .success {
-          _ = self.remoteConfig?.activateFetched()
-        } else {
+        if status != .success {
           Logger.default.error("error with config - \(error?.localizedDescription ?? "")")
         }
         do {
@@ -45,9 +41,11 @@ class SplashViewController: UICollectionViewController {
           Logger.default.error("error with migration - \(error.localizedDescription)")
         }
 
-        let appDelegate = UIApplication.shared.delegate as? AppDelegateType
-        appDelegate?.remoteConfigDidFetch(remoteConfig: remoteConfig)
-        self.router?.root(route: .topNews)
+        DispatchQueue.main.async { [unowned self, remoteConfig] in
+          let appDelegate = UIApplication.shared.delegate as? AppDelegateType
+          appDelegate?.remoteConfigDidFetch(remoteConfig: remoteConfig)
+          self.router?.root(route: .topNews)
+        }
       })
     }
   }
@@ -81,8 +79,6 @@ extension SplashViewController {
   override func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
-    placeHolderMarker.register(cell.placeHolders())
-    placeHolderMarker.startAnimation()
     return cell
   }
 

@@ -349,7 +349,6 @@ PODS:
     - Reusable/View (= 4.1.0)
   - Reusable/Storyboard (4.1.0)
   - Reusable/View (4.1.0)
-  - RHPlaceholder (0.0.5)
   - RxAlamofire (4.4.1):
     - RxAlamofire/Core (= 4.4.1)
   - RxAlamofire/Core (4.4.1):
@@ -436,7 +435,6 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift (= 8.0.0)
   - Quick (= 2.2.0)
   - Reusable (= 4.1.0)
-  - RHPlaceholder (= 0.0.5)
   - RxAlamofire (= 4.4.1)
   - RxBlocking (= 4.5.0)
   - RxCocoa (= 4.5.0)
@@ -478,7 +476,6 @@ SPEC REPOS:
     - Quick
     - Result
     - Reusable
-    - RHPlaceholder
     - RxAlamofire
     - RxBlocking
     - RxCocoa
@@ -579,7 +576,6 @@ SPEC CHECKSUMS:
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
-  RHPlaceholder: f12ce1ae54fc7ed7af155c00631b703250461158
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
@@ -596,6 +592,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: 5a4ebd7ade8cf897b498d1ef2d53df9498162265
+PODFILE CHECKSUM: 518cbccf1a2ffa4f4e6952514b9db90ce3c053b2
 
-COCOAPODS: 1.8.0
+COCOAPODS: 1.8.1

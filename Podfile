@@ -44,7 +44,6 @@ target "MyMorningCoffee" do
   pod "Reusable", "4.1.0"
   pod "Nuke", "8.2.0"
   pod "SwiftHEXColors", "1.3.1"
-  pod "RHPlaceholder", "0.0.5"
 
   # Firebase
   $Firebase = "6.9.0"
