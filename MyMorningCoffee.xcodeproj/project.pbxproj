@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -65,6 +65,8 @@
 		5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */; };
 		5F7A5AA0212EC36A00E49054 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5A9F212EC36A00E49054 /* Injector.swift */; };
 		5F7A5AA2212EC96A00E49054 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A5AA1212EC96A00E49054 /* Fixtures.swift */; };
+		5F831CEF2337A4F600A72DA8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F831CEE2337A4F600A72DA8 /* ActivityIndicator.swift */; };
+		5F831CF12337A9D800A72DA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F831CF02337A9D800A72DA8 /* GoogleService-Info.plist */; };
 		5F84856E219755B0001B94D2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F84856D219755B0001B94D2 /* Router.swift */; };
 		5F8485712197FC8D001B94D2 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */; };
 		5F87E17421E5C56000715B44 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F87E17321E5C56000715B44 /* SettingsViewModel.swift */; };
@@ -88,7 +90,6 @@
 		5FC8AF9221B4FDE100BCB73C /* StubRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9121B4FDE100BCB73C /* StubRouter.swift */; };
 		5FC8AF9421B4FE4900BCB73C /* StubRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9321B4FE4900BCB73C /* StubRemoteConfig.swift */; };
 		5FC8AF9721B5011C00BCB73C /* FirebaseRemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC8AF9621B5011C00BCB73C /* FirebaseRemoteConfig.swift */; };
-		5FCAB98422475B520097A614 /* SwiftLinkPreviewScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */; };
 		5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */; };
 		5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */; };
 		5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCC620021283583004B0B29 /* TopNewsCellView.swift */; };
@@ -175,6 +176,8 @@
 		5F7A5A9D212EC07700E49054 /* TopNewsViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModelSpec.swift; sourceTree = "<group>"; };
 		5F7A5A9F212EC36A00E49054 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		5F7A5AA1212EC96A00E49054 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
+		5F831CEE2337A4F600A72DA8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		5F831CF02337A9D800A72DA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F84856D219755B0001B94D2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5F8485702197FC8D001B94D2 /* NewsItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		5F87E17321E5C56000715B44 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -198,7 +201,6 @@
 		5FC8AF9121B4FDE100BCB73C /* StubRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRouter.swift; sourceTree = "<group>"; };
 		5FC8AF9321B4FE4900BCB73C /* StubRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRemoteConfig.swift; sourceTree = "<group>"; };
 		5FC8AF9621B5011C00BCB73C /* FirebaseRemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfig.swift; sourceTree = "<group>"; };
-		5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLinkPreviewScraperService.swift; sourceTree = "<group>"; };
 		5FCC61FC21277AEF004B0B29 /* TopNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsViewModel.swift; sourceTree = "<group>"; };
 		5FCC61FE21283571004B0B29 /* TopNewsCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopNewsCellView.xib; sourceTree = "<group>"; };
 		5FCC620021283583004B0B29 /* TopNewsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNewsCellView.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				5F49F10A2126029D0071DB49 /* AppDelegate.swift */,
 				5F49F1112126029F0071DB49 /* Assets.xcassets */,
 				5F49F1162126029F0071DB49 /* Info.plist */,
+				5F831CF02337A9D800A72DA8 /* GoogleService-Info.plist */,
 				5F49F1132126029F0071DB49 /* LaunchScreen.storyboard */,
 				5F461123219E13070007AEC2 /* Pods-acknowledgements.plist */,
 				5F43F8D2212935C700BD62CC /* TestAppDelegate.swift */,
@@ -463,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				5F77B3F221F6E83A0045ACE6 /* UIViewController+Rx.swift */,
+				5F831CEE2337A4F600A72DA8 /* ActivityIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -526,7 +530,6 @@
 				5FABFA3B224824EF009B204E /* KannaScraperService.swift */,
 				5F23C183212B58FB0030199A /* MercuryWebParserScraperService.swift */,
 				5F23C181212B55D00030199A /* ScraperService.swift */,
-				5FCAB98322475B520097A614 /* SwiftLinkPreviewScraperService.swift */,
 			);
 			path = Scraper;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				5F655E3B219B681B003E0B27 /* Nunito-Regular.ttf in Resources */,
 				5F2D394E21BA709400D30A51 /* RemoteConfigDefaults.plist in Resources */,
 				5F00839221CF597E00DF9ABA /* MyMorningCoffeeTests-Release.xcconfig in Resources */,
+				5F831CF12337A9D800A72DA8 /* GoogleService-Info.plist in Resources */,
 				5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */,
 				5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */,
 			);
@@ -743,91 +747,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AcknowList/AcknowList.framework",
-				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Freedom/Freedom.framework",
-				"${BUILT_PRODUCTS_DIR}/GRDB.swift/GRDB.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialDesignSymbol/MaterialDesignSymbol.framework",
-				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
-				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RHPlaceholder/RHPlaceholder.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxGRDB/RxGRDB.framework",
-				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RxWebKit/RxWebKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/netfox/netfox.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcknowList.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Freedom.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialDesignSymbol.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RHPlaceholder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGRDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxWebKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/netfox.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -839,29 +764,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
-				"${BUILT_PRODUCTS_DIR}/Fakery/Fakery.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EarlGrey.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fakery.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -909,19 +817,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "[CP-User] Fabric";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -946,12 +848,12 @@
 				5FAB2AFF2262FFC10021F75A /* Dates.swift in Sources */,
 				5F23C184212B58FB0030199A /* MercuryWebParserScraperService.swift in Sources */,
 				5F43F8D3212935C700BD62CC /* TestAppDelegate.swift in Sources */,
-				5FCAB98422475B520097A614 /* SwiftLinkPreviewScraperService.swift in Sources */,
 				5F43F8D1212934E800BD62CC /* HackerNewsHTTPService.swift in Sources */,
 				5FE6B1F221BDB6E1006D144D /* PreConfigAssembly.swift in Sources */,
 				5FCC620121283583004B0B29 /* TopNewsCellView.swift in Sources */,
 				5FCC61FD21277AEF004B0B29 /* TopNewsViewModel.swift in Sources */,
 				5F6ABF85212CABB200060690 /* DatabaseFactory.swift in Sources */,
+				5F831CEF2337A4F600A72DA8 /* ActivityIndicator.swift in Sources */,
 				5F43F8D52129360100BD62CC /* main.swift in Sources */,
 				5F461126219EEBD50007AEC2 /* Icons.swift in Sources */,
 				5F92004D212C2FFB00E824E7 /* MoyaProviderFactory.swift in Sources */,

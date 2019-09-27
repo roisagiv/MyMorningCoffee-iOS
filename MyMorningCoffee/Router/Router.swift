@@ -25,7 +25,6 @@ class Router {
         return TopNewsViewController.create(
           viewModel: Injector.topNewsViewModel,
           imageLoader: Injector.imageLoader,
-          formatter: Injector.formatter,
           router: Injector.router
         )
       case let .item(url, title):

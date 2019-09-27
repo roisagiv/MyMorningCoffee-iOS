@@ -1,19 +1,20 @@
-platform :ios, "11.4"
+platform :ios, "13.0"
 
-pod "SwiftLint", "0.31.0"
-pod "SwiftFormat/CLI", "0.40.7"
-pod "IBLinter", "0.4.14"
+pod "SwiftLint", "0.35.0"
+pod "SwiftFormat/CLI", "0.40.12"
+pod "IBLinter", "0.4.19"
 
-plugin "cocoapods-keys", {
-  :project => "MyMorningCoffee",
-  :keys => [
-    "MercuryWebParserKey",
-    "FirebaseGoogleAppID",
-    "FirebaseGCMSenderID",
-    "FirebaseProjectID",
-    "FirebaseClientID",
-  ],
-}
+plugin "cocoapods-keys",
+       {
+         project: "MyMorningCoffee",
+         keys: %w[
+           MercuryWebParserKey
+           FirebaseGoogleAppID
+           FirebaseGCMSenderID
+           FirebaseProjectID
+           FirebaseClientID
+         ],
+       }
 
 target "MyMorningCoffee" do
   use_frameworks!
@@ -24,32 +25,29 @@ target "MyMorningCoffee" do
   pod "RxCocoa", $Rx
   pod "RxDataSources", "3.1.0"
   pod "RxWebKit", "0.3.7"
-  pod "RxSwiftUtilities", "2.1.0"
   pod "RxOptional", "3.6.2"
   pod "Action", "3.11.0"
   pod "RxSwiftExt", "3.4.0"
-  pod "RxAlamofire", "4.3.0"
+  pod "RxAlamofire", "4.4.1"
 
   # DI
-  pod "Swinject", "2.6.0"
+  pod "Swinject", "2.7.1"
 
   # Network
-  pod "Moya/RxSwift", "12.0.1"
-  pod "AlamofireNetworkActivityLogger", "2.3.0"
-  pod "SwiftLinkPreview", "3.0.1"
-  pod "Kanna", "4.0.3"
+  pod "Moya/RxSwift", "13.0.1"
+  pod "Kanna", "5.0.0"
 
   # DB
   pod "RxGRDB", "0.13.0"
 
   # UI
-  pod "Reusable", "4.0.5"
-  pod "Nuke", "7.6.1"
-  pod "SwiftHEXColors", "1.2.0"
+  pod "Reusable", "4.1.0"
+  pod "Nuke", "8.2.0"
+  pod "SwiftHEXColors", "1.3.1"
   pod "RHPlaceholder", "0.0.5"
 
   # Firebase
-  $Firebase = "5.20.2"
+  $Firebase = "6.9.0"
   pod "Firebase/Core", $Firebase
   pod "Firebase/Database", $Firebase
   pod "Firebase/Analytics", $Firebase
@@ -58,11 +56,11 @@ target "MyMorningCoffee" do
   pod "Firebase/RemoteConfig", $Firebase
 
   # Crashlytics
-  pod "Fabric", "1.9.0"
-  pod "Crashlytics", "3.12.0"
+  pod "Fabric", "1.10.2"
+  pod "Crashlytics", "3.14.0"
 
   # Material.io
-  $MaterialComponents = "81.1.0"
+  $MaterialComponents = "92.0.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -86,13 +84,14 @@ target "MyMorningCoffee" do
   pod "SwiftMoment", "0.7"
 
   # Acknowledgements
-  pod "AcknowList", "1.8"
+  pod "AcknowList", "1.9.1"
 
   # Deep Link
-  pod "Freedom", "2.3.0"
+  pod "Freedom", "2.4.0"
 
   # Debug
-  pod "netfox", "1.15.0", :configurations => ["Debug"]
+  pod "netfox", "1.16.0", configurations: %w[Debug]
+  pod "XCGLogger", "7.0.0"
 
 =begin
 
@@ -106,23 +105,25 @@ target "MyMorningCoffee" do
 
 =end
 
-  script_phase :name => "Fabric",
-               :script => '"${PODS_ROOT}/Fabric/run"',
-               :execution_position => :after_compile,
-               :input_files => ["$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"]
+  script_phase name: "Fabric",
+               script: '\
+"${PODS_ROOT}/Fabric/run"
+',
+               execution_position: :after_compile,
+               input_files: %w[$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)]
 
   target "MyMorningCoffeeTests" do
     inherit! :search_paths
 
-    pod "Quick", "2.0.0"
-    pod "Nimble", "8.0.1"
-    pod "OHHTTPStubs/Swift", "7.0.0"
+    pod "Quick", "2.2.0"
+    pod "Nimble", "8.0.4"
+    pod "OHHTTPStubs/Swift", "8.0.0"
     pod "RxBlocking", $Rx
-    pod "EarlGrey", "1.15.0"
-    pod "Nimble-Snapshots", "7.0.0"
+    pod "EarlGrey", "1.15.1"
+    pod "Nimble-Snapshots", "8.0.0"
 
     # Fake Data
-    pod "Fakery", "3.4.0"
+    pod "Fakery", "4.1.1"
   end
 end
 
@@ -138,6 +139,7 @@ post_install do |installer|
       config.build_settings["SWIFT_VERSION"] = swift_version
     end
 
+=begin
     if target.name == "RxSwift"
       target.build_configurations.each do |config|
         if config.name == "Debug"
@@ -146,12 +148,13 @@ post_install do |installer|
         end
       end
     end
+=end
   end
 
   require "fileutils" # for acknowledgements
   FileUtils.cp_r(
     "Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee-acknowledgements.plist",
     "MyMorningCoffee/Pods-acknowledgements.plist",
-    :remove_destination => true,
+    remove_destination: true,
   )
 end

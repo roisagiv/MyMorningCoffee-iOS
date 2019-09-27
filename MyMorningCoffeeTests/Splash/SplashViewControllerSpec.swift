@@ -31,11 +31,10 @@ class SplashViewControllerSpec: QuickSpec {
           databaseWriter: db
         )
 
-        Device.showController(vc)
-        RunLoop.main.run(until: Date().addingTimeInterval(1.0))
+        Device.showWithAppBar(vc)
 
 //        expect(vc).to(recordDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true))
-        expect(vc).to(haveValidDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true, tolerance: 0.95))
+        expect(vc).to(haveValidDynamicSizeSnapshot(sizes: Device.sizes, usesDrawRect: true, tolerance: 0.02))
       }
     }
   }

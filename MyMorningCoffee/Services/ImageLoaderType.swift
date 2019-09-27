@@ -24,7 +24,6 @@ class NukeImageLoader: ImageLoaderType {
       return
     }
     load(url: imageUrl, imageView: imageView)
-    Nuke.ImageCache.shared.removeAll()
   }
 
   func load(url: URL, imageView: UIImageView) {

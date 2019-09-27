@@ -176,8 +176,9 @@ extension NewsItemViewController: MDCFlexibleHeaderViewDelegate {
   func flexibleHeaderViewFrameDidChange(_ headerView: MDCFlexibleHeaderView) {
     if let backButton = appBar.navigationBar.backItem,
       let backButtonImage = MDCIcons.imageFor_ic_arrow_back() {
-      let minValue: CGFloat = 76
-      let maxValue: CGFloat = 100
+      let safeArea: CGFloat = headerView.safeAreaInsets.top > 0 ? 24 : 0
+      let minValue: CGFloat = 76 - safeArea /* SE - 76-20, X - 100-44*/
+      let maxValue: CGFloat = 100 - safeArea
       let value = max(headerView.scrollPhaseValue, minValue)
       let alpha: CGFloat = (value - minValue) / (maxValue - minValue)
 
