@@ -40,7 +40,6 @@ class PreConfigAssembly: Assembly {
       remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
 
       #if DEBUG
-        remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
 //        FirebaseConfiguration.shared.setLoggerLevel(.debug)
       #endif
 

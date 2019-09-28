@@ -11,8 +11,6 @@ import Firebase
 protocol RemoteConfigType {
   func fetch(completionHandler: RemoteConfigFetchCompletion?)
 
-  func activateFetched() -> Bool
-
   var analyticsEnabled: Bool { get }
 
   var performanceMonitoringEnabled: Bool { get }
@@ -20,24 +18,29 @@ protocol RemoteConfigType {
 
 class FirebaseRemoteConfig: RemoteConfigType {
   private let remoteConfig: RemoteConfig
+  private let developmentMode: Bool
 
-  init(remoteConfig: RemoteConfig) {
+  init(remoteConfig: RemoteConfig, developmentMode: Bool = false) {
     self.remoteConfig = remoteConfig
+    self.developmentMode = developmentMode
   }
 
   func fetch(completionHandler: RemoteConfigFetchCompletion?) {
-    var expirationDuration: Double = 3600
-    if remoteConfig.configSettings.isDeveloperModeEnabled {
-      expirationDuration = 0
+    if developmentMode {
+      remoteConfig.configSettings.minimumFetchInterval = 0
     }
-    remoteConfig.fetch(
-      withExpirationDuration: expirationDuration,
-      completionHandler: completionHandler
-    )
-  }
-
-  func activateFetched() -> Bool {
-    return remoteConfig.activateFetched()
+    remoteConfig.fetch { [completionHandler, unowned self] status, error in
+      if let error = error {
+        completionHandler?(status, error)
+      }
+      self.remoteConfig.activate { error in
+        if let error = error {
+          completionHandler?(.failure, error)
+        } else {
+          completionHandler?(status, error)
+        }
+      }
+    }
   }
 
   var analyticsEnabled: Bool {

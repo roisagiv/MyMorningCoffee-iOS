@@ -44,16 +44,16 @@ enum Device {
   @discardableResult
   static func showController(_ viewController: UIViewController, window: UIWindow = UIWindow()) -> UIWindow {
     /*
-    let frame: CGRect
-    let view: UIView = viewController.view
-    if view.frame.size.width > 0, view.frame.size.height > 0 {
-      frame = CGRect(origin: .zero, size: view.frame.size)
-    } else {
-      frame = UIScreen.main.bounds
-    }
+     let frame: CGRect
+     let view: UIView = viewController.view
+     if view.frame.size.width > 0, view.frame.size.height > 0 {
+       frame = CGRect(origin: .zero, size: view.frame.size)
+     } else {
+       frame = UIScreen.main.bounds
+     }
 
-    window.frame = frame
- */
+     window.frame = frame
+     */
     viewController.loadViewIfNeeded()
 
     window.rootViewController = viewController
@@ -66,7 +66,8 @@ enum Device {
   @discardableResult
   static func showWithAppBar(
     _ viewController: UIViewController,
-    window: UIWindow = UIWindow(frame: UIScreen.main.bounds)) -> UIWindow {
+    window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
+  ) -> UIWindow {
     let nc = MDCAppBarNavigationController(rootViewController: viewController)
     if let appBar = nc.appBarViewController(for: viewController) {
       Theme.apply(to: appBar)

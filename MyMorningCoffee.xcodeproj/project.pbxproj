@@ -8,15 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4BA5E4C2F2521773F4EA36B6 /* Pods_MyMorningCoffeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B8D99F3067C4EF9EF3048 /* Pods_MyMorningCoffeeTests.framework */; };
-		5F00839021CF597E00DF9ABA /* MyMorningCoffee-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838721CF597E00DF9ABA /* MyMorningCoffee-Shared.xcconfig */; };
-		5F00839121CF597E00DF9ABA /* MyMorningCoffeeTests-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838821CF597E00DF9ABA /* MyMorningCoffeeTests-Debug.xcconfig */; };
-		5F00839221CF597E00DF9ABA /* MyMorningCoffeeTests-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838921CF597E00DF9ABA /* MyMorningCoffeeTests-Release.xcconfig */; };
-		5F00839321CF597E00DF9ABA /* Project-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838A21CF597E00DF9ABA /* Project-Release.xcconfig */; };
-		5F00839421CF597E00DF9ABA /* MyMorningCoffee-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838B21CF597E00DF9ABA /* MyMorningCoffee-Debug.xcconfig */; };
-		5F00839521CF597E00DF9ABA /* Project-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838C21CF597E00DF9ABA /* Project-Shared.xcconfig */; };
-		5F00839621CF597E00DF9ABA /* MyMorningCoffeeTests-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838D21CF597E00DF9ABA /* MyMorningCoffeeTests-Shared.xcconfig */; };
-		5F00839721CF597E00DF9ABA /* Project-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838E21CF597E00DF9ABA /* Project-Debug.xcconfig */; };
-		5F00839821CF597E00DF9ABA /* MyMorningCoffee-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5F00838F21CF597E00DF9ABA /* MyMorningCoffee-Release.xcconfig */; };
 		5F02237421AB27ED00802796 /* NewsItemMoreMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02237321AB27ED00802796 /* NewsItemMoreMenuViewController.swift */; };
 		5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FCD5C21260B4F002A289F /* TopNewsViewController.swift */; };
 		5F13B35F2198B12E00FB1BF4 /* NewsItemViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F13B35E2198B12E00FB1BF4 /* NewsItemViewControllerSpec.swift */; };
@@ -700,23 +691,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F00839421CF597E00DF9ABA /* MyMorningCoffee-Debug.xcconfig in Resources */,
-				5F00839521CF597E00DF9ABA /* Project-Shared.xcconfig in Resources */,
 				5FB2481721275D0000BFE636 /* MontserratAlternates-Regular.ttf in Resources */,
-				5F00839821CF597E00DF9ABA /* MyMorningCoffee-Release.xcconfig in Resources */,
-				5F00839121CF597E00DF9ABA /* MyMorningCoffeeTests-Debug.xcconfig in Resources */,
 				5F3A0A0221C6E17400F87598 /* SplashSkeletonCellView.xib in Resources */,
 				5FCC61FF21283571004B0B29 /* TopNewsCellView.xib in Resources */,
-				5F00839721CF597E00DF9ABA /* Project-Debug.xcconfig in Resources */,
-				5F00839621CF597E00DF9ABA /* MyMorningCoffeeTests-Shared.xcconfig in Resources */,
 				5F655E3A219B6818003E0B27 /* Nunito-SemiBold.ttf in Resources */,
 				5F461124219E13070007AEC2 /* Pods-acknowledgements.plist in Resources */,
-				5F00839021CF597E00DF9ABA /* MyMorningCoffee-Shared.xcconfig in Resources */,
 				5F49F1152126029F0071DB49 /* LaunchScreen.storyboard in Resources */,
-				5F00839321CF597E00DF9ABA /* Project-Release.xcconfig in Resources */,
 				5F655E3B219B681B003E0B27 /* Nunito-Regular.ttf in Resources */,
 				5F2D394E21BA709400D30A51 /* RemoteConfigDefaults.plist in Resources */,
-				5F00839221CF597E00DF9ABA /* MyMorningCoffeeTests-Release.xcconfig in Resources */,
 				5F831CF12337A9D800A72DA8 /* GoogleService-Info.plist in Resources */,
 				5F49F1122126029F0071DB49 /* Assets.xcassets in Resources */,
 				5FB2480F21275D0000BFE636 /* MontserratAlternates-Medium.ttf in Resources */,
@@ -823,7 +805,7 @@
 			name = "[CP-User] Fabric";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\\\n\"${PODS_ROOT}/Fabric/run\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

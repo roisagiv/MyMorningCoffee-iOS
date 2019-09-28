@@ -7,7 +7,6 @@
 //
 
 import MaterialComponents
-import RHPlaceholder
 import RxCocoa
 import RxDataSources
 import RxSwift
@@ -20,7 +19,6 @@ class TopNewsViewController: UICollectionViewController {
 
   fileprivate let appBar = MDCAppBarViewController()
   private let activityIndicator = MDCActivityIndicator()
-  private let placeHolderMarker = Placeholder()
 
   private let disposeBag = DisposeBag()
   fileprivate var viewModel: TopNewsViewModelType?
@@ -100,8 +98,6 @@ class TopNewsViewController: UICollectionViewController {
       configureCell: { [unowned self] _, collectionView, indexPath, item in
         if item.loading {
           let cell: SplashSkeletonCellView = collectionView.dequeueReusableCell(for: indexPath)
-          self.placeHolderMarker.register(cell.placeHolders())
-          self.placeHolderMarker.startAnimation()
           return cell
         } else {
           let cell: TopNewsCellView = collectionView.dequeueReusableCell(for: indexPath)
