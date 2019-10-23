@@ -1,8 +1,8 @@
 platform :ios, "13.0"
 
 pod "SwiftLint", "0.35.0"
-pod "SwiftFormat/CLI", "0.40.12"
-pod "IBLinter", "0.4.19"
+pod "SwiftFormat/CLI", "0.40.13"
+pod "IBLinter", "0.4.20"
 
 plugin "cocoapods-keys",
        {
@@ -42,11 +42,11 @@ target "MyMorningCoffee" do
 
   # UI
   pod "Reusable", "4.1.0"
-  pod "Nuke", "8.2.0"
+  pod "Nuke", "8.3.0"
   pod "SwiftHEXColors", "1.3.1"
 
   # Firebase
-  $Firebase = "6.9.0"
+  $Firebase = "6.11.0"
   pod "Firebase/Core", $Firebase
   pod "Firebase/Database", $Firebase
   pod "Firebase/Analytics", $Firebase
@@ -59,7 +59,7 @@ target "MyMorningCoffee" do
   pod "Crashlytics", "3.14.0"
 
   # Material.io
-  $MaterialComponents = "92.0.0"
+  $MaterialComponents = "92.5.0"
   pod "MaterialComponents/AppBar", $MaterialComponents
   pod "MaterialComponents/AppBar+ColorThemer", $MaterialComponents
   pod "MaterialComponents/AppBar+TypographyThemer", $MaterialComponents
@@ -83,7 +83,7 @@ target "MyMorningCoffee" do
   pod "SwiftMoment", "0.7"
 
   # Acknowledgements
-  pod "AcknowList", "1.9.1"
+  pod "AcknowList", "1.9.2"
 
   # Deep Link
   pod "Freedom", "2.4.0"
