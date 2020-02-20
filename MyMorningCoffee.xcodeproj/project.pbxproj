@@ -91,6 +91,8 @@
 		5FE6B1F221BDB6E1006D144D /* PreConfigAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6B1F121BDB6E1006D144D /* PreConfigAssembly.swift */; };
 		5FE6B1F421BDB784006D144D /* PostConfigAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6B1F321BDB784006D144D /* PostConfigAssembly.swift */; };
 		5FE6FD51214D99A800E596C3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE6FD50214D99A800E596C3 /* Images.swift */; };
+		5FE8A82B23616AED002872A8 /* SplashSkeletonCellView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE8A82A23616AED002872A8 /* SplashSkeletonCellView2.swift */; };
+		5FE8A82D23616F25002872A8 /* SplashSkeletonCellView2Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE8A82C23616F25002872A8 /* SplashSkeletonCellView2Spec.swift */; };
 		7FE4F11476946C7014902C8B /* Pods_MyMorningCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +205,8 @@
 		5FE6B1F321BDB784006D144D /* PostConfigAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfigAssembly.swift; sourceTree = "<group>"; };
 		5FE6FD4E214D864600E596C3 /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		5FE6FD50214D99A800E596C3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		5FE8A82A23616AED002872A8 /* SplashSkeletonCellView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSkeletonCellView2.swift; sourceTree = "<group>"; };
+		5FE8A82C23616F25002872A8 /* SplashSkeletonCellView2Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashSkeletonCellView2Spec.swift; sourceTree = "<group>"; };
 		639CB397A186331A7F542157 /* Pods-MyMorningCoffeeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffeeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffeeTests/Pods-MyMorningCoffeeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		973EDF13CBF7E5FB61A2E82E /* Pods-MyMorningCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMorningCoffee.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMorningCoffee/Pods-MyMorningCoffee.release.xcconfig"; sourceTree = "<group>"; };
 		9B5A7B2958D25D67C33A1968 /* Pods_MyMorningCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyMorningCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +285,7 @@
 				5F3A0A0321C6E19F00F87598 /* SplashSkeletonCellView.swift */,
 				5F3A0A0121C6E17400F87598 /* SplashSkeletonCellView.xib */,
 				5F1C957C21B1DE2600175F07 /* SplashViewController.swift */,
+				5FE8A82A23616AED002872A8 /* SplashSkeletonCellView2.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				5FC8AF8F21B4FD7700BCB73C /* SplashViewControllerSpec.swift */,
+				5FE8A82C23616F25002872A8 /* SplashSkeletonCellView2Spec.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -852,6 +858,7 @@
 				5F8FDAC021AED51B0068E1EF /* AnalyticsService.swift in Sources */,
 				5F8485712197FC8D001B94D2 /* NewsItemViewController.swift in Sources */,
 				5F0FCD5D21260B4F002A289F /* TopNewsViewController.swift in Sources */,
+				5FE8A82B23616AED002872A8 /* SplashSkeletonCellView2.swift in Sources */,
 				5FABFA3C224824EF009B204E /* KannaScraperService.swift in Sources */,
 				5F8FDAC621AFB6120068E1EF /* AnalyticsEvent.swift in Sources */,
 				5FC38028212D3E82003E1F4B /* NewsItemsDatabase.swift in Sources */,
@@ -870,6 +877,7 @@
 				5F7A5A9E212EC07700E49054 /* TopNewsViewModelSpec.swift in Sources */,
 				5F9187A621E282F400D95CEA /* OpenSourceViewControllerSpec.swift in Sources */,
 				5FD9C8F2224933E500BA581A /* KannaScraperServiceSpec.swift in Sources */,
+				5FE8A82D23616F25002872A8 /* SplashSkeletonCellView2Spec.swift in Sources */,
 				5F1C957A21B0768600175F07 /* StubAnalyticsService.swift in Sources */,
 				5F8DC5ED21F27CBD0026A9F5 /* StubNewsItemsDatabaseType.swift in Sources */,
 				5F1B31942148610600A18D03 /* StubImageLoader.swift in Sources */,

@@ -1,6 +1,6 @@
 platform :ios, "13.0"
 
-pod "SwiftLint", "0.35.0"
+pod "SwiftLint", "0.36.0"
 pod "SwiftFormat/CLI", "0.40.13"
 pod "IBLinter", "0.4.20"
 
@@ -44,6 +44,7 @@ target "MyMorningCoffee" do
   pod "Reusable", "4.1.0"
   pod "Nuke", "8.3.0"
   pod "SwiftHEXColors", "1.3.1"
+  pod "TinyConstraints", "4.0.1"
 
   # Firebase
   $Firebase = "6.11.0"

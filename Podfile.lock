@@ -386,9 +386,10 @@ PODS:
     - RxSwift (~> 4.0)
   - SwiftFormat/CLI (0.40.13)
   - SwiftHEXColors (1.3.1)
-  - SwiftLint (0.35.0)
+  - SwiftLint (0.36.0)
   - SwiftMoment (0.7)
   - Swinject (2.7.1)
+  - TinyConstraints (4.0.1)
   - XCGLogger (7.0.0):
     - XCGLogger/Core (= 7.0.0)
   - XCGLogger/Core (7.0.0):
@@ -447,9 +448,10 @@ DEPENDENCIES:
   - RxWebKit (= 0.3.7)
   - SwiftFormat/CLI (= 0.40.13)
   - SwiftHEXColors (= 1.3.1)
-  - SwiftLint (= 0.35.0)
+  - SwiftLint (= 0.36.0)
   - SwiftMoment (= 0.7)
   - Swinject (= 2.7.1)
+  - TinyConstraints (= 4.0.1)
   - XCGLogger (= 7.0.0)
 
 SPEC REPOS:
@@ -485,7 +487,6 @@ SPEC REPOS:
     - RxSwiftExt
     - RxWebKit
     - SwiftHEXColors
-    - SwiftLint
     - SwiftMoment
     - Swinject
     - XCGLogger
@@ -520,6 +521,8 @@ SPEC REPOS:
     - Nuke
     - Protobuf
     - SwiftFormat
+    - SwiftLint
+    - TinyConstraints
 
 EXTERNAL SOURCES:
   Keys:
@@ -588,11 +591,12 @@ SPEC CHECKSUMS:
   RxWebKit: e39e220919e5e24546c837f5f60689036a1e5920
   SwiftFormat: d548b3585a6dbe64390177b386e95375b8c300b6
   SwiftHEXColors: 7cc78ce189ddaff81f2ec1259b6b1dffdcda7643
-  SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+  SwiftLint: fc9859e4e1752340664851f667bb1898b9c90114
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: 9dabd882a8035a5291518c8358a4fc4056b33bfc
+PODFILE CHECKSUM: e700c212258cc0704fdddeff80ecc6b538cd3d65
 
 COCOAPODS: 1.8.4
